@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 // import './LoginForm.css';
 
 function LoginFormPage() {
@@ -11,10 +11,9 @@ function LoginFormPage() {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     
-    if (sessionUser) return <Redirect to="/" />;
+    if (sessionUser) return <Navigate to="/" />;
 
     const handleSubmit = (e) => {
-        debugger
         e.preventDefault();
         setErrors([]);
         return dispatch(sessionActions.login({email, password}))
@@ -38,7 +37,7 @@ function LoginFormPage() {
             <ul>
                 {errors.map(error => <li key={error}>{error}</li>)}
             </ul>
-            <label>Username/Email
+            <label>Email
                 <br></br>
                 <input
                     type="text"

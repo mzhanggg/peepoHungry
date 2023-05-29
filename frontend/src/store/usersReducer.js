@@ -18,6 +18,7 @@ export const loginUser = user => async dispatch => {
         method: 'POST',
         body: JSON.stringify(user)
     });
+
     let data = await res.json();
     sessionStorage.setItem('currentUser', JSON.stringify(data.user));
     dispatch(receiveUser(data.user))
@@ -27,6 +28,7 @@ export const logoutUser = userId => async dispatch => {
     let res = await csrfFetch('/api/session', {
         method: 'DELETE'
     });
+    
     sessionStorage.setItem('currentUser', null)
     dispatch(removeUser(userId));
 }
@@ -36,6 +38,7 @@ export const createUser = user => async dispatch => {
         method: 'POST',
         body: JSON.stringify(user)
     });
+    
     let data = await res.json();
     sessionStorage.setItem('currentUser', JSON.stringify(data.user));
     dispatch(receiveUser(data.user));

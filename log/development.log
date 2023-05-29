@@ -406,3 +406,5 @@ Can't verify CSRF token authenticity.
 Completed 422 Unprocessable Entity in 1ms (Views: 0.2ms | Allocations: 762)
 
 
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (5.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
