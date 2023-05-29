@@ -42,3 +42,367 @@ Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 637)
 
 
   [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (7.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (5.3ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "first"], ["lname", "last"], ["email", "test@email.com"], ["zipcode", "11220"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2023-05-28 20:19:43.751094"], ["updated_at", "2023-05-28 20:19:43.751094"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/test" for 127.0.0.1 at 2023-05-28 16:24:03 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ApplicationController#test as */*
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `current_user'
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 11.0ms | Allocations: 4827)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Destroy (7.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  [1m[36mUser Exists? (3.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@user.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "Demo"], ["lname", "Lition"], ["email", "demo@user.io"], ["zipcode", "9000"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2023-05-28 20:28:01.119480"], ["updated_at", "2023-05-28 20:28:01.119480"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/api/test" for 127.0.0.1 at 2023-05-28 16:31:50 -0400
+Processing by ApplicationController#test as */*
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (Allocations: 677)
+
+
+
+ActionController::InvalidAuthenticityToken - Can't verify CSRF token authenticity.:
+
+Started GET "/" for ::1 at 2023-05-28 16:32:50 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/michelezhang/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/michelezhang/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.0ms | Allocations: 469)
+Completed 200 OK in 142ms (Views: 3.1ms | Allocations: 279560)
+
+
+Started POST "/api/test" for ::1 at 2023-05-28 16:33:01 -0400
+Processing by ApplicationController#test as */*
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (Allocations: 637)
+
+
+
+ActionController::InvalidAuthenticityToken - Can't verify CSRF token authenticity.:
+
+Started POST "/api/test" for ::1 at 2023-05-28 16:34:21 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/api/test"):
+  
+Started POST "/api/test" for ::1 at 2023-05-28 16:34:35 -0400
+Processing by ApplicationController#test as */*
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (Allocations: 634)
+
+
+
+ActionController::InvalidAuthenticityToken - Can't verify CSRF token authenticity.:
+
+Started POST "/api/test?login" for ::1 at 2023-05-28 16:35:31 -0400
+Processing by ApplicationController#test as */*
+  Parameters: {"login"=>nil}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (Allocations: 573)
+
+
+
+ActionController::InvalidAuthenticityToken - Can't verify CSRF token authenticity.:
+
+Started GET "/api/test" for ::1 at 2023-05-28 16:38:45 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/test"):
+  
+Started GET "/api/test" for 127.0.0.1 at 2023-05-28 16:39:03 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/test"):
+  
+Started GET "/api/test" for 127.0.0.1 at 2023-05-28 16:39:25 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/test"):
+  
+Started GET "/api/test" for 127.0.0.1 at 2023-05-28 16:45:51 -0400
+Processing by ApplicationController#test as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `current_user'
+Completed 200 OK in 27ms (Views: 0.3ms | ActiveRecord: 11.0ms | Allocations: 5692)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-28 16:46:26 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `current_user'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1328)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-28 16:46:37 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `current_user'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 935)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-28 18:14:58 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `current_user'
+Completed 200 OK in 73ms (Views: 0.9ms | ActiveRecord: 29.1ms | Allocations: 3911)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-28 18:27:25 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `current_user'
+Completed 200 OK in 110ms (Views: 0.8ms | ActiveRecord: 44.9ms | Allocations: 3750)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-28 18:27:54 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `current_user'
+Completed 200 OK in 20ms (Views: 0.4ms | ActiveRecord: 2.5ms | Allocations: 927)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-28 18:28:08 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `current_user'
+Completed 200 OK in 16ms (Views: 0.7ms | ActiveRecord: 2.7ms | Allocations: 930)
+
+
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Exists? (4.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@user.io"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (2.0ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2023-05-28 23:50:56.976063"], ["id", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/api/test" for 127.0.0.1 at 2023-05-28 19:54:06 -0400
+Processing by ApplicationController#test as */*
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (Allocations: 635)
+
+
+
+ActionController::InvalidAuthenticityToken - Can't verify CSRF token authenticity.:
+
+Started GET "/" for ::1 at 2023-05-28 19:54:16 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/michelezhang/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/michelezhang/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 6.3ms | Allocations: 283)
+Completed 200 OK in 14ms (Views: 7.8ms | Allocations: 1165)
+
+
+Started POST "/api/test" for ::1 at 2023-05-28 19:54:20 -0400
+Processing by ApplicationController#test as */*
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (Allocations: 584)
+
+
+
+ActionController::InvalidAuthenticityToken - Can't verify CSRF token authenticity.:
+
+Started GET "/" for ::1 at 2023-05-28 19:54:29 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/michelezhang/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/michelezhang/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 2ms (Views: 0.7ms | Allocations: 225)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-28 19:55:22 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `current_user'
+Completed 200 OK in 58ms (Views: 0.3ms | ActiveRecord: 20.1ms | Allocations: 5641)
+
+
+Started POST "/api/test" for 127.0.0.1 at 2023-05-28 19:58:29 -0400
+Processing by ApplicationController#test as */*
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms | Allocations: 638)
+
+
+
+ActionController::InvalidAuthenticityToken - Can't verify CSRF token authenticity.:
+
+Started POST "/api/test" for ::1 at 2023-05-28 19:58:33 -0400
+Processing by ApplicationController#test as */*
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms | Allocations: 570)
+
+
+
+ActionController::InvalidAuthenticityToken - Can't verify CSRF token authenticity.:
+
+Started POST "/api/test" for 127.0.0.1 at 2023-05-28 20:01:30 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/api/test"):
+  
+Started GET "/api/test" for 127.0.0.1 at 2023-05-28 20:01:40 -0400
+Processing by ApplicationController#test as */*
+  [1m[36mUser Load (6.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `current_user'
+Completed 200 OK in 54ms (Views: 0.3ms | ActiveRecord: 40.4ms | Allocations: 2989)
+
+
+Started GET "/api/test?login" for 127.0.0.1 at 2023-05-28 20:02:06 -0400
+Processing by ApplicationController#test as */*
+  Parameters: {"login"=>nil}
+  [1m[36mUser Load (6.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `test'
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 17.7ms | Allocations: 9103)
+
+
+
+NoMethodError - undefined method `login!' for #<ApplicationController:0x00000000028140>
+          login!(User.first)
+          ^^^^^^
+Did you mean?  login:
+  app/controllers/application_controller.rb:11:in `test'
+
+Started GET "/api/test?login" for 127.0.0.1 at 2023-05-28 20:02:18 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/test"):
+  
+Started GET "/api/test?login" for 127.0.0.1 at 2023-05-28 20:02:19 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/test"):
+  
+Started GET "/api/test" for 127.0.0.1 at 2023-05-28 20:02:23 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/test"):
+  
+Started GET "/api/session" for 127.0.0.1 at 2023-05-28 20:04:02 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `current_user'
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 2.0ms | Allocations: 2979)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-05-28 20:04:59 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"Demo-lition", "password"=>"[FILTERED]", "session"=>{"credential"=>"Demo-lition", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms | Allocations: 553)
+
+
+
+ActionController::InvalidAuthenticityToken - Can't verify CSRF token authenticity.:
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-28 20:05:09 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `current_user'
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 960)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-05-28 20:05:19 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"Demo-lition", "password"=>"[FILTERED]", "session"=>{"credential"=>"Demo-lition", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms | Allocations: 570)
+
+
+
+ActionController::InvalidAuthenticityToken - Can't verify CSRF token authenticity.:
+
+Started DELETE "/api/session" for 127.0.0.1 at 2023-05-28 20:05:29 -0400
+Processing by Api::SessionsController#destroy as JSON
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms | Allocations: 570)
+
+
+
+ActionController::InvalidAuthenticityToken - Can't verify CSRF token authenticity.:
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-28 20:05:36 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `current_user'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 921)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-28 20:15:00 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23:in `current_user'
+Completed 200 OK in 15ms (Views: 5.5ms | ActiveRecord: 2.5ms | Allocations: 4924)
+
+
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "email@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "email@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.7ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "first"], ["lname", "last"], ["email", "email@email.com"], ["zipcode", "11220"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"], ["created_at", "2023-05-29 00:17:41.865942"], ["updated_at", "2023-05-29 00:17:41.865942"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/session" for 127.0.0.1 at 2023-05-28 20:18:36 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23:in `current_user'
+Completed 200 OK in 12ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 1032)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-28 20:20:58 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23:in `current_user'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 989)
+
+
+Started POST "/api/test" for 127.0.0.1 at 2023-05-28 20:21:20 -0400
+Processing by ApplicationController#test as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23:in `current_user'
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 1142)
+
+
+Started POST "/api/test" for 127.0.0.1 at 2023-05-28 20:21:26 -0400
+Processing by ApplicationController#test as */*
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms | Allocations: 631)
+
+
+
+ActionController::InvalidAuthenticityToken - Can't verify CSRF token authenticity.:
+
+Started POST "/api/test?login" for 127.0.0.1 at 2023-05-28 20:21:48 -0400
+Processing by ApplicationController#test as */*
+  Parameters: {"login"=>nil}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `test'
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 5.1ms | Allocations: 11981)
+
+
+
+NoMethodError - undefined method `login!' for #<ApplicationController:0x00000000009470>
+          login!(User.first)
+          ^^^^^^
+Did you mean?  login:
+  app/controllers/application_controller.rb:10:in `test'
+
+Started POST "/api/test" for 127.0.0.1 at 2023-05-28 20:29:39 -0400
+Processing by ApplicationController#test as */*
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (Views: 0.2ms | Allocations: 762)
+
+
