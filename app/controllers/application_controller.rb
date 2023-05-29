@@ -16,7 +16,7 @@ class ApplicationController < ActionController::API
         end
       
         if current_user
-          render json: { user: current_user.slice('id', 'username', 'session_token') }
+          render json: { user: current_user.slice('id', 'email', 'session_token') }
         else
           render json: ['No current user']
         end
@@ -43,6 +43,7 @@ class ApplicationController < ActionController::API
     end
 
     def login(user)
+        @current_user = user
         session[:session_token] = user.reset_session_token!
     end
 
