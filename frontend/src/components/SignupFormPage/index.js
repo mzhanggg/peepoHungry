@@ -19,13 +19,15 @@ function SignupFormPage() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(sessionActions.signup({email, password}))
+        return dispatch(sessionActions.signup({fname, lname, zipcode, email, password}))
             .catch(async (res) => {
                 let data; 
                 try {
                     data = await res.clone().json()
+                    // debugger
                 } catch {
                     data = await res.text();
+                    // debugger
                 }
 
                 if (data?.errors) setErrors(data.errors);

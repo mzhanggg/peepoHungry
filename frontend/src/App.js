@@ -16,7 +16,7 @@ function App() {
                 <img src="https://cdn.frankerfacez.com/emoticon/574321/4" />
               </NavLink>
             </li>
-            <li>
+            <l``i>
               <NavLink to="/login">Log In</NavLink>
             </li>
             <li>
