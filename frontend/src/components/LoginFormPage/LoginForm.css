@@ -6,10 +6,18 @@ form {
     display: flex;
     align-items: center;
     flex-direction: column;
+    font-family: 'Open Sans', sans-serif;
 }
 
+h1 {
+    color: #d32323;
+    margin: 10px;
+    font-size: 22px;
+    font-weight: bold;
+}
 button {
     color: #fff;
     background: #d32323;
-    padding: 10px 13px
+    padding: 10px 13px;
+    font-family: 'Open Sans', sans-serif;
 }

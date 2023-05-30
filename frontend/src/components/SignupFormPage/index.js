@@ -19,7 +19,7 @@ function SignupFormPage() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(sessionActions.login({email, password}))
+        return dispatch(sessionActions.signup({email, password}))
             .catch(async (res) => {
                 let data; 
                 try {
@@ -31,7 +31,6 @@ function SignupFormPage() {
                 if (data?.errors) setErrors(data.errors);
                 else if (data) setErrors([data]);
                 else setErrors([res.statusText]);
-                debugger
             })
     }
 
@@ -47,8 +46,8 @@ function SignupFormPage() {
 
                 <label>
                     <input
-                        type="fname"
-                        value={email}
+                        type="text"
+                        value={fname}
                         onChange={(e) => setFname(e.target.value)}
                         placeholder="First Name"
                         required
