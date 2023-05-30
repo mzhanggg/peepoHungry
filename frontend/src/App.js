@@ -1,9 +1,10 @@
 import React from "react";
-import { Routes, Route, NavLink } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from  "./components/SignupFormPage";
 import Homepage from "./components/Homepage";
 import Navigation from "./components/Navigation";
+import DemoLogin from "./components/DemoLogin";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route exact path="/" element={<Homepage />}></Route>
         <Route exact path="/login" element={<LoginFormPage />}>Log In</Route>
         <Route exact path="/signup" element={<SignupFormPage />}>Sign Up</Route>
+        <Route exact path="/" element={<DemoLogin />}>Demo Login</Route>
       </Routes>
     </>
   );

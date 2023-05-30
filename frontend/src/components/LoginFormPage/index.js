@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import './LoginForm.css';
@@ -28,14 +29,25 @@ function LoginFormPage() {
                 if (data?.errors) setErrors(data.errors);
                 else if (data) setErrors([data]);
                 else setErrors([res.statusText]);
-                debugger
             })
+
     }
 
     return (
         <div id="form-container">
+            <div id="header">
+                    <h1>Log in to peepoHungry</h1>
+                    <p id="subheader">New to peepoHungry? 
+                        <Link to="/signup"> Sign Up</Link>
+                    </p>
+                    <p id="legal">By continuing, you agree to peepoHungry’s 
+                        <a href="/tos"> Terms of Service</a> 
+                        <br></br>
+                        and acknowledge peepoHungry's <a href="/pp"> Privacy Policy</a>.
+                    </p>
+            </div>
+
             <form onSubmit={handleSubmit}>
-                <h1>Log in to peepoHungry</h1>
                 <ul>
                     {errors.map(error => <li key={error}>{error}</li>)}
                 </ul>
@@ -49,7 +61,6 @@ function LoginFormPage() {
                         required
                     />
                 </label>
-                <br></br>
                 <label>
                     <br></br>
                     <input

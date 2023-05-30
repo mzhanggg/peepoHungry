@@ -1,12 +1,27 @@
-form-container {
-    display: block;
-}
-
-form {
+#form-container {
     display: flex;
     align-items: center;
     flex-direction: column;
-    font-family: 'Open Sans', sans-serif;
+    border: 1px red solid;
+    margin: 10px;
+    text-align: center;
+
+}
+
+#subheader {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+#legal {
+    font-size: 12px;
+    margin: 10px;
+    line-height: 125%;
+
+}
+
+a {
+    color: #0073bb 
 }
 
 h1 {
@@ -14,10 +29,24 @@ h1 {
     margin: 10px;
     font-size: 22px;
     font-weight: bold;
+
 }
+
+
+form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 button {
     color: #fff;
     background: #d32323;
-    padding: 10px 13px;
-    font-family: 'Open Sans', sans-serif;
+    padding: 10px;
+    border: 1px red solid;
+    width: 100%
+}
+
+button:hover {
+    cursor: pointer;
 }

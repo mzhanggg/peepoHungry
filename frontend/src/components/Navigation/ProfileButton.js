@@ -31,7 +31,7 @@ function ProfileButton({ user }) {
   return (
     <>
       <button onClick={openMenu}>
-        <i className="fa-solid fa-user-circle" />
+        <img src="https://cdn.frankerfacez.com/emoticon/240746/4"></img>
       </button>
       {showMenu && (
         <ul className="profile-dropdown">

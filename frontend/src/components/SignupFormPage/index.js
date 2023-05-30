@@ -38,8 +38,14 @@ function SignupFormPage() {
 
     return (
         <div id="form-container">
+            <div id="header">
+                    <h1>Sign Up for peepoHungry</h1>
+                    <p id="subheader">Connect with great local businesses</p>
+            </div>
+
             <form onSubmit={handleSubmit}>
-                <h1>Sign Up for peepoHungry</h1>
+
+                
                 <ul>
                     {errors.map(error => <li key={error}>{error}</li>)}
                 </ul>

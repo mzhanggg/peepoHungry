@@ -1,0 +1,72 @@
+#nav {
+    height: 100px;
+    display: block;
+    margin: 20px
+
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+}
+
+#auth {
+    display: flex;
+    padding: 10px;
+    margin: 10px;
+    
+}
+
+#btn, #demo {
+    border: red 1px solid;
+    border-radius: 5%;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: center;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 5px;
+
+    color: #fff;
+    background: #d32323;
+    padding: 10px;
+    border: 1px red solid;
+    width: 100%;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+#header-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 5px;
+}
+
+img {
+    height: 60px
+}
+
+#user {
+    vertical-align: center;
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    flex-direction: column;
+    /* border: 1px solid blue */
+}
+  
+.profile-dropdown {
+    margin-top: 85px;
+    position: absolute;
+    z-index: 1;
+    background-color: #f9f9f9;
+    border: 1px solid blue
+}
+  
+.profile-dropdown li {
+    padding: 8px 16px;
+    border: 1px solid blue
+
+}
