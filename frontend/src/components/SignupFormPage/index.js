@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import './LoginForm.css';
+// import './LoginForm.css';
 
-function LoginFormPage() {
+function SignupFormPage() {
+    const [fname, setFname] = useState('');
+    const [lname, setLname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [zipcode, setZipcode] = useState('');
     const [errors, setErrors] = useState([]);
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
@@ -35,12 +38,38 @@ function LoginFormPage() {
     return (
         <div id="form-container">
             <form onSubmit={handleSubmit}>
-                <h1>Log in to peepoHungry</h1>
+                <h1>Sign Up for peepoHungry</h1>
                 <ul>
                     {errors.map(error => <li key={error}>{error}</li>)}
                 </ul>
+                
+                <br></br>
+
                 <label>
-                    <br></br>
+                    <input
+                        type="fname"
+                        value={email}
+                        onChange={(e) => setFname(e.target.value)}
+                        placeholder="First Name"
+                        required
+                    />
+                </label>
+                
+                <br></br>
+
+                <label>
+                    <input
+                        type="text"
+                        value={lname}
+                        onChange={(e) => setLname(e.target.value)}
+                        placeholder="Last Name"
+                        required
+                    />
+                </label>
+
+                <br></br>
+
+                <label>
                     <input
                         type="text"
                         value={email}
@@ -49,9 +78,10 @@ function LoginFormPage() {
                         required
                     />
                 </label>
+
                 <br></br>
+
                 <label>
-                    <br></br>
                     <input
                         type="password"
                         value={password}
@@ -60,14 +90,28 @@ function LoginFormPage() {
                         required
                     />
                 </label>
+
                 <br></br>
-                <button type="submit">Login</button>
+
+                <label>
+                    <input
+                        type="text"
+                        value={zipcode}
+                        onChange={(e) => setZipcode(e.target.value)}
+                        placeholder="ZIP Code"
+                        required
+                    />
+                </label>
+
+                <br></br>
+
+                <button type="submit">Sign Up</button>
             </form>
         </div>
     )
 
 }
 
-export default LoginFormPage;
+export default SignupFormPage;
 
 
