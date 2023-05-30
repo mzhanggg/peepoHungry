@@ -50,3 +50,12 @@ button {
 button:hover {
     cursor: pointer;
 }
+
+#errors {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px; 
+    line-height: 1.40;
+    font-size: 12px;
+}

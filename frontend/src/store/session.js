@@ -27,10 +27,15 @@ export const login = ({ email, password }) => async dispatch => {
     method: "POST",
     body: JSON.stringify({ email, password })
   });
-  const data = await response.json();
-  storeCurrentUser(data.user);
-  dispatch(setCurrentUser(data.user));
-  return response;
+
+  if (response.ok) {
+    const data = await response.json();
+    storeCurrentUser(data.user);
+    dispatch(setCurrentUser(data.user));
+  } else {
+    const errorRes = await response.json();
+    throw new Error(JSON.stringify(errorRes))
+  }
 };
 
 export const restoreSession = () => async dispatch => {
@@ -52,10 +57,16 @@ export const signup = (user) => async (dispatch) => {
     })
   });
 
-  const data = await response.json();
-  storeCurrentUser(data.user);
-  dispatch(setCurrentUser(data.user));
-  return response;
+  if (response.ok) {
+    const data = await response.json();
+    storeCurrentUser(data.user);
+    dispatch(setCurrentUser(data.user));
+  } else {
+    const errorRes = await response.json();
+    throw new Error(JSON.stringify(errorRes))
+    console.log(errorRes)
+  }
+
 };
 
 export const logout = () => async (dispatch) => {

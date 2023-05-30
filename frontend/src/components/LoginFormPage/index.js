@@ -17,17 +17,16 @@ function LoginFormPage() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
+
         return dispatch(sessionActions.login({email, password}))
-            .catch(async (res) => {
+            .catch((res) => {
                 let data; 
                 try {
-                    data = await res.clone().json()
+                    data = JSON.parse(res.message);
                 } catch {
-                    data = await res.text();
+                    data = res.message;
                 }
-
                 if (data?.errors) setErrors(data.errors);
-                else if (data) setErrors([data]);
                 else setErrors([res.statusText]);
             })
 
@@ -49,7 +48,7 @@ function LoginFormPage() {
 
             <form onSubmit={handleSubmit}>
                 <ul>
-                    {errors.map(error => <li key={error}>{error}</li>)}
+                {errors ? errors.map(error => <li key={error}>{error}</li>) : null}
                 </ul>
                 <label>
                     <br></br>

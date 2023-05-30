@@ -19,21 +19,20 @@ function SignupFormPage() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
+        
         return dispatch(sessionActions.signup({fname, lname, zipcode, email, password}))
-            .catch(async (res) => {
-                let data; 
-                try {
-                    data = await res.clone().json()
-                    // debugger
-                } catch {
-                    data = await res.text();
-                    // debugger
-                }
+        .catch((res) => {
+            let data; 
+            try {
+                data = JSON.parse(res.message);
+            } catch {
+                data = res.message;
+            }
 
-                if (data?.errors) setErrors(data.errors);
-                else if (data) setErrors([data]);
-                else setErrors([res.statusText]);
+            if (data?.errors) setErrors(data.errors);
+            else setErrors([res.statusText]);
             })
+
     }
 
     return (
@@ -46,8 +45,8 @@ function SignupFormPage() {
             <form onSubmit={handleSubmit}>
 
                 
-                <ul>
-                    {errors.map(error => <li key={error}>{error}</li>)}
+                <ul id="errors">
+                    {errors.map((error)=> <li key={error}>{error}</li>)}
                 </ul>
                 
                 <br></br>
