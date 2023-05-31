@@ -1,27 +1,25 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchBusinesses, getBusinesses } from "../../store/businessReducer";
-import { Link } from 'react-router-dom';
-import BusinessIndexItem from "./BusinessIndexItem";
+import { fetchBusiness, getBusiness } from "../../store/businessReducer";
+import { useParams } from 'react-router-dom';
 
-const BizShow = () => {
+const BusinessShow = () => {
     const dispatch = useDispatch();
-    const businesses = useSelector(getBusinesses);
-    console.log(businesses)
-    debugger
-    useEffect(() => {
-        dispatch(fetchBusinesses(businesses));
-    }, [])
+    const {businessId} = useParams();
+    const business = useSelector(getBusiness(businessId));
 
-    const bizItems = businesses.map(biz => <BusinessIndexItem biz={biz} />)
+    useEffect(() => {
+        dispatch(fetchBusiness(businessId));
+    }, [businessId])
+
 
     return (
 
         <>
             <h1>my biz show stuff</h1>
-            {bizItems}
+            <p>{business.name}</p>
         </>
     )
 }
 
-export default BizShow;
+export default BusinessShow;

@@ -31,7 +31,7 @@ function Navigation() {
         <>
           <div id="header-container">
             <NavLink id="title" to="/">
-              <img src="https://cdn.frankerfacez.com/emoticon/530821/4" alt="" />
+              <img id="logo"src="https://cdn.frankerfacez.com/emoticon/530821/4" alt="" />
             </NavLink>
             <h1 id="title">peepoHungry</h1>
           </div>

@@ -1,9 +1,15 @@
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-const BusinessIndexItem = () => {
+const BusinessIndexItem = ({biz}) => {
+    // const dispatch = useDispatch();
 
 
     return (
-        <h1>index item</h1>
+        <ul id="biz-show">
+            <NavLink to={`/businesses/${biz.id}`}>{biz.name}</NavLink>
+        </ul>
     )
 
 }

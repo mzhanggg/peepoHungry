@@ -1,3 +1,5 @@
+import { csrfFetch } from "./csrf"
+
 const RECEIVE_BUSINESS = 'businesses/RECEIVE_BUSINESS'
 const RECEIVE_BUSINESSES = 'businesses/RECEIVE_BUSINESSES'
 
@@ -16,15 +18,21 @@ export const receiveBusinesses = businesses => {
 }
 
 export const fetchBusinesses = () => async dispatch => {
-    const res = await fetch('api/businesses');
-    const businesses = await res.json();
-    dispatch(receiveBusinesses(businesses));
+    const res = await fetch('/api/businesses');
+    const data = await res.json();
+    dispatch(receiveBusinesses(data));
 }
 
+// export const fetchBusinesses = async dispatch =>  {
+//     const res = await csrfFetch('/api/businesses');
+//     const businesses = await res.json();
+//     dispatch(receiveBusinesses(businesses));
+// }
+
 export const fetchBusiness = (businessId) => async dispatch => {
-    const res = await fetch(`api/businesses/${businessId}`);
-    const business = await res.json();
-    dispatch(receiveBusiness(business));
+    const res = await fetch(`/api/businesses/${businessId}`);
+    const data = await res.json();
+    dispatch(receiveBusiness(data));
 }
 // // maybe add error handling?
 
@@ -39,11 +47,13 @@ export const getBusiness = (businessId) => state => {
 export const getBusinesses = (state) => state.businesses ? Object.values(state.businesses) : []
 
 const businessesReducer = ( state = {}, action ) => {
-    const newState = { ...state }
+    Object.freeze(state);
+    const newState = { ...state };
+
 
     switch (action.type) {
         case RECEIVE_BUSINESSES:
-            return { ...state, ...action.business };
+            return { ...newState, ...action.businesses };
         case RECEIVE_BUSINESS:
             newState[action.business.id] = action.business;
             return newState;

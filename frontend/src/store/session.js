@@ -64,7 +64,6 @@ export const signup = (user) => async (dispatch) => {
   } else {
     const errorRes = await response.json();
     throw new Error(JSON.stringify(errorRes))
-    console.log(errorRes)
   }
 
 };
