@@ -4023,3 +4023,873 @@ Processing by Api::UsersController#create as JSON
 Completed 422 Unprocessable Entity in 468ms (Views: 0.1ms | ActiveRecord: 1.1ms | Allocations: 5352)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3121459529482018095)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(3121459529482018095)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/api/session" for 127.0.0.1 at 2023-05-30 16:55:27 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (6.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 17ms (Views: 1.8ms | ActiveRecord: 8.2ms | Allocations: 4891)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-05-30 16:55:33 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"peepo@hungry.io", "password"=>"[FILTERED]", "session"=>{"email"=>"peepo@hungry.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `find_by_credentials'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (2.6ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-30 20:55:33.917443"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.9ms | Allocations: 423)
+Completed 200 OK in 610ms (Views: 182.3ms | ActiveRecord: 8.0ms | Allocations: 291336)
+
+
+  [1m[36mBusiness Load (1.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBusiness Create (6.3ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zip_code", "category", "phone_number", "price_range", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Krusty Krab"], ["address", "42 Wallaby Way"], ["city", "NYC"], ["state", "NY"], ["zip_code", "10011"], ["category", "Burger"], ["phone_number", "678-999-8212"], ["price_range", 10.0], ["created_at", "2023-05-30 21:05:38.112314"], ["updated_at", "2023-05-30 21:05:38.112314"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" ORDER BY "businesses"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started DELETE "/api/session" for 127.0.0.1 at 2023-05-30 17:06:12 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (1.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-30 21:06:12.625825"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+Completed 204 No Content in 32ms (ActiveRecord: 9.5ms | Allocations: 11840)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-05-30 17:06:14 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"peepo@hungry.io", "password"=>"[FILTERED]", "session"=>{"email"=>"peepo@hungry.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `find_by_credentials'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-30 21:06:14.612018"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 172)
+Completed 200 OK in 416ms (Views: 0.9ms | ActiveRecord: 2.4ms | Allocations: 5506)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2023-05-30 17:17:55 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-30 21:17:55.210289"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+Completed 204 No Content in 42ms (ActiveRecord: 12.8ms | Allocations: 11694)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-05-30 17:17:58 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"peepo@hungry.io", "password"=>"[FILTERED]", "session"=>{"email"=>"peepo@hungry.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `find_by_credentials'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-30 21:17:59.056584"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 171)
+Completed 200 OK in 414ms (Views: 1.0ms | ActiveRecord: 2.3ms | Allocations: 5498)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2023-05-30 17:18:04 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-30 21:18:04.329396"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+Completed 204 No Content in 14ms (ActiveRecord: 2.3ms | Allocations: 5008)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-05-30 17:18:07 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"peepo@hungry.io", "password"=>"[FILTERED]", "session"=>{"email"=>"peepo@hungry.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `find_by_credentials'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-30 21:18:07.529397"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 123)
+Completed 200 OK in 415ms (Views: 0.4ms | ActiveRecord: 2.1ms | Allocations: 5030)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2023-05-30 17:18:12 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-30 21:18:12.728588"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+Completed 204 No Content in 14ms (ActiveRecord: 2.2ms | Allocations: 4744)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-05-30 17:18:23 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"evS", "password"=>"[FILTERED]", "session"=>{"email"=>"evS", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "evS"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `find_by_credentials'
+Completed 422 Unprocessable Entity in 4ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 859)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2023-05-30 17:18:34 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"fname"=>"hh", "lname"=>"h", "zipcode"=>"h", "email"=>"h", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "h"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:8:in `create'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/users_controller.rb:8:in `create'
+Completed 422 Unprocessable Entity in 415ms (Views: 0.2ms | ActiveRecord: 1.2ms | Allocations: 6336)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-05-30 17:19:39 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"peepo@hungry.io", "password"=>"[FILTERED]", "session"=>{"email"=>"peepo@hungry.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `find_by_credentials'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-30 21:19:40.111377"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 142)
+Completed 200 OK in 421ms (Views: 1.0ms | ActiveRecord: 3.7ms | Allocations: 5125)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2023-05-30 17:20:49 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-30 21:20:50.012286"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+Completed 204 No Content in 18ms (ActiveRecord: 2.9ms | Allocations: 4750)
+
+
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE DATABASE "peepoHungry_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE "peepoHungry_test" ENCODING = 'unicode'[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (5.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (7.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "businesses" CASCADE[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE TABLE "businesses" ("id" bigserial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "zip_code" character varying NOT NULL, "category" character varying NOT NULL, "phone_number" character varying NOT NULL, "price_range" float NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (4.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "fname" character varying NOT NULL, "lname" character varying NOT NULL, "email" character varying NOT NULL, "zipcode" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.5ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "0da1964ede341176ace895fe54ed500a8539ec17"], ["updated_at", "2023-05-30 21:21:33.356947"], ["key", "schema_sha1"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "businesses" CASCADE[0m
+  [1m[35m (11.1ms)[0m  [1m[35mCREATE TABLE "businesses" ("id" bigserial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "zip_code" character varying NOT NULL, "category" character varying NOT NULL, "phone_number" character varying NOT NULL, "price_range" float NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "fname" character varying NOT NULL, "lname" character varying NOT NULL, "email" character varying NOT NULL, "zipcode" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20230530203911)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.6ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "development"], ["updated_at", "2023-05-30 21:21:33.451604"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2023-05-30 21:21:33.468755"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "0da1964ede341176ace895fe54ed500a8539ec17"], ["updated_at", "2023-05-30 21:21:33.473359"], ["key", "schema_sha1"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "peepo"], ["lname", "Hungry"], ["email", "peepo@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-05-30 21:21:33.927177"], ["updated_at", "2023-05-30 21:21:33.927177"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mBusiness Create (1.1ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zip_code", "category", "phone_number", "price_range", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Krusty Krab"], ["address", "42 Wallaby Way"], ["city", "NYC"], ["state", "NY"], ["zip_code", "10011"], ["category", "Burger"], ["phone_number", "678-999-8212"], ["price_range", 100.0], ["created_at", "2023-05-30 21:21:33.939113"], ["updated_at", "2023-05-30 21:21:33.939113"]]
+  [1m[36mBusiness Create (0.2ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zip_code", "category", "phone_number", "price_range", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Wendy's"], ["address", "20 E 14th St"], ["city", "NYC"], ["state", "NY"], ["zip_code", "10003"], ["category", "Burger"], ["phone_number", "212-243-0438"], ["price_range", 10.0], ["created_at", "2023-05-30 21:21:33.941245"], ["updated_at", "2023-05-30 21:21:33.941245"]]
+  [1m[36mBusiness Create (0.2ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zip_code", "category", "phone_number", "price_range", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Let's Meat BBQ"], ["address", "307 5th Ave"], ["city", "NYC"], ["state", "NY"], ["zip_code", "10016"], ["category", "Korean"], ["phone_number", "212-889-0089"], ["price_range", 20.0], ["created_at", "2023-05-30 21:21:33.942170"], ["updated_at", "2023-05-30 21:21:33.942170"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBusiness Load (1.1ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+Started GET "/api/session" for 127.0.0.1 at 2023-05-31 09:08:13 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 145ms (Views: 1.2ms | ActiveRecord: 18.4ms | Allocations: 5661)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-05-31 09:15:58 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"peepo@hungry.io", "password"=>"[FILTERED]", "session"=>{"email"=>"peepo@hungry.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `find_by_credentials'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (5.9ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-31 13:15:59.452585"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.9ms | Allocations: 453)
+Completed 200 OK in 637ms (Views: 172.9ms | ActiveRecord: 22.7ms | Allocations: 294758)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2023-05-31 09:16:07 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+  [1m[36mUser Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-31 13:16:07.599008"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+Completed 204 No Content in 15ms (ActiveRecord: 3.2ms | Allocations: 5142)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-31 10:12:49 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 81ms (Views: 0.7ms | ActiveRecord: 16.8ms | Allocations: 5764)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-05-31 10:15:39 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"swc", "password"=>"[FILTERED]", "session"=>{"email"=>"swc", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "swc"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `find_by_credentials'
+Completed 422 Unprocessable Entity in 9ms (Views: 0.3ms | ActiveRecord: 2.4ms | Allocations: 1090)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2023-05-31 10:15:44 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"fname"=>"s", "lname"=>"s", "zipcode"=>"s", "email"=>"s", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "s"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:8:in `create'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/users_controller.rb:8:in `create'
+Completed 422 Unprocessable Entity in 412ms (Views: 0.1ms | ActiveRecord: 2.0ms | Allocations: 8395)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-05-31 10:15:47 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"peepo@hungry.io", "password"=>"[FILTERED]", "session"=>{"email"=>"peepo@hungry.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `find_by_credentials'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (4.1ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-31 14:15:47.738550"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.9ms | Allocations: 245)
+Completed 200 OK in 431ms (Views: 3.1ms | ActiveRecord: 7.4ms | Allocations: 5981)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2023-05-31 10:15:52 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-31 14:15:52.868820"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+Completed 204 No Content in 21ms (ActiveRecord: 4.2ms | Allocations: 5094)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-05-31 10:16:56 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"peepo@hungry.io", "password"=>"[FILTERED]", "session"=>{"email"=>"peepo@hungry.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `find_by_credentials'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-31 14:16:56.976801"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 124)
+Completed 200 OK in 414ms (Views: 0.4ms | ActiveRecord: 2.1ms | Allocations: 5039)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2023-05-31 10:16:59 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-31 14:16:59.178729"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+Completed 204 No Content in 20ms (ActiveRecord: 7.9ms | Allocations: 4714)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-05-31 10:23:32 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"peepo@hungry.io", "password"=>"[FILTERED]", "session"=>{"email"=>"peepo@hungry.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `find_by_credentials'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-31 14:23:33.346000"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 124)
+Completed 200 OK in 446ms (Views: 1.0ms | ActiveRecord: 9.8ms | Allocations: 7994)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2023-05-31 10:23:37 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-31 14:23:37.113165"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+Completed 204 No Content in 17ms (ActiveRecord: 3.4ms | Allocations: 4734)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-31 11:17:52 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (6.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 76ms (Views: 0.4ms | ActiveRecord: 22.6ms | Allocations: 5673)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-05-31 11:17:54 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"peepo@hungry.io", "password"=>"[FILTERED]", "session"=>{"email"=>"peepo@hungry.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `find_by_credentials'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-31 15:17:54.704968"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 171)
+Completed 200 OK in 439ms (Views: 1.0ms | ActiveRecord: 13.1ms | Allocations: 7715)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2023-05-31 11:17:56 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-31 15:17:56.204031"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+Completed 204 No Content in 18ms (ActiveRecord: 3.7ms | Allocations: 5103)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-05-31 11:17:58 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"peepo@hungry.io", "password"=>"[FILTERED]", "session"=>{"email"=>"peepo@hungry.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `find_by_credentials'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-31 15:17:59.409171"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.1ms | Allocations: 123)
+Completed 200 OK in 418ms (Views: 0.4ms | ActiveRecord: 2.0ms | Allocations: 5027)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2023-05-31 11:18:01 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-31 15:18:01.651054"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+Completed 204 No Content in 9ms (ActiveRecord: 1.7ms | Allocations: 4726)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-05-31 11:18:07 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"peepo@hungry.io", "password"=>"[FILTERED]", "session"=>{"email"=>"peepo@hungry.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `find_by_credentials'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-31 15:18:08.211840"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 124)
+Completed 200 OK in 417ms (Views: 0.4ms | ActiveRecord: 2.5ms | Allocations: 5013)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2023-05-31 11:18:10 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-31 15:18:10.131031"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+Completed 204 No Content in 17ms (ActiveRecord: 3.2ms | Allocations: 4720)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-31 11:28:10 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 80ms (Views: 0.1ms | ActiveRecord: 11.5ms | Allocations: 3933)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-31 11:28:28 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 56ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 984)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-31 11:28:51 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 18ms (Views: 0.3ms | ActiveRecord: 1.9ms | Allocations: 962)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-31 11:29:20 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 1.8ms | Allocations: 968)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-05-31 11:30:34 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"peepo@hungry.io", "password"=>"[FILTERED]", "session"=>{"email"=>"peepo@hungry.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (7.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `find_by_credentials'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-31 15:30:35.105201"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 124)
+Completed 200 OK in 448ms (Views: 0.8ms | ActiveRecord: 15.4ms | Allocations: 5042)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2023-05-31 11:30:36 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-05-31 15:30:36.751825"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+Completed 204 No Content in 12ms (ActiveRecord: 1.3ms | Allocations: 4738)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-31 11:45:57 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 186ms (Views: 0.4ms | ActiveRecord: 75.5ms | Allocations: 3799)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-31 11:55:16 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 156ms (Views: 0.4ms | ActiveRecord: 104.3ms | Allocations: 3788)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-31 12:10:08 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 54ms (Views: 0.2ms | ActiveRecord: 26.4ms | Allocations: 3798)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-05-31 12:10:40 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (28.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 90ms (Views: 0.4ms | ActiveRecord: 28.4ms | Allocations: 974)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-05-31 12:11:59 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (5.6ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 53.8ms | Allocations: 6811)
+Completed 200 OK in 63ms (Views: 25.7ms | ActiveRecord: 30.0ms | Allocations: 8261)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-05-31 12:12:43 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 4.6ms | Allocations: 1079)
+Completed 200 OK in 8ms (Views: 5.4ms | ActiveRecord: 0.5ms | Allocations: 1612)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Destroy (7.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "peepo"], ["lname", "Hungry"], ["email", "peepo@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-05-31 16:13:18.170439"], ["updated_at", "2023-05-31 16:13:18.170439"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mBusiness Create (0.6ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zip_code", "category", "phone_number", "price_range", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Krusty Krab"], ["address", "42 Wallaby Way"], ["city", "NYC"], ["state", "NY"], ["zip_code", "10011"], ["category", "Burger"], ["phone_number", "678-999-8212"], ["price_range", 100.0], ["created_at", "2023-05-31 16:13:18.181339"], ["updated_at", "2023-05-31 16:13:18.181339"]]
+  [1m[36mBusiness Create (0.3ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zip_code", "category", "phone_number", "price_range", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Wendy's"], ["address", "20 E 14th St"], ["city", "NYC"], ["state", "NY"], ["zip_code", "10003"], ["category", "Burger"], ["phone_number", "212-243-0438"], ["price_range", 10.0], ["created_at", "2023-05-31 16:13:18.182924"], ["updated_at", "2023-05-31 16:13:18.182924"]]
+  [1m[36mBusiness Create (0.2ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zip_code", "category", "phone_number", "price_range", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Let's Meat BBQ"], ["address", "307 5th Ave"], ["city", "NYC"], ["state", "NY"], ["zip_code", "10016"], ["category", "Korean"], ["phone_number", "212-889-0089"], ["price_range", 20.0], ["created_at", "2023-05-31 16:13:18.184150"], ["updated_at", "2023-05-31 16:13:18.184150"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/businesses" for 127.0.0.1 at 2023-05-31 12:14:27 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (5.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 10.2ms | Allocations: 1419)
+Completed 200 OK in 13ms (Views: 5.7ms | ActiveRecord: 5.4ms | Allocations: 1871)
+
+
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE DATABASE "peepoHungry_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE DATABASE "peepoHungry_test" ENCODING = 'unicode'[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (5.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (11.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "businesses" CASCADE[0m
+  [1m[35m (12.1ms)[0m  [1m[35mCREATE TABLE "businesses" ("id" bigserial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "zip_code" character varying NOT NULL, "category" character varying NOT NULL, "phone_number" character varying NOT NULL, "price_range" float NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "fname" character varying NOT NULL, "lname" character varying NOT NULL, "email" character varying NOT NULL, "zipcode" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL)[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (8.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "businesses" CASCADE[0m
+  [1m[35m (12.2ms)[0m  [1m[35mCREATE TABLE "businesses" ("id" bigserial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "zip_code" character varying NOT NULL, "category" character varying NOT NULL, "phone_number" character varying NOT NULL, "price_range" float NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "fname" character varying NOT NULL, "lname" character varying NOT NULL, "email" character varying NOT NULL, "zipcode" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.8ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "development"], ["updated_at", "2023-05-31 16:14:43.657671"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2023-05-31 16:14:43.683938"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "peepo"], ["lname", "Hungry"], ["email", "peepo@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-05-31 16:14:44.160862"], ["updated_at", "2023-05-31 16:14:44.160862"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mBusiness Create (0.8ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zip_code", "category", "phone_number", "price_range", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Krusty Krab"], ["address", "42 Wallaby Way"], ["city", "NYC"], ["state", "NY"], ["zip_code", "10011"], ["category", "Burger"], ["phone_number", "678-999-8212"], ["price_range", 100.0], ["created_at", "2023-05-31 16:14:44.171981"], ["updated_at", "2023-05-31 16:14:44.171981"]]
+  [1m[36mBusiness Create (0.2ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zip_code", "category", "phone_number", "price_range", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Wendy's"], ["address", "20 E 14th St"], ["city", "NYC"], ["state", "NY"], ["zip_code", "10003"], ["category", "Burger"], ["phone_number", "212-243-0438"], ["price_range", 10.0], ["created_at", "2023-05-31 16:14:44.173954"], ["updated_at", "2023-05-31 16:14:44.173954"]]
+  [1m[36mBusiness Create (0.3ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zip_code", "category", "phone_number", "price_range", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Let's Meat BBQ"], ["address", "307 5th Ave"], ["city", "NYC"], ["state", "NY"], ["zip_code", "10016"], ["category", "Korean"], ["phone_number", "212-889-0089"], ["price_range", 20.0], ["created_at", "2023-05-31 16:14:44.174864"], ["updated_at", "2023-05-31 16:14:44.174864"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/session" for 127.0.0.1 at 2023-05-31 12:14:49 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 13ms (Views: 0.6ms | ActiveRecord: 1.7ms | Allocations: 1018)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-05-31 12:14:51 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.9ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 13.6ms | Allocations: 1079)
+Completed 200 OK in 15ms (Views: 13.7ms | ActiveRecord: 0.9ms | Allocations: 1549)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-05-31 12:15:00 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 2.4ms | Allocations: 1079)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.3ms | Allocations: 1555)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-05-31 13:40:08 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (6.8ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 3.0ms | Allocations: 320)
+Completed 200 OK in 109ms (Views: 4.7ms | ActiveRecord: 40.2ms | Allocations: 5191)
+
+

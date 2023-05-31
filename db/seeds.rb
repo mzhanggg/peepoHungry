@@ -24,6 +24,41 @@ ApplicationRecord.transaction do
         email: 'peepo@hungry.io', 
         password: 'password'
     )
-  
+    
+    puts "Creating businesses..."
+
+    Business.create!(
+        name: 'Krusty Krab', 
+        address: '42 Wallaby Way', 
+        city: 'NYC', 
+        state: 'NY', 
+        zip_code: '10011', 
+        category: 'Burger', 
+        phone_number: '678-999-8212', 
+        price_range: 100
+    )
+
+    Business.create!(
+        name: 'Wendy\'s', 
+        address: '20 E 14th St', 
+        city: 'NYC', 
+        state: 'NY', 
+        zip_code: '10003', 
+        category: 'Burger', 
+        phone_number: '212-243-0438', 
+        price_range: 10
+    )
+
+    Business.create!(
+        name: 'Let\'s Meat BBQ', 
+        address: '307 5th Ave', 
+        city: 'NYC', 
+        state: 'NY', 
+        zip_code: '10016', 
+        category: 'Korean', 
+        phone_number: '212-889-0089', 
+        price_range: 20
+    )
+    
     puts "Done!"
 end

@@ -11,43 +11,39 @@ function Navigation() {
   let sessionLinks;
 
   if (sessionUser) {
-        sessionLinks = (
-          <>
-            <div id="header-container">
-              <NavLink id="title" to="/">
-                <img src="https://cdn.frankerfacez.com/emoticon/574321/4" alt="" />
-              </NavLink>
-              <h1 id="title">peepoHungry</h1>
-            </div>
-
-          <div id="user">
-            <ProfileButton user={sessionUser} />
+    sessionLinks = (
+        <>
+          <div id="header-container">
+            <NavLink id="title" to="/">
+              <img src="https://cdn.frankerfacez.com/emoticon/574321/4" alt="" />
+            </NavLink>
+            <h1 id="title">peepoHungry</h1>
           </div>
 
-          </>
-        );
+        <div id="user">
+          <ProfileButton user={sessionUser} />
+        </div>
+
+        </>
+      )
     } else {
-        sessionLinks = (
-            <>
-              <div id="header-container">
-                <NavLink id="title" to="/">
-                  <img src="https://cdn.frankerfacez.com/emoticon/530821/4" alt="" />
-                </NavLink>
-                <h1 id="title">peepoHungry</h1>
+      sessionLinks = (
+        <>
+          <div id="header-container">
+            <NavLink id="title" to="/">
+              <img src="https://cdn.frankerfacez.com/emoticon/530821/4" alt="" />
+            </NavLink>
+            <h1 id="title">peepoHungry</h1>
+          </div>
 
-              </div>
-
-              <div id="auth">
-                <NavLink id="btn" to="/login">Log In</NavLink>
-                <NavLink id="btn"to="/signup">Sign Up</NavLink>
-                <DemoLogin />
-              </div>
-
-            </>
-        );
+          <div id="auth">
+            <NavLink id="btn" to="/login">Log In</NavLink>
+            <NavLink id="btn"to="/signup">Sign Up</NavLink>
+            <DemoLogin />
+          </div>
+        </>
+      );
     }
-
-
 
   return (
     <ul id="nav">
@@ -56,6 +52,7 @@ function Navigation() {
       </li>
     </ul>
   );
+
 }
 
 export default Navigation;
