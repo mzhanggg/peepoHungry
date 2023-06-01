@@ -9714,3 +9714,944 @@ Processing by Api::SessionsController#destroy as JSON
 Completed 204 No Content in 26ms (ActiveRecord: 3.0ms | Allocations: 4725)
 
 
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:01:58 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (11.6ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 1.2ms | Allocations: 232)
+Completed 200 OK in 118ms (Views: 2.5ms | ActiveRecord: 49.9ms | Allocations: 4038)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:02:47 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 1.0ms | Allocations: 232)
+Completed 200 OK in 23ms (Views: 18.5ms | ActiveRecord: 0.5ms | Allocations: 1210)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:02:54 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.6ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 1.0ms | Allocations: 232)
+Completed 200 OK in 14ms (Views: 2.9ms | ActiveRecord: 0.6ms | Allocations: 1180)
+
+
+Started GET "/businesses/api/session" for 127.0.0.1 at 2023-06-01 11:03:04 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/businesses/api/session"):
+  
+Started GET "/api/session" for 127.0.0.1 at 2023-06-01 11:03:10 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (7.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 42ms (Views: 0.5ms | ActiveRecord: 7.8ms | Allocations: 964)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 11:03:10 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 4.3ms | Allocations: 1056)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.4ms | Allocations: 1517)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:03:12 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (3.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 3.9ms | Allocations: 232)
+Completed 200 OK in 11ms (Views: 4.6ms | ActiveRecord: 3.4ms | Allocations: 1174)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 11:03:19 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.2ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 3.6ms | Allocations: 1056)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.2ms | Allocations: 1511)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:03:28 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.6ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.8ms | Allocations: 232)
+Completed 200 OK in 9ms (Views: 1.6ms | ActiveRecord: 0.6ms | Allocations: 1207)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:13:32 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.8ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 1.3ms | Allocations: 232)
+Completed 200 OK in 151ms (Views: 34.6ms | ActiveRecord: 44.7ms | Allocations: 4034)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:13:32 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.2ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.2ms | Allocations: 232)
+Completed 200 OK in 24ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 1171)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:13:54 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (2.0ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 232)
+Completed 200 OK in 5ms (Views: 0.8ms | ActiveRecord: 2.0ms | Allocations: 1195)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:14:08 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.2ms | Allocations: 232)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 1183)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:14:08 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.2ms | Allocations: 232)
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.2ms | Allocations: 1183)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:14:11 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (2.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.2ms | Allocations: 232)
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 2.5ms | Allocations: 1213)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:16:19 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.5ms | Allocations: 232)
+Completed 200 OK in 13ms (Views: 1.3ms | ActiveRecord: 0.5ms | Allocations: 1190)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:22:16 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 1.0ms | Allocations: 232)
+Completed 200 OK in 58ms (Views: 2.8ms | ActiveRecord: 11.2ms | Allocations: 4061)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:24:29 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (1.6ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.6ms | Allocations: 232)
+Completed 200 OK in 15ms (Views: 1.6ms | ActiveRecord: 1.6ms | Allocations: 1186)
+
+
+Started GET "/businesses/api/session" for 127.0.0.1 at 2023-06-01 11:25:13 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/businesses/api/session"):
+  
+Started GET "/api/session" for 127.0.0.1 at 2023-06-01 11:25:20 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 32ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 973)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 11:25:20 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 3.3ms | Allocations: 1056)
+Completed 200 OK in 6ms (Views: 4.0ms | ActiveRecord: 0.3ms | Allocations: 1514)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:25:22 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 232)
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 1180)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:25:22 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 232)
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.3ms | Allocations: 1180)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:29:07 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (1.2ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.5ms | Allocations: 232)
+Completed 200 OK in 8ms (Views: 1.0ms | ActiveRecord: 1.2ms | Allocations: 1183)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:41:18 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.7ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.6ms | Allocations: 232)
+Completed 200 OK in 67ms (Views: 2.5ms | ActiveRecord: 26.7ms | Allocations: 4031)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:42:13 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.5ms | Allocations: 232)
+Completed 200 OK in 7ms (Views: 1.2ms | ActiveRecord: 0.5ms | Allocations: 1174)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:42:23 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.2ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.2ms | Allocations: 232)
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1177)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:43:59 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.7ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.6ms | Allocations: 232)
+Completed 200 OK in 7ms (Views: 1.9ms | ActiveRecord: 0.7ms | Allocations: 1168)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:44:23 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.5ms | Allocations: 232)
+Completed 200 OK in 14ms (Views: 1.2ms | ActiveRecord: 0.5ms | Allocations: 1180)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 11:51:36 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.9ms | Allocations: 232)
+Completed 200 OK in 55ms (Views: 2.1ms | ActiveRecord: 17.7ms | Allocations: 4052)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 11:52:31 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 7.8ms | Allocations: 1056)
+Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 0.5ms | Allocations: 1523)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 11:57:39 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.6ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 5.3ms | Allocations: 1056)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.6ms | Allocations: 1541)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 11:57:51 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 3.9ms | Allocations: 1056)
+Completed 200 OK in 11ms (Views: 4.8ms | ActiveRecord: 0.4ms | Allocations: 1532)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-06-01 12:01:18 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 970)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 12:01:18 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 3.2ms | Allocations: 1056)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.3ms | Allocations: 1529)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-06-01 12:09:17 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 186ms (Views: 0.2ms | ActiveRecord: 67.9ms | Allocations: 3795)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 12:09:17 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (1.1ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 4.5ms | Allocations: 1093)
+Completed 200 OK in 9ms (Views: 4.4ms | ActiveRecord: 1.1ms | Allocations: 1555)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-06-01 12:09:20 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 959)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 12:09:20 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.2ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 2.8ms | Allocations: 1059)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.2ms | Allocations: 1527)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-06-01 12:14:32 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 962)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 12:14:32 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 2.1ms | Allocations: 1056)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.3ms | Allocations: 1512)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-06-01 12:19:13 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 17ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 977)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 12:19:13 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 3.1ms | Allocations: 1059)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.4ms | Allocations: 1532)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-06-01 12:19:34 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (5.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 14ms (Views: 0.3ms | ActiveRecord: 5.6ms | Allocations: 962)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 12:19:34 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 1.8ms | Allocations: 1056)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.3ms | Allocations: 1517)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-06-01 12:19:38 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (6.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 6.9ms | Allocations: 968)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 12:19:38 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 7.6ms | Allocations: 1056)
+Completed 200 OK in 11ms (Views: 7.8ms | ActiveRecord: 0.5ms | Allocations: 1526)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 12:20:05 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 1.2ms | Allocations: 232)
+Completed 200 OK in 15ms (Views: 2.8ms | ActiveRecord: 0.5ms | Allocations: 1188)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 12:20:05 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 232)
+Completed 200 OK in 8ms (Views: 6.3ms | ActiveRecord: 0.4ms | Allocations: 1186)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 12:23:13 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (10.0ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 25.8ms | Allocations: 1056)
+Completed 200 OK in 40ms (Views: 17.0ms | ActiveRecord: 10.0ms | Allocations: 1514)
+
+
+Started GET "/api/businesses/2" for 127.0.0.1 at 2023-06-01 13:37:59 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mBusiness Load (1.7ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 1.0ms | Allocations: 232)
+Completed 200 OK in 91ms (Views: 1.7ms | ActiveRecord: 32.9ms | Allocations: 4075)
+
+
+Started GET "/api/businesses/2" for 127.0.0.1 at 2023-06-01 13:38:00 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.2ms | Allocations: 232)
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 1186)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-06-01 13:45:31 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"peepo@hungry.io", "password"=>"[FILTERED]", "session"=>{"email"=>"peepo@hungry.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `find_by_credentials'
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+Started POST "/api/session" for 127.0.0.1 at 2023-06-01 13:45:31 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"peepo@hungry.io", "password"=>"[FILTERED]", "session"=>{"email"=>"peepo@hungry.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Update (21.1ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-06-01 17:45:31.932912"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 123)
+Completed 200 OK in 469ms (Views: 1.5ms | ActiveRecord: 41.4ms | Allocations: 10820)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `find_by_credentials'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-06-01 17:45:32.408672"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.1ms | Allocations: 123)
+Completed 200 OK in 468ms (Views: 0.4ms | ActiveRecord: 17.0ms | Allocations: 9543)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2023-06-01 13:45:35 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-06-01 17:45:35.301078"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+Completed 204 No Content in 19ms (ActiveRecord: 2.5ms | Allocations: 4700)
+
+
+Started GET "/api/businesses/2" for 127.0.0.1 at 2023-06-01 13:55:47 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mBusiness Load (6.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 1.2ms | Allocations: 232)
+Completed 200 OK in 77ms (Views: 2.1ms | ActiveRecord: 28.2ms | Allocations: 4050)
+
+
+Started GET "/api/businesses/2" for 127.0.0.1 at 2023-06-01 13:55:51 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mBusiness Load (3.6ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.4ms | Allocations: 232)
+Completed 200 OK in 8ms (Views: 0.9ms | ActiveRecord: 3.6ms | Allocations: 1174)
+
+
+Started GET "/api/businesses/2" for 127.0.0.1 at 2023-06-01 13:56:06 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mBusiness Load (0.6ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 6.0ms | Allocations: 232)
+Completed 200 OK in 17ms (Views: 9.9ms | ActiveRecord: 0.6ms | Allocations: 1195)
+
+
+Started GET "/api/businesses/2" for 127.0.0.1 at 2023-06-01 13:59:54 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mBusiness Load (3.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.4ms | Allocations: 232)
+Completed 200 OK in 9ms (Views: 1.1ms | ActiveRecord: 3.4ms | Allocations: 1201)
+
+
+Started GET "/api/businesses/2" for 127.0.0.1 at 2023-06-01 14:01:49 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mBusiness Load (0.6ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.6ms | Allocations: 232)
+Completed 200 OK in 7ms (Views: 1.4ms | ActiveRecord: 0.6ms | Allocations: 1189)
+
+
+Started GET "/api/businesses/2" for 127.0.0.1 at 2023-06-01 14:07:00 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mBusiness Load (0.9ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.6ms | Allocations: 232)
+Completed 200 OK in 13ms (Views: 1.4ms | ActiveRecord: 0.9ms | Allocations: 1183)
+
+
+Started GET "/api/businesses/2" for 127.0.0.1 at 2023-06-01 14:07:23 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mBusiness Load (0.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.8ms | Allocations: 232)
+Completed 200 OK in 7ms (Views: 2.1ms | ActiveRecord: 0.5ms | Allocations: 1186)
+
+
+Started GET "/api/businesses/2" for 127.0.0.1 at 2023-06-01 14:07:40 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mBusiness Load (0.6ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 2.5ms | Allocations: 232)
+Completed 200 OK in 9ms (Views: 3.3ms | ActiveRecord: 0.6ms | Allocations: 1186)
+
+
+Started GET "/api/businesses/2" for 127.0.0.1 at 2023-06-01 14:07:45 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 232)
+Completed 200 OK in 8ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 1162)
+
+
+Started GET "/api/businesses/2" for 127.0.0.1 at 2023-06-01 14:08:19 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mBusiness Load (0.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.5ms | Allocations: 232)
+Completed 200 OK in 6ms (Views: 1.2ms | ActiveRecord: 0.5ms | Allocations: 1189)
+
+
+Started GET "/api/businesses/2" for 127.0.0.1 at 2023-06-01 14:08:49 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mBusiness Load (0.6ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.5ms | Allocations: 232)
+Completed 200 OK in 7ms (Views: 1.4ms | ActiveRecord: 0.6ms | Allocations: 1174)
+
+
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE DATABASE "peepoHungry_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE DATABASE "peepoHungry_test" ENCODING = 'unicode'[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35mSQL (2.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (14.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "businesses" CASCADE[0m
+  [1m[35m (13.0ms)[0m  [1m[35mCREATE TABLE "businesses" ("id" bigserial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "zip_code" character varying NOT NULL, "category" character varying NOT NULL, "phone_number" character varying NOT NULL, "price_range" float NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "fname" character varying NOT NULL, "lname" character varying NOT NULL, "email" character varying NOT NULL, "zipcode" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (9.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (8.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (17.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "businesses" CASCADE[0m
+  [1m[35m (19.0ms)[0m  [1m[35mCREATE TABLE "businesses" ("id" bigserial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "zip_code" character varying NOT NULL, "category" character varying NOT NULL, "phone_number" character varying NOT NULL, "price_range" float NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "fname" character varying NOT NULL, "lname" character varying NOT NULL, "email" character varying NOT NULL, "zipcode" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (22.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (1.6ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "development"], ["updated_at", "2023-06-01 18:16:59.812170"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2023-06-01 18:16:59.844062"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "peepo"], ["lname", "Hungry"], ["email", "peepo@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-01 18:17:00.322628"], ["updated_at", "2023-06-01 18:17:00.322628"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mBusiness Create (0.9ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zip_code", "category", "phone_number", "price_range", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Krusty Krab"], ["address", "42 Wallaby Way"], ["city", "NYC"], ["state", "NY"], ["zip_code", "10011"], ["category", "Burger"], ["phone_number", "678-999-8212"], ["price_range", 100.0], ["created_at", "2023-06-01 18:17:00.333761"], ["updated_at", "2023-06-01 18:17:00.333761"]]
+  [1m[36mBusiness Create (0.2ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zip_code", "category", "phone_number", "price_range", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Wendy's"], ["address", "20 E 14th St"], ["city", "NYC"], ["state", "NY"], ["zip_code", "10003"], ["category", "Burger"], ["phone_number", "212-243-0438"], ["price_range", 25.0], ["created_at", "2023-06-01 18:17:00.335673"], ["updated_at", "2023-06-01 18:17:00.335673"]]
+  [1m[36mBusiness Create (0.1ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zip_code", "category", "phone_number", "price_range", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Let's Meat BBQ"], ["address", "307 5th Ave"], ["city", "NYC"], ["state", "NY"], ["zip_code", "10016"], ["category", "Korean"], ["phone_number", "212-889-0089"], ["price_range", 75.0], ["created_at", "2023-06-01 18:17:00.336757"], ["updated_at", "2023-06-01 18:17:00.336757"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/businesses/api/session" for 127.0.0.1 at 2023-06-01 14:17:06 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/businesses/api/session"):
+  
+Started GET "/api/session" for 127.0.0.1 at 2023-06-01 14:17:13 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 61ms (Views: 2.3ms | ActiveRecord: 35.6ms | Allocations: 3806)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 14:17:13 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.9ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 15.2ms | Allocations: 1090)
+Completed 200 OK in 17ms (Views: 15.4ms | ActiveRecord: 0.9ms | Allocations: 1554)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 14:17:15 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.4ms | Allocations: 232)
+Completed 200 OK in 5ms (Views: 1.0ms | ActiveRecord: 0.3ms | Allocations: 1185)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 14:17:15 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 232)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 1183)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 14:19:42 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.6ms | Allocations: 232)
+Completed 200 OK in 8ms (Views: 1.5ms | ActiveRecord: 0.4ms | Allocations: 1171)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 14:22:10 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 1.9ms | Allocations: 232)
+Completed 200 OK in 11ms (Views: 2.6ms | ActiveRecord: 0.5ms | Allocations: 1183)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 14:22:33 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.7ms | Allocations: 232)
+Completed 200 OK in 34ms (Views: 1.8ms | ActiveRecord: 0.5ms | Allocations: 1183)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 14:23:05 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.8ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.6ms | Allocations: 232)
+Completed 200 OK in 10ms (Views: 1.5ms | ActiveRecord: 0.8ms | Allocations: 1186)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 14:23:08 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 4.5ms | Allocations: 1056)
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.4ms | Allocations: 1523)
+
+
+Started GET "/api/businesses/2" for 127.0.0.1 at 2023-06-01 14:23:09 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.4ms | Allocations: 232)
+Completed 200 OK in 7ms (Views: 0.9ms | ActiveRecord: 0.3ms | Allocations: 1171)
+
+
+Started GET "/api/businesses/2" for 127.0.0.1 at 2023-06-01 14:23:09 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mBusiness Load (0.2ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.2ms | Allocations: 232)
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 1171)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 14:23:14 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 1.5ms | Allocations: 1056)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.3ms | Allocations: 1502)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-01 14:23:15 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (0.2ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.4ms | Allocations: 232)
+Completed 200 OK in 6ms (Views: 1.1ms | ActiveRecord: 0.2ms | Allocations: 1180)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-01 14:23:15 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 232)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.3ms | Allocations: 1180)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 14:23:20 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 3.6ms | Allocations: 1056)
+Completed 200 OK in 6ms (Views: 4.0ms | ActiveRecord: 0.3ms | Allocations: 1511)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 14:23:23 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 232)
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.3ms | Allocations: 1180)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 14:23:23 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (1.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.2ms | Allocations: 232)
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 1.3ms | Allocations: 1180)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 14:31:33 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (1.1ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 38.5ms | Allocations: 3891)
+Completed 200 OK in 46ms (Views: 39.7ms | ActiveRecord: 16.7ms | Allocations: 4342)
+
+
+Started GET "/api/businesses/2" for 127.0.0.1 at 2023-06-01 14:31:36 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.4ms | Allocations: 232)
+Completed 200 OK in 7ms (Views: 1.1ms | ActiveRecord: 0.6ms | Allocations: 1205)
+
+
+Started GET "/api/businesses/2" for 127.0.0.1 at 2023-06-01 14:31:36 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.2ms | Allocations: 232)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 1177)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 14:31:38 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 6.7ms | Allocations: 1056)
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 0.4ms | Allocations: 1520)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-01 14:31:38 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.5ms | Allocations: 232)
+Completed 200 OK in 5ms (Views: 1.1ms | ActiveRecord: 0.4ms | Allocations: 1198)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-01 14:31:38 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.2ms | Allocations: 232)
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 1198)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-01 14:31:40 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 3.7ms | Allocations: 1056)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.3ms | Allocations: 1526)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 14:45:51 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.8ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.8ms | Allocations: 232)
+Completed 200 OK in 47ms (Views: 6.7ms | ActiveRecord: 17.0ms | Allocations: 4031)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-01 14:45:51 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 1.4ms | Allocations: 232)
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 1168)
+
+

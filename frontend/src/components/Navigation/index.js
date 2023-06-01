@@ -60,16 +60,15 @@ function Navigation() {
   
 
   return (
-    <div className="header">
-      
-      <ul id="nav">
-        <li>
-          {sessionLinks}
-        </li>
-      </ul>
-      
-      {carousel()}
-    </div>
+      <header>
+        <ul id="nav">
+          <li>
+            {sessionLinks}
+          </li>
+        </ul>
+        
+        {carousel()}
+    </header>
   );
 
 }

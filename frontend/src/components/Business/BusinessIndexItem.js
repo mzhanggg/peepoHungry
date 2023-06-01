@@ -3,8 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 const BusinessIndexItem = ({biz}) => {
-    // const dispatch = useDispatch();
-
 
     return (
         <ul id="biz-show">

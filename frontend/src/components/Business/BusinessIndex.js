@@ -8,7 +8,7 @@ const BizIndex = () => {
     const businesses = useSelector(getBusinesses);
 
     useEffect(() => {
-        dispatch(fetchBusinesses(businesses));
+        dispatch(fetchBusinesses());
     }, [])
 
     const bizItems = businesses.map(biz => <BusinessIndexItem biz={biz} key={biz.id}/>)

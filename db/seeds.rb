@@ -46,7 +46,7 @@ ApplicationRecord.transaction do
         zip_code: '10003', 
         category: 'Burger', 
         phone_number: '212-243-0438', 
-        price_range: 10
+        price_range: 25
     )
 
     Business.create!(
@@ -57,7 +57,7 @@ ApplicationRecord.transaction do
         zip_code: '10016', 
         category: 'Korean', 
         phone_number: '212-889-0089', 
-        price_range: 20
+        price_range: 75
     )
     
     puts "Done!"

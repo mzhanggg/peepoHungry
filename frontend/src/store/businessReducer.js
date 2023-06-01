@@ -1,5 +1,3 @@
-import { csrfFetch } from "./csrf"
-
 const RECEIVE_BUSINESS = 'businesses/RECEIVE_BUSINESS'
 const RECEIVE_BUSINESSES = 'businesses/RECEIVE_BUSINESSES'
 
@@ -43,7 +41,6 @@ export const getBusinesses = (state) => state.businesses ? Object.values(state.b
 const businessesReducer = ( state = {}, action ) => {
     Object.freeze(state);
     const newState = { ...state };
-
 
     switch (action.type) {
         case RECEIVE_BUSINESSES:
