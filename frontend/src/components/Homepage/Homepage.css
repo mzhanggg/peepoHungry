@@ -1,0 +1,6 @@
+#splash-img {
+    width: 100%;
+    border-image-repeat: stretch;
+    /* position: absolute; */
+}
+
