@@ -9,6 +9,7 @@ import BizIndex from "./components/Business/BusinessIndex";
 import BusinessShow from "./components/Business/BusinessShow";
 
 function App() {
+
   return (
     <>
       <Navigation />

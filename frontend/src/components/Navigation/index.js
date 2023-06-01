@@ -1,8 +1,9 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import DemoLogin from '../DemoLogin';
+import Carousel from '../Homepage/Carousel';
 import './Navigation.css';
 
 function Navigation() {
@@ -20,10 +21,9 @@ function Navigation() {
             <h1 id="title">peepoHungry</h1>
           </div>
 
-        <div id="user">
-          <ProfileButton user={sessionUser} />
-        </div>
-
+          <div id="user">
+            <ProfileButton user={sessionUser} />
+          </div>
         </>
       )
     } else {
@@ -44,13 +44,32 @@ function Navigation() {
         </>
       );
     }
+    
+    const location = useLocation()
+    
+    const carousel = () => {
+      const path = location.pathname;
+      
+      if (path === '/') {
+        return <Carousel />;
+      } else {
+        return null;
+      }
+    }
+
+  
 
   return (
-    <ul id="nav">
-      <li>
-        {sessionLinks}
-      </li>
-    </ul>
+    <div className="header">
+      
+      <ul id="nav">
+        <li>
+          {sessionLinks}
+        </li>
+      </ul>
+      
+      {carousel()}
+    </div>
   );
 
 }

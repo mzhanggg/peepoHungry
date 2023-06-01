@@ -23,12 +23,6 @@ export const fetchBusinesses = () => async dispatch => {
     dispatch(receiveBusinesses(data));
 }
 
-// export const fetchBusinesses = async dispatch =>  {
-//     const res = await csrfFetch('/api/businesses');
-//     const businesses = await res.json();
-//     dispatch(receiveBusinesses(businesses));
-// }
-
 export const fetchBusiness = (businessId) => async dispatch => {
     const res = await fetch(`/api/businesses/${businessId}`);
     const data = await res.json();
