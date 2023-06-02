@@ -2,7 +2,7 @@
     overflow: hidden;
     width: 100%;
     transition: all 1s;
-    padding-top: 50px;
+    position: relative;
 }
   
 .carousel-inner {
@@ -11,13 +11,13 @@
 }
   
 .carousel-item {
-flex: 0 0 100%;
+    flex: 0 0 100%;
 }
 
 .carousel-item img {
-width: 100%;
+    width: 100%;
 }
 
 .carousel-item > img {
-    height: 600px;
+    height: 760px;
 }

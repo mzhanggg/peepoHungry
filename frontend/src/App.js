@@ -20,6 +20,7 @@ function App() {
         <Route exact path="/signup" element={<SignupFormPage />}>Sign Up</Route>
         <Route exact path="/" element={<DemoLogin />}>Demo Login</Route>
         <Route exact path="/businesses/:businessId" element={<BusinessShow />}></Route>
+        <Route exact path="/businesses" element={<BizIndex />}></Route>
       </Routes>
     </>
   );

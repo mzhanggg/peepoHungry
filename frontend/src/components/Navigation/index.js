@@ -20,6 +20,7 @@ function Navigation() {
             </NavLink>
             <h1 id="title">peepoHungry</h1>
           </div>
+          <NavLink id="btn" to="/businesses">Restaurants</NavLink>
 
           <div id="user">
             <ProfileButton user={sessionUser} />
@@ -37,6 +38,7 @@ function Navigation() {
           </div>
 
           <div id="auth">
+            <NavLink id="btn" to="/businesses">Restaurants</NavLink>
             <NavLink id="btn" to="/login">Log In</NavLink>
             <NavLink id="btn"to="/signup">Sign Up</NavLink>
             <DemoLogin />
@@ -68,7 +70,7 @@ function Navigation() {
         </ul>
         
         {carousel()}
-    </header>
+      </header>
   );
 
 }

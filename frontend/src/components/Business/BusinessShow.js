@@ -16,7 +16,25 @@ const BusinessShow = () => {
     return (
         <>
             <BusinessIndexHeader />
-            <h1>my biz show stuff</h1>
+            <div id="location-hours">
+                <div>
+                    <h1>map</h1>
+                </div>
+
+                <div>
+                    <h1>hours</h1>
+                </div>
+            </div>
+
+            <div id="sticky-side-nave">
+                <div>
+                    <h1>sticky side nav</h1>
+                </div>
+            </div>
+
+            <div id="reviews">
+                <h1>reviews component</h1>
+            </div>
         </>
     )
 }

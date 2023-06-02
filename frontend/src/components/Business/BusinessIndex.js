@@ -15,7 +15,7 @@ const BizIndex = () => {
 
     return (
         <>
-            <ul>
+            <ul id="biz-profile-container">
                 {bizItems}
             </ul>
         </>
