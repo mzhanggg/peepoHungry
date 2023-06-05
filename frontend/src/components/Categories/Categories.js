@@ -8,6 +8,9 @@ import dish from './Category-Images/dish.png';
 import './Categories.css'
 
 const Categories = () => {
+    const toTop = () => {
+        window.scrollTo(0, 0)
+    };
 
     return (
         <div id="categories-container">
@@ -15,7 +18,7 @@ const Categories = () => {
 
             <div id="cat-boxes">
                 <div id="cat">
-                    <NavLink to="/businesses">
+                    <NavLink to="/category/korean" onClick={toTop}>
                         <img src={soupImage} alt=""></img>
                         <p>Korean</p>
                     </NavLink>
@@ -23,21 +26,21 @@ const Categories = () => {
 
 
                 <div id="cat">
-                    <NavLink to="/businesses">
+                    <NavLink to="/category/coffee" onClick={toTop}>
                         <img src={coffee} alt=""></img>
                         <p>Coffee</p>
                     </NavLink>
                 </div>
 
                 <div id="cat">
-                    <NavLink to="/businesses">
+                    <NavLink to="/category/burger" onClick={toTop}>
                         <img src={burger} alt=""></img>
                         <p>Burgers</p>
                     </NavLink>
                 </div>
 
                 <div id="cat">
-                    <NavLink to="/businesses">
+                    <NavLink to="/businesses" onClick={toTop}>
                     <img src={pepe} alt=""></img>
                         <p>More</p>
                     </NavLink>
