@@ -1,9 +1,14 @@
+header {
+    border-bottom: thick double #32a1ce;
+}
+
 header #nav-items{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
     margin: 5px;
+    white-space: nowrap;
 }
 
 #left-nav, #right-nav > #user {

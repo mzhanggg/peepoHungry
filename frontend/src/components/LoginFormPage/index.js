@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import DemoLogin from '../DemoLogin';
 import * as sessionActions from '../../store/session';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -73,6 +74,7 @@ function LoginFormPage() {
                     </label>
                     <br></br>
                     <button id="form-btn" type="submit">Login</button>
+                    <DemoLogin />
                 </form>
                 
             </div>

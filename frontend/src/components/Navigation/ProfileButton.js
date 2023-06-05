@@ -39,7 +39,7 @@ function ProfileButton({ user }) {
           <li>About Me</li>
           <li>My Collection</li>
           <li>Find Friends</li>
-          <li>Account Settings</li>
+          <li>Account</li>
           <li>
             <button id="nav-btn"onClick={logout}>Log Out</button>
           </li>

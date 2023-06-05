@@ -10,6 +10,7 @@ import BizIndex from "./components/Business/BusinessIndex";
 import BusinessShow from "./components/Business/BusinessShow";
 import Footer from "./components/Footer/Footer";
 import Categories from "./components/Categories/Categories";
+import RecentActivities from "./components/RecentActivity/RecentActivity";
 
 function App() {
   const location = useLocation()
@@ -22,6 +23,15 @@ function App() {
       return null;
     }
   }
+
+  const recentActivity = () => {
+    if (path === '/') {
+      return <RecentActivities />;
+    } else {
+      return null;
+    }
+  }
+  
 
   return (
     <>
@@ -37,8 +47,8 @@ function App() {
         <Route exact path="/businesses" element={<BizIndex />}></Route>
       </Routes>
       
+      {recentActivity()}
       {categories() }
-
       <Footer />
     </>
   );

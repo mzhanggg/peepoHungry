@@ -1,41 +1,28 @@
-#cat-title {
+#recent-title {
     text-align: center;
     margin: 50px 0;
     font-weight: bold;
     font-size: 28px;
 }
 
-#categories-container {
+#recent-activities {
     padding: 0 100px;
 }
 
-#cat-boxes {
+#activity-boxes {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
-#cat {
+#activity {
     display: flex;
     flex-direction: column;
     border: #d6d0ce 1px solid;
     padding: 75px;
-    cursor: pointer;
     border-radius: 4px;
     text-align: center;
+    margin: 20px 0;
 }
 
-#cat > a >  img {
-    height: 60px;
-    margin-bottom: 20px;
-
-}
-#cat > a {
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
-}
-
-#cat:hover {
-    box-shadow: 0 5px 15px #d6d0ce;
-}

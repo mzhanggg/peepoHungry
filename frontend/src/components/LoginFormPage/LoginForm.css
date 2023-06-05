@@ -48,11 +48,22 @@ form {
     background: #d32323;
     padding: 10px;
     border: 1px red solid;
-    width: 100%
+    width: 100%;
 }
 
 #form-btn {
     cursor: pointer;
+}
+
+#signup-form > a, #login-form > a {
+    color: #fff;
+    background: #d32323;
+    padding: 10px;
+    border: 1px red solid;
+    /* width: 100%; */
+    font-size: 13.33px;
+    width: 300px;
+    border-radius: 0;
 }
 
 #errors {
@@ -68,3 +79,4 @@ label > input {
     padding: 5px 9px;
     width: 300px;
 }
+

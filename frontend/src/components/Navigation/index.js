@@ -37,7 +37,6 @@ function Navigation() {
           
           <div id="right-nav">
             <div id="user">
-              <NavLink id="nav-btn" to="/businesses">Restaurants</NavLink>
               <ProfileButton user={sessionUser} />
             </div>
           </div>
@@ -54,7 +53,6 @@ function Navigation() {
           </div>
 
           <div id="right-nav" style={{ display: (path === '/login' || path === '/signup') ? 'none' : 'block' }}>
-            <NavLink id="nav-btn" to="/businesses">Restaurants</NavLink>
             <NavLink id="nav-btn" to="/login">Log In</NavLink>
             <NavLink id="nav-btn"to="/signup">Sign Up</NavLink>
             <DemoLogin />
