@@ -1,4 +1,10 @@
 import { NavLink } from 'react-router-dom';
+import soupImage from './Category-Images/soup.png';
+import coffee from './Category-Images/coffee.png';
+import burger from './Category-Images/hamburger.png';
+import pepe from './Category-Images/pepe.jpg';
+import dish from './Category-Images/dish.png';
+
 import './Categories.css'
 
 const Categories = () => {
@@ -10,29 +16,29 @@ const Categories = () => {
             <div id="cat-boxes">
                 <div id="cat">
                     <NavLink to="/businesses">
-                        <img src="https://s3-media0.fl.yelpcdn.com/assets/srv0/yelp_design_cdn/8bc05b287157/assets/img/svg_illustrations/40x40_food_v2.svg" alt=""></img>
-                        <p>Restaurants</p>
+                        <img src={soupImage} alt=""></img>
+                        <p>Korean</p>
                     </NavLink>
                 </div>
 
 
                 <div id="cat">
                     <NavLink to="/businesses">
-                        <img src="https://s3-media0.fl.yelpcdn.com/assets/srv0/yelp_design_cdn/8bc05b287157/assets/img/svg_illustrations/40x40_food_v2.svg" alt=""></img>
-                        <p>Restaurants</p>
+                        <img src={coffee} alt=""></img>
+                        <p>Coffee</p>
                     </NavLink>
                 </div>
 
                 <div id="cat">
                     <NavLink to="/businesses">
-                        <img src="https://s3-media0.fl.yelpcdn.com/assets/srv0/yelp_design_cdn/8bc05b287157/assets/img/svg_illustrations/40x40_food_v2.svg" alt=""></img>
-                        <p>Restaurants</p>
+                        <img src={burger} alt=""></img>
+                        <p>Burgers</p>
                     </NavLink>
                 </div>
 
                 <div id="cat">
                     <NavLink to="/businesses">
-                    <img src="https://i.kym-cdn.com/photos/images/original/001/050/668/6e3.png" alt=""></img>
+                    <img src={pepe} alt=""></img>
                         <p>More</p>
                     </NavLink>
                 </div>

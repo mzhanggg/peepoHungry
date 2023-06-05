@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink, Navigate, useNavigate } from 'react-router-dom';
+import BusinessStars from './BusinessStars';
 import "./BusinessIndexItem.css"
 
 const BusinessIndexItem = ({biz}) => {
@@ -23,6 +24,86 @@ const BusinessIndexItem = ({biz}) => {
         };
     };
 
+    const rating = Math.round(biz.avgRating)
+
+    const zeroStar = ( 
+        <>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+        </>
+    )
+
+    const oneStar = ( 
+        <>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+        </>
+    )
+
+    const twoStar = ( 
+        <>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+        </>
+    )
+
+    const threeStar = ( 
+        <>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+        </>
+    )
+
+    const fourStar = ( 
+        <>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+        </>
+    )
+
+    const fiveStar = ( 
+        <>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+        </>
+    )
+
+
+    const stars = () => {
+        switch (rating) {
+            case 1:
+                return oneStar;
+            case 2:
+                return twoStar;
+            case 3: 
+                return threeStar;
+            case 4: 
+                return fourStar;
+            case 5: 
+                return fiveStar;
+            default:
+                return zeroStar;
+        };
+    };
+
     return (
         <>
             <div id="biz-profile-card" onClick={handleClick}>
@@ -31,7 +112,7 @@ const BusinessIndexItem = ({biz}) => {
                     <li id="biz-index-name">{biz.name}</li>
 
                     <div id="stats">
-                        <li>⭐⭐⭐⭐⭐ component</li>
+                        <li>{stars()}</li>
                         <li># reviews</li>
                     </div>
 

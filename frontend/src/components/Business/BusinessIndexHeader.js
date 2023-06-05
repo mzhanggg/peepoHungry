@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchBusiness, getBusiness } from "../../store/businessReducer";
 import { useParams } from 'react-router-dom';
 import BusinessDollar from "./BusinessDollars";
+import BusinessStars from "./BusinessStars";
 import "./BusinessIndexHeader.css"
 
 const BusinessIndexHeader = () => {
@@ -22,7 +23,7 @@ const BusinessIndexHeader = () => {
                     <h1 id="biz-name">{business.name}</h1>
 
                     <div id="stats">
-                        <p>⭐⭐⭐⭐⭐ component</p>
+                        <BusinessStars />
                         <p># reviews</p>
                     </div>
 
