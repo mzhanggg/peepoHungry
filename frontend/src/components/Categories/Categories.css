@@ -1,0 +1,35 @@
+#cat-title {
+    text-align: center;
+    margin: 50px 0;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+#categories-container {
+    padding: 0 100px;
+}
+
+#cat-boxes {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#cat {
+    display: flex;
+    flex-direction: column;
+    border: #d6d0ce 1px solid;
+    padding: 75px;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+}
+
+#cat > img {
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+#cat:hover {
+    box-shadow: 0 5px 15px #d6d0ce;
+}

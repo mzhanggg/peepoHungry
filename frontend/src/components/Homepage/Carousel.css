@@ -3,11 +3,13 @@
     width: 100%;
     transition: all 1s;
     position: relative;
+    z-index: -1;
 }
   
 .carousel-inner {
     display: flex;
     transition: transform 0.5s ease-in-out;
+    opacity: .90;
 }
   
 .carousel-item {

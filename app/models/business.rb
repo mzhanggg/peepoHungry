@@ -17,5 +17,11 @@
 class Business < ApplicationRecord
     validates :name, :address, :city, :state, :zip_code, :category, :phone_number, :price_range, presence: true
 
-    # has many :reviews
+    has_one_attached :photo
+
+    # has_many_attached :photo
+        # many photos
+        # _tea jbuilder:
+
+    # has_many :reviews
 end

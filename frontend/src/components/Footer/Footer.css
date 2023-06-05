@@ -1,0 +1,35 @@
+#main-footer {
+    width: 100%;
+    background-color: #f7f7f7;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 50px;
+    padding: 20px 0;
+}
+
+#footer-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 200px;
+    
+}
+
+#copyright {
+    margin-top: 50px;
+    text-align: center;
+}
+
+#footer-title {
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+#footer-col > li, #copyright {
+    line-height: 150%;
+    font-size: 14px;
+    color: rgba(110,112,114,1);
+    margin: 10px 0;
+}

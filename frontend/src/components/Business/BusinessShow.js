@@ -26,7 +26,7 @@ const BusinessShow = () => {
                 </div>
             </div>
 
-            <div id="sticky-side-nave">
+            <div id="sticky-side-nav">
                 <div>
                     <h1>sticky side nav</h1>
                 </div>

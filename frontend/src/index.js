@@ -2,16 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import './index.css';
 import App from './App';
 import configureStore from './store';
 import { restoreSession } from './store/csrf';
 import { createUser, loginUser, logoutUser } from './store/usersReducer'; 
 import {csrfFetch} from './store/csrf';
+import './index.css';
 import * as sessionActions from './store/session';
 
 const store = configureStore();
-
 
 if (process.env.NODE_ENV !== 'production') {
   window.store = store;

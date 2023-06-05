@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from  "./components/SignupFormPage";
 import Homepage from "./components/Homepage";
@@ -7,13 +8,26 @@ import Navigation from "./components/Navigation";
 import DemoLogin from "./components/DemoLogin";
 import BizIndex from "./components/Business/BusinessIndex";
 import BusinessShow from "./components/Business/BusinessShow";
+import Footer from "./components/Footer/Footer";
+import Categories from "./components/Categories/Categories";
 
 function App() {
+  const location = useLocation()
+  const path = location.pathname;
+
+  const categories = () => {
+    if (path === '/') {
+      return <Categories />;
+    } else {
+      return null;
+    }
+  }
 
   return (
     <>
+      
       <Navigation />
-
+      
       <Routes>
         <Route exact path="/" element={<Homepage />}></Route>
         <Route exact path="/login" element={<LoginFormPage />}>Log In</Route>
@@ -22,6 +36,10 @@ function App() {
         <Route exact path="/businesses/:businessId" element={<BusinessShow />}></Route>
         <Route exact path="/businesses" element={<BizIndex />}></Route>
       </Routes>
+      
+      {categories() }
+
+      <Footer />
     </>
   );
 }

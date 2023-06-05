@@ -1,11 +1,17 @@
-#form-container {
+#signup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px;
+}
+  
+#form-container, #image-container {
     display: flex;
     align-items: center;
     flex-direction: column;
-    border: 1px red solid;
     margin: 10px;
     text-align: center;
-    padding: 200px;
+    padding: 100px;
 }
 
 #subheader {
@@ -20,18 +26,16 @@
 
 }
 
-a {
-    color: #0073bb 
-}
-
-h1 {
+#form-header > h1 {
     color: #d32323;
     margin: 10px;
     font-size: 22px;
     font-weight: bold;
-
 }
 
+#legal > a {
+    color: #0073bb 
+}
 
 form {
     display: flex;
@@ -39,7 +43,7 @@ form {
     flex-direction: column;
 }
 
-button {
+#form-btn {
     color: #fff;
     background: #d32323;
     padding: 10px;
@@ -47,7 +51,7 @@ button {
     width: 100%
 }
 
-button:hover {
+#form-btn {
     cursor: pointer;
 }
 
@@ -58,4 +62,9 @@ button:hover {
     margin: 10px; 
     line-height: 1.40;
     font-size: 12px;
+}
+
+label > input {
+    padding: 5px 9px;
+    width: 300px;
 }

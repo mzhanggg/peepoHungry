@@ -33,46 +33,53 @@ function LoginFormPage() {
     }
 
     return (
-        <div id="form-container">
-            <div id="header">
-                    <h1>Log in to peepoHungry</h1>
-                    <p id="subheader">New to peepoHungry? 
-                        <Link to="/signup"> Sign Up</Link>
-                    </p>
-                    <p id="legal">By continuing, you agree to peepoHungry’s 
-                        <a href="/tos"> Terms of Service</a> 
+        <div id="signup">
+            <div id="form-container">
+                <div id="form-header">
+                        <h1>Log in to peepoHungry</h1>
+                        <p id="subheader">New to peepoHungry? 
+                            <Link to="/login"> Sign Up</Link>
+                        </p>
+                        <p id="legal">By continuing, you agree to peepoHungry’s 
+                            <a href="/login"> Terms of Service</a> 
+                            <br></br>
+                            and acknowledge peepoHungry's <a href="/login"> Privacy Policy</a>.
+                        </p>
+                </div>
+
+                <form id="login-form" onSubmit={handleSubmit}>
+                    <ul>
+                    {errors ? errors.map(error => <li key={error}>{error}</li>) : null}
+                    </ul>
+                    <label>
                         <br></br>
-                        and acknowledge peepoHungry's <a href="/pp"> Privacy Policy</a>.
-                    </p>
+                        <input
+                            type="text"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Email"
+                            required
+                        />
+                    </label>
+                    <label>
+                        <br></br>
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Password"
+                            required
+                        />
+                    </label>
+                    <br></br>
+                    <button id="form-btn" type="submit">Login</button>
+                </form>
+                
             </div>
 
-            <form onSubmit={handleSubmit}>
-                <ul>
-                {errors ? errors.map(error => <li key={error}>{error}</li>) : null}
-                </ul>
-                <label>
-                    <br></br>
-                    <input
-                        type="text"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Email"
-                        required
-                    />
-                </label>
-                <label>
-                    <br></br>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Password"
-                        required
-                    />
-                </label>
-                <br></br>
-                <button type="submit">Login</button>
-            </form>
+            <div id="image-container">
+                <img src="https://s3-media0.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png"></img>
+            </div>
         </div>
     )
 

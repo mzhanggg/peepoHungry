@@ -1,44 +1,12 @@
-#nav {
-    /* display: flex; */
-    height: 100px;
-    margin: 20px;
-    position: absolute;
-    z-index: 2;
-}
-
-li {
-    display: flex;
-    justify-content: space-between;
-}
-
-#auth {
-    display: flex;
-    padding: 10px;
-    margin: 10px;
-    
-}
-
-#btn, #demo {
-    border: red 1px solid;
-    border-radius: 5%;
-    white-space: nowrap;
-    text-align: center;
-    vertical-align: center;
+header #nav-items{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 10px;
     margin: 5px;
-
-    color: #fff;
-    background: #d32323;
-    padding: 10px;
-    border: 1px red solid;
-    width: 100%;
-    text-decoration: none;
-    font-size: 16px;
 }
 
-#header-container {
+#left-nav, #right-nav > #user {
     display: flex;
     align-items: center;
     padding: 10px;
@@ -46,27 +14,86 @@ li {
 }
 
 #logo {
-    height: 60px
+    height: 60px;
+}
+
+#title-text {
+    color: #d32323;
+    text-decoration: none;
+    margin-left: 10px;
+    font-size: 24px;
+    font-weight: bold;    
+}
+
+#nav-btn {
+    border: red 1px solid;
+    border-radius: 5%;
+    text-align: center;
+    vertical-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+    margin: 5px;
+    color: #fff;
+    background: #d32323;
+    transition: all 0.3s ease;
+}
+
+#nav-btn {
+    cursor: pointer;
+}
+
+#nav-btn:hover {
+    background-color: #d43737;
+    box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+}
+
+#nav {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+}
+
+#nav-items {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#profile-icon:hover {
+    cursor: pointer;
+}
+
+/* 
+#nav {
+    display: flex;
+    position: absolute;
+    height: 100px;
+    margin: 20px;
+    z-index: 2;
+    width: 100%;
+}
+
+#user *{
+    flex-grow: 1;
+
+}
+
+#right-nav {
+    display: flex;
+    padding: 10px;
+    margin: 10px;
+    
+}
+
+#logged-in-nav {
+    display: flex;
 }
 
 #user {
-    vertical-align: center;
     display: flex;
     align-items: center;
-    margin: 20px;
-    flex-direction: column;
-    border: 1px solid blue
+    vertical-align: center;
 }
-  
-.profile-dropdown {
-    margin-top: 85px;
-    position: absolute;
-    z-index: 1;
-    background-color: #f9f9f9;
-    border: 1px solid blue;
-}
-  
-.profile-dropdown li {
-    padding: 8px 16px;
-    border: 1px solid blue;
-}
+
+ */
