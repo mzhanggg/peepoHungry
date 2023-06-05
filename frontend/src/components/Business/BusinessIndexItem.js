@@ -39,7 +39,7 @@ const BusinessIndexItem = ({biz}) => {
                         <li>{biz.category}</li>
                         <li>{dollars()}</li>
                         <span>&bull;</span>
-                        <li>{biz.city}</li>
+                        <li>{biz.neighborhood}</li>
                     </div>
 
                     <div id="review">

@@ -26,7 +26,6 @@ export const fetchBusiness = (businessId) => async dispatch => {
     const data = await res.json();
     dispatch(receiveBusiness(data));
 }
-// // maybe add error handling?
 
 export const getBusiness = (businessId) => state => {
     if (state.businesses) {
