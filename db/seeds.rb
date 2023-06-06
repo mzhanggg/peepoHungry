@@ -300,24 +300,24 @@ end
 puts 'AWS TAKE THE WHEEL'
 
 
-# coffees = Business.where("category LIKE ?", "%Coffee%")
-# coffees.all.each_with_index do |coffee, i|
-#     coffee.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/coffee/coffee#{i + 1}.jpg"),
-#     filename: "coffee#{i+1}.jpg"
-#     )
-# end
+coffees = Business.where("category LIKE ?", "%Coffee%")
+coffees.all.each_with_index do |coffee, i|
+    coffee.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/coffee/coffee#{i + 1}.jpg"),
+    filename: "coffee#{i+1}.jpg"
+    )
+end
 
 
-# koreans = Business.where("category LIKE ?", "%Korean%")
-# koreans.all.each_with_index do |korea, i|
-#     korea.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/korean/k#{i + 1}.jpg"),
-#     filename: "k#{i+1}.jpg"
-#     )
-# end
+koreans = Business.where("category LIKE ?", "%Korean%")
+koreans.all.each_with_index do |korea, i|
+    korea.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/korean/k#{i + 1}.jpg"),
+    filename: "k#{i+1}.jpg"
+    )
+end
 
-# burgers = Business.where("category LIKE ?", "%Burger%")
-# burgers.all.each_with_index do |burger, i|
-#     burger.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/burger/burger#{i + 1}.jpg"),
-#     filename: "burger#{i+1}.jpg"
-#     )
-# end
+burgers = Business.where("category LIKE ?", "%Burger%")
+burgers.all.each_with_index do |burger, i|
+    burger.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/burger/burger#{i + 1}.jpg"),
+    filename: "burger#{i+1}.jpg"
+    )
+end
