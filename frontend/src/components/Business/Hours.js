@@ -1,6 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import "./Hours.css"
 
 const Hours = ({business}) => {
+    const nav = useNavigate();
+
+    if (!business) {
+        return nav("/");
+    }
 
     const times = business.hours;
     const removeLeft = times.replace('{', '');

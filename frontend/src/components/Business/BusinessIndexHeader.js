@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBusiness, getBusiness } from "../../store/businessReducer";
 import { useParams } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import BusinessDollar from "./BusinessDollars";
 import BusinessStars from "./BusinessStars";
 import "./BusinessIndexHeader.css"
@@ -10,10 +11,15 @@ const BusinessIndexHeader = () => {
     const dispatch = useDispatch();
     const {businessId} = useParams();
     const business = useSelector(getBusiness(businessId));
+    const nav = useNavigate();
 
     useEffect(() => {
         dispatch(fetchBusiness(businessId));
     }, [businessId])
+
+    if (!business) {
+        return nav("/");
+    }
 
     return (
         <div id="index-header-container">

@@ -107,7 +107,7 @@ const BusinessIndexItem = ({biz}) => {
     return (
         <>
             <div id="biz-profile-card" onClick={handleClick}>
-                <img id="profile-img" src="https://cdn.7tv.app/emote/60b2876f4f32610f15bfc5dc/4x.webp"></img>
+                <img id="profile-img" src={biz.photo}></img>
                 <ul id="biz-profile-details">
                     <li id="biz-index-name">{biz.name}</li>
 

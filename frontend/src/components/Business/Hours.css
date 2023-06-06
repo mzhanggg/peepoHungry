@@ -1,7 +1,7 @@
 #hours-container {
     background: yellow;
     padding: 20px;
-    width: 400px;
+    width: 300px;
     font-weight: bold;
     letter-spacing: 0.5px;
 }
@@ -13,7 +13,10 @@
     margin: 10px;
 }
 
-#day, #hrs{
-    flex-basis: 50%;
+#day {
+    flex-basis: 20%;
 }
 
+#hrs{
+    flex-basis: 80%;
+}

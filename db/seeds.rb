@@ -6,14 +6,18 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+require "open-uri"
+
 ApplicationRecord.transaction do 
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
     User.destroy_all
+    Business.destroy_all
   
     puts "Resetting primary keys..."
     # For easy testing, so that after seeding, the first `User` has `id` of 1
     ApplicationRecord.connection.reset_pk_sequence!('users')
+    ApplicationRecord.connection.reset_pk_sequence!('businesses')
   
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:
@@ -291,4 +295,29 @@ ApplicationRecord.transaction do
     )
 
     puts "Done!"
+end
+
+puts 'AWS TAKE THE WHEEL'
+
+
+coffees = Business.where("category LIKE ?", "%Coffee%")
+coffees.all.each_with_index do |coffee, i|
+    coffee.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/coffee/coffee#{i + 1}.jpg"),
+    filename: "coffee#{i+1}.jpg"
+    )
+end
+
+
+koreans = Business.where("category LIKE ?", "%Korean%")
+koreans.all.each_with_index do |korea, i|
+    korea.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/korean/k#{i + 1}.jpg"),
+    filename: "k#{i+1}.jpg"
+    )
+end
+
+burgers = Business.where("category LIKE ?", "%Burger%")
+burgers.all.each_with_index do |burger, i|
+    burger.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/burger/burger#{i + 1}.jpg"),
+    filename: "burger#{i+1}.jpg"
+    )
 end
