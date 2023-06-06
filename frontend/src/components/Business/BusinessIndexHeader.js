@@ -21,9 +21,11 @@ const BusinessIndexHeader = () => {
         return nav("/");
     }
 
+   const link = business.photo
+
     return (
         <div id="index-header-container">
-            <div id="index-header">
+            <div id="index-header" style={{ backgroundImage: `url(${link})` }}>
                 <div id="biz-details">
                     
                     <h1 id="biz-name">{business.name}</h1>
