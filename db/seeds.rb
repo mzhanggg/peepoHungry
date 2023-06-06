@@ -198,7 +198,7 @@ ApplicationRecord.transaction do
         avg_rating: 4.3,
         lat: 40.74817654923235, 
         long: -73.98642506946062,
-        hours: '{"Mon:  12:00 PM - 12:00 AM",
+        hours: '{"Mon::  12:00 PM - 12:00 AM",
             "Tue::  12:00 PM - 12:00 AM",
             "Wed::  12:00 PM - 12:00 AM",
             "Thu::  12:00 PM - 12:00 AM",

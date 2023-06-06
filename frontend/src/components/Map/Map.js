@@ -35,7 +35,7 @@ const Map = () => {
 
     return (
         <div>
-            <hi>from map component thats not mapping sadge</hi>
+            <h1>from map component thats not mapping sadge</h1>
             <br></br>
             <br></br>
             
