@@ -1,5 +1,29 @@
 {
   "dependencies": {
     "react-router-dom": "^6.11.2"
-  }
+  },
+  "name": "peepohungry",
+  "description": "",
+  "version": "1.0.0",
+  "directories": {
+    "lib": "lib"
+  },
+  "engines": {
+    "node": "16.19.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mzhanggg/peepoHungry.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mzhanggg/peepoHungry/issues"
+  },
+  "homepage": "https://github.com/mzhanggg/peepoHungry#readme"
 }

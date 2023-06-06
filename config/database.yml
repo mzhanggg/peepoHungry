@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: peepoHungry_production
-  username: peepoHungry
-  password: <%= ENV["PEEPOHUNGRY_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
