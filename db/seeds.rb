@@ -40,15 +40,13 @@ ApplicationRecord.transaction do
         avg_rating: 4.3,
         lat: 40.73629958855562, 
         long: -73.99379521689175,
-        hours: '{
-            "Mon:  9:00 AM - 6:00 PM",
-            "Tue:  9:00 AM - 6:00 PM",
-            "Wed:  9:00 AM - 6:00 PM",
-            "Thu:  9:00 AM - 6:00 PM",
-            "Fri:  9:00 AM - 6:00 AM",
-            "Sat:  CLOSED",
-            "Sun:  CLOSED"
-        }'
+        hours: '{"Mon::  9:00 AM - 6:00 PM",
+            "Tue::  9:00 AM - 6:00 PM",
+            "Wed::  9:00 AM - 6:00 PM",
+            "Thu::  9:00 AM - 6:00 PM",
+            "Fri::  9:00 AM - 6:00 AM",
+            "Sat::  CLOSED",
+            "Sun::  CLOSED"}'
     )
 
     Business.create!(
@@ -64,15 +62,13 @@ ApplicationRecord.transaction do
         avg_rating: 4.0,
         lat: 40.735490756799535, 
         long: -73.9926613133639,
-        hours: '{
-            "Mon:  7:00 AM - 12:00 AM",
-            "Tue:  7:00 AM - 12:00 AM",
-            "Wed:  7:00 AM - 12:00 AM",
-            "Thu:  7:00 AM - 1:00 AM",
-            "Fri:  7:00 AM - 1:00 AM",
-            "Sat:  7:00 AM - 1:00 AM",
-            "Sun:  7:00 AM - 12:00 AM"
-        }'
+        hours: '{"Mon::  7:00 AM - 12:00 AM",
+            "Tue::  7:00 AM - 12:00 AM",
+            "Wed::  7:00 AM - 12:00 AM",
+            "Thu::  7:00 AM - 1:00 AM",
+            "Fri::  7:00 AM - 1:00 AM",
+            "Sat::  7:00 AM - 1:00 AM",
+            "Sun::  7:00 AM - 12:00 AM"}'
     )
 
     Business.create!(
@@ -88,15 +84,13 @@ ApplicationRecord.transaction do
         avg_rating: 4.3,
         lat: 40.74685373508556, 
         long: -73.98556946035512,
-        hours: '{
-            "Mon:  12:00 PM - 11:00 PM",
-            "Tue:  12:00 PM - 11:00 PM",
-            "Wed:  12:00 PM - 11:00 PM",
-            "Thu:  12:00 PM - 1:00 AM",
-            "Fri:  12:00 PM - 1:00 AM",
-            "Sat:  12:00 PM - 1:00 AM",
-            "Sun:  12:00 PM - 11:00 PM"
-        }'
+        hours: '{"Mon::  12:00 PM - 11:00 PM",
+            "Tue::  12:00 PM - 11:00 PM",
+            "Wed::  12:00 PM - 11:00 PM",
+            "Thu::  12:00 PM - 1:00 AM",
+            "Fri::  12:00 PM - 1:00 AM",
+            "Sat::  12:00 PM - 1:00 AM",
+            "Sun::  12:00 PM - 11:00 PM"}'
     )
 
     Business.create!(
@@ -112,15 +106,13 @@ ApplicationRecord.transaction do
         avg_rating: 4.3,
         lat: 40.74685373508556, 
         long: -73.98556946035512,
-        hours: '{
-            "Mon:  7:00 AM - 6:30 PM",
-            "Tue:  7:00 AM - 6:30 PM",
-            "Wed:  7:00 AM - 6:30 PM",
-            "Thu:  7:00 AM - 6:30 PM",
-            "Fri:  7:00 AM - 6:30 PM",
-            "Sat:  9:00 AM - 5:00 PM",
-            "Sun:  9:00 AM - 5:00 PM"
-        }'
+        hours: '{"Mon::  7:00 AM - 6:30 PM",
+            "Tue::  7:00 AM - 6:30 PM",
+            "Wed::  7:00 AM - 6:30 PM",
+            "Thu::  7:00 AM - 6:30 PM",
+            "Fri::  7:00 AM - 6:30 PM",
+            "Sat::  9:00 AM - 5:00 PM",
+            "Sun::  9:00 AM - 5:00 PM"}'
     )
 
     Business.create!(
@@ -136,15 +128,13 @@ ApplicationRecord.transaction do
         avg_rating: 4.4,
         lat: 40.73417815176639, 
         long: -73.99261471880794,
-        hours: '{
-            "Mon:  7:00 AM - 6:30 PM",
-            "Tue:  7:00 AM - 6:30 PM",
-            "Wed:  7:00 AM - 6:30 PM",
-            "Thu:  7:00 AM - 6:30 PM",
-            "Fri:  7:00 AM - 6:30 PM",
-            "Sat:  9:00 AM - 5:00 PM",
-            "Sun:  9:00 AM - 5:00 PM"
-        }'
+        hours: '{"Mon::  7:00 AM - 6:30 PM",
+            "Tue::  7:00 AM - 6:30 PM",
+            "Wed::  7:00 AM - 6:30 PM",
+            "Thu::  7:00 AM - 6:30 PM",
+            "Fri::  7:00 AM - 6:30 PM",
+            "Sat::  9:00 AM - 5:00 PM",
+            "Sun::  9:00 AM - 5:00 PM"}'
     )
 
     Business.create!(
@@ -160,15 +150,13 @@ ApplicationRecord.transaction do
         avg_rating: 4.5,
         lat: 40.747716073138314, 
         long: -73.98693770444751,
-        hours: '{
-            "Mon:  11:30AM - 12:00 AM",
-            "Tue:  11:30AM - 12:00 AM",
-            "Wed:  11:30AM - 12:00 AM",
-            "Thu:  11:30AM - 12:00 AM",
-            "Fri:  11:30AM - 1:00 AM",
-            "Sat:  11:30AM - 1:00 AM",
-            "Sun:  11:30AM - 12:00 AM"
-        }'
+        hours: '{"Mon::  11:30AM - 12:00 AM",
+            "Tue::  11:30AM - 12:00 AM",
+            "Wed::  11:30AM - 12:00 AM",
+            "Thu::  11:30AM - 12:00 AM",
+            "Fri::  11:30AM - 1:00 AM",
+            "Sat::  11:30AM - 1:00 AM",
+            "Sun::  11:30AM - 12:00 AM"}'
     )
 
     Business.create!(
@@ -184,15 +172,13 @@ ApplicationRecord.transaction do
         avg_rating: 4.2,
         lat: 40.747355929732024, 
         long: -73.98597216224515,
-        hours: '{
-            "Mon:  4:00 PM - 1:00 AM",
-            "Tue:  4:00 PM - 1:00 AM",
-            "Wed:  4:00 PM - 1:00 AM",
-            "Thu:  4:00 PM - 1:00 AM",
-            "Fri:  12:00 PM - 3:00 AM",
-            "Sat:  12:00 PM - 3:00 AM",
-            "Sun:  12:00 PM - 1:00 AM"
-        }'
+        hours: '{"Mon:  4:00 PM - 1:00 AM",
+            "Tue::  4:00 PM - 1:00 AM",
+            "Wed::  4:00 PM - 1:00 AM",
+            "Thu::  4:00 PM - 1:00 AM",
+            "Fri::  12:00 PM - 3:00 AM",
+            "Sat::  12:00 PM - 3:00 AM",
+            "Sun::  12:00 PM - 1:00 AM"}'
     )
 
     Business.create!(
@@ -208,15 +194,13 @@ ApplicationRecord.transaction do
         avg_rating: 4.3,
         lat: 40.74817654923235, 
         long: -73.98642506946062,
-        hours: '{
-            "Mon:  12:00 PM - 12:00 AM",
-            "Tue:  12:00 PM - 12:00 AM",
-            "Wed:  12:00 PM - 12:00 AM",
-            "Thu:  12:00 PM - 12:00 AM",
-            "Fri:  12:00 PM - 12:00 AM",
-            "Sat:  12:00 PM - 12:00 AM",
-            "Sun:  12:00 PM - 10:00 PM"
-        }'
+        hours: '{"Mon:  12:00 PM - 12:00 AM",
+            "Tue::  12:00 PM - 12:00 AM",
+            "Wed::  12:00 PM - 12:00 AM",
+            "Thu::  12:00 PM - 12:00 AM",
+            "Fri::  12:00 PM - 12:00 AM",
+            "Sat::  12:00 PM - 12:00 AM",
+            "Sun::  12:00 PM - 10:00 PM"}'
     )
 
     Business.create!(
@@ -232,15 +216,13 @@ ApplicationRecord.transaction do
         avg_rating: 4.3,
         lat: 40.73006230011236, 
         long: -73.98916249448607,
-        hours: '{
-            "Mon:  12:00 PM - 11:00 PM",
-            "Tue:  12:00 PM - 11:00 PM",
-            "Wed:  12:00 PM - 11:00 PM",
-            "Thu:  12:00 PM - 11:00 PM",
-            "Fri:  12:00 PM - 12:00 AM",
-            "Sat:  12:00 PM - 12:00 AM",
-            "Sun:  12:00 PM - 11:00 PM"
-        }'
+        hours: '{"Mon::  12:00 PM - 11:00 PM",
+            "Tue::  12:00 PM - 11:00 PM",
+            "Wed::  12:00 PM - 11:00 PM",
+            "Thu::  12:00 PM - 11:00 PM",
+            "Fri::  12:00 PM - 12:00 AM",
+            "Sat::  12:00 PM - 12:00 AM",
+            "Sun::  12:00 PM - 11:00 PM"}'
     )
 
     Business.create!(
@@ -256,16 +238,14 @@ ApplicationRecord.transaction do
         avg_rating: 4.1,
         lat: 40.727261514542754,
         long: -73.99566375230366,
-        hours: '{
-            "Mon:  7:00 AM - 6:00 PM",
-            "Tue:  7:00 AM - 6:00 PM",
-            "Wed:  7:00 AM - 6:00 PM",
-            "Thu:  7:00 AM - 6:00 PM",
-            "Fri:  7:00 AM - 6:00 PM",
-            "Sat:  8:00 AM - 5:00 PM",
-            "Sun:  8:00 AM - 5:00 PM"
-        }'
-    )
+        hours: '{"Mon::  7:00 AM - 6:00 PM",
+            "Tue::  7:00 AM - 6:00 PM",
+            "Wed::  7:00 AM - 6:00 PM",
+            "Thu::  7:00 AM - 6:00 PM",
+            "Fri::  7:00 AM - 6:00 PM",
+            "Sat::  8:00 AM - 5:00 PM",
+            "Sun::  8:00 AM - 5:00 PM"}'
+        )
 
     Business.create!(
         name: 'Starbucks', 
@@ -280,15 +260,13 @@ ApplicationRecord.transaction do
         avg_rating: 3.8,
         lat: 40.727261514542754,
         long: -73.99566375230366,
-        hours: '{
-            "Mon:  6:00 AM - 7:00 PM",
-            "Tue:  6:00 AM - 7:00 PM",
-            "Wed:  6:00 AM - 7:00 PM",
-            "Thu:  6:00 AM - 7:00 PM",
-            "Fri:  6:00 AM - 7:30 PM",
-            "Sat:  7:00 AM - 7:00 PM",
-            "Sun:  7:00 AM - 7:00 PM"
-        }'
+        hours: '{"Mon::  6:00 AM - 7:00 PM",
+            "Tue::  6:00 AM - 7:00 PM",
+            "Wed::  6:00 AM - 7:00 PM",
+            "Thu::  6:00 AM - 7:00 PM",
+            "Fri::  6:00 AM - 7:30 PM",
+            "Sat::  7:00 AM - 7:00 PM",
+            "Sun::  7:00 AM - 7:00 PM"}'
     )
 
     Business.create!(
@@ -304,14 +282,12 @@ ApplicationRecord.transaction do
         avg_rating: 4.4,
         lat: 40.727261514542754,
         long: -73.99566375230366,
-        hours: '{
-            "Mon:  7:00 AM - 5:00 PM",
-            "Wed:  7:00 AM - 5:00 PM",
-            "Thu:  7:00 AM - 5:00 PM",
-            "Fri:  7:00 AM - 5:00 PM",
-            "Sat:  8:00 AM - 6:00 PM",
-            "Sun:  8:00 AM - 6:00 PM"
-        }'
+        hours: '{"Mon::  7:00 AM - 5:00 PM",
+            "Wed::  7:00 AM - 5:00 PM",
+            "Thu::  7:00 AM - 5:00 PM",
+            "Fri::  7:00 AM - 5:00 PM",
+            "Sat::  8:00 AM - 6:00 PM",
+            "Sun::  8:00 AM - 6:00 PM"}'
     )
 
     puts "Done!"

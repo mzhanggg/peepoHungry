@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBusiness, getBusiness } from "../../store/businessReducer";
 import { useParams } from 'react-router-dom';
-import Map from '../Map/Map';
+import Map from '../Map/Map'
 import Hours from "./Hours";
 import BusinessIndexHeader from "./BusinessIndexHeader";
 
@@ -23,8 +23,8 @@ const BusinessShow = () => {
                     <Map />
                 </div>
 
-                <div>
-                    <Hours />
+                <div id="hours-container">
+                    <Hours business={business}/>
                 </div>
             </div>
 

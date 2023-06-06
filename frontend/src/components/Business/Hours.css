@@ -1,0 +1,19 @@
+#hours-container {
+    background: yellow;
+    padding: 20px;
+    width: 400px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+#day-time {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+#day, #hrs{
+    flex-basis: 50%;
+}
+

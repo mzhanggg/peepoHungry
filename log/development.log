@@ -23698,3 +23698,709 @@ Processing by Api::BusinessesController#index as JSON
 Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 0.5ms | Allocations: 3195)
 
 
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-05 17:27:43 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (7.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 87.3ms | Allocations: 5590)
+Completed 200 OK in 93ms (Views: 88.2ms | ActiveRecord: 34.5ms | Allocations: 6044)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-05 17:27:45 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (6.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.5ms | Allocations: 330)
+Completed 200 OK in 14ms (Views: 1.1ms | ActiveRecord: 6.4ms | Allocations: 1312)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-05 17:27:45 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 330)
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 1284)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-06-05 17:31:12 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"peepo@hungry.io", "password"=>"[FILTERED]", "session"=>{"email"=>"peepo@hungry.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `find_by_credentials'
+  [1m[36mUser Exists? (6.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (8.7ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-06-05 21:31:12.978331"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 8.5ms | Allocations: 125)
+Completed 200 OK in 498ms (Views: 10.9ms | ActiveRecord: 27.1ms | Allocations: 5070)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2023-06-05 17:31:23 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "peepo@hungry.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "session_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-06-05 21:31:24.001805"], ["session_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_session_token!'
+Completed 204 No Content in 23ms (ActiveRecord: 5.3ms | Allocations: 4747)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-06-05 17:49:06 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (6.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 31ms (Views: 0.3ms | ActiveRecord: 13.9ms | Allocations: 4895)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-05 17:50:11 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (8.0ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 38.5ms | Allocations: 12161)
+Completed 200 OK in 311ms (Views: 262.4ms | ActiveRecord: 28.0ms | Allocations: 292644)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-05 17:50:13 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 1.2ms | Allocations: 399)
+Completed 200 OK in 8ms (Views: 2.3ms | ActiveRecord: 0.3ms | Allocations: 3208)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-05 17:50:13 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 331)
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 1322)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-05 17:50:24 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 331)
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.3ms | Allocations: 1307)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-05 17:52:46 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (3.6ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 2.1ms | Allocations: 331)
+Completed 200 OK in 17ms (Views: 3.5ms | ActiveRecord: 3.6ms | Allocations: 1295)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-05 17:52:46 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 330)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 1294)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-05 17:56:37 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (1.2ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 8.9ms | Allocations: 330)
+Completed 200 OK in 24ms (Views: 10.2ms | ActiveRecord: 1.2ms | Allocations: 1287)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-05 17:56:37 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (0.2ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 330)
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 1287)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-05 22:05:23 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (6.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 15.2ms | Allocations: 330)
+Completed 200 OK in 352ms (Views: 25.5ms | ActiveRecord: 143.7ms | Allocations: 4347)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-05 22:05:23 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 330)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 1284)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-05 22:20:54 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (7.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 4.5ms | Allocations: 330)
+Completed 200 OK in 138ms (Views: 5.6ms | ActiveRecord: 47.0ms | Allocations: 4175)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-05 22:20:54 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.8ms | Allocations: 330)
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.4ms | Allocations: 1290)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-05 22:46:43 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (6.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 1.3ms | Allocations: 330)
+Completed 200 OK in 132ms (Views: 1.9ms | ActiveRecord: 61.4ms | Allocations: 4196)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-05 22:46:44 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.4ms | Allocations: 330)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 1311)
+
+
+Started GET "/businesses/api/session" for 127.0.0.1 at 2023-06-05 22:47:12 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/businesses/api/session"):
+  
+Started GET "/businesses/api/session" for 127.0.0.1 at 2023-06-05 22:47:55 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/businesses/api/session"):
+  
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-05 22:47:55 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (1.8ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 25.8ms | Allocations: 2736)
+Completed 200 OK in 32ms (Views: 25.8ms | ActiveRecord: 1.8ms | Allocations: 3204)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-05 22:47:59 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 4.8ms | Allocations: 2738)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.4ms | Allocations: 3206)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-05 22:48:00 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (0.6ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.4ms | Allocations: 330)
+Completed 200 OK in 4ms (Views: 0.9ms | ActiveRecord: 0.6ms | Allocations: 1293)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-05 22:48:00 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 333)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 1296)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-05 22:50:19 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (0.7ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.6ms | Allocations: 330)
+Completed 200 OK in 7ms (Views: 1.2ms | ActiveRecord: 0.7ms | Allocations: 1300)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-05 22:50:19 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (3.1ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.2ms | Allocations: 330)
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 3.1ms | Allocations: 1299)
+
+
+Started GET "/businesses/api/session" for 127.0.0.1 at 2023-06-05 22:50:30 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/businesses/api/session"):
+  
+Started GET "/businesses/api/session" for 127.0.0.1 at 2023-06-05 22:50:34 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/businesses/api/session"):
+  
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-05 22:50:34 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.6ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 8.9ms | Allocations: 2735)
+Completed 200 OK in 12ms (Views: 9.4ms | ActiveRecord: 0.6ms | Allocations: 3190)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-05 22:50:35 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.5ms | Allocations: 330)
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.2ms | Allocations: 1290)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-05 22:50:35 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.1ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 330)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 1290)
+
+
+  [1m[35m (23.3ms)[0m  [1m[35mCREATE DATABASE "peepoHungry_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE DATABASE "peepoHungry_test" ENCODING = 'unicode'[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (5.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (38.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (17.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (4.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (28.5ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (44.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_variant_records" CASCADE[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (17.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "businesses" CASCADE[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "businesses" ("id" bigserial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "zipcode" character varying NOT NULL, "category" character varying NOT NULL, "phone_number" character varying NOT NULL, "price_range" float NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "neighborhood" character varying NOT NULL, "lat" float NOT NULL, "long" float NOT NULL, "hours" json NOT NULL, "avg_rating" float NOT NULL)[0m
+  [1m[35m (4.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (9.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "fname" character varying NOT NULL, "lname" character varying NOT NULL, "email" character varying NOT NULL, "zipcode" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (3.3ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "active_storage_variant_records" ADD CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35mSQL (2.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (20.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (13.5ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (3.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (2.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_variant_records" CASCADE[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL)[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (3.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "businesses" CASCADE[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "businesses" ("id" bigserial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "zipcode" character varying NOT NULL, "category" character varying NOT NULL, "phone_number" character varying NOT NULL, "price_range" float NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "neighborhood" character varying NOT NULL, "lat" float NOT NULL, "long" float NOT NULL, "hours" json NOT NULL, "avg_rating" float NOT NULL)[0m
+  [1m[35m (3.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (12.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "fname" character varying NOT NULL, "lname" character varying NOT NULL, "email" character varying NOT NULL, "zipcode" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (6.4ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "active_storage_variant_records" ADD CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (2.6ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "development"], ["updated_at", "2023-06-06 02:53:54.856609"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2023-06-06 02:53:54.869239"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.9ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "peepo"], ["lname", "Hungry"], ["email", "peepo@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-06 02:53:55.339117"], ["updated_at", "2023-06-06 02:53:55.339117"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mBusiness Create (1.3ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Krusty Krab"], ["address", "42 Wallaby Way"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10011"], ["category", "Burger"], ["phone_number", "678-999-8212"], ["price_range", 100.0], ["created_at", "2023-06-06 02:53:55.355298"], ["updated_at", "2023-06-06 02:53:55.355298"], ["neighborhood", "Union Square"], ["lat", 40.73629958855562], ["long", -73.99379521689175], ["hours", "\"{\\\"Mon:  9:00 AM - 6:00 PM\\\",\\n            \\\"Tue:  9:00 AM - 6:00 PM\\\",\\n            \\\"Wed:  9:00 AM - 6:00 PM\\\",\\n            \\\"Thu:  9:00 AM - 6:00 PM\\\",\\n            \\\"Fri:  9:00 AM - 6:00 AM\\\",\\n            \\\"Sat:  CLOSED\\\",\\n            \\\"Sun:  CLOSED\\\"}\""], ["avg_rating", 4.3]]
+  [1m[36mBusiness Create (0.3ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Wendy's"], ["address", "20 E 14th St"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10003"], ["category", "Burger"], ["phone_number", "212-243-0438"], ["price_range", 25.0], ["created_at", "2023-06-06 02:53:55.357876"], ["updated_at", "2023-06-06 02:53:55.357876"], ["neighborhood", "Union Square"], ["lat", 40.735490756799535], ["long", -73.9926613133639], ["hours", "\"{\\\"Mon:  7:00 AM - 12:00 AM\\\",\\n            \\\"Tue:  7:00 AM - 12:00 AM\\\",\\n            \\\"Wed:  7:00 AM - 12:00 AM\\\",\\n            \\\"Thu:  7:00 AM - 1:00 AM\\\",\\n            \\\"Fri:  7:00 AM - 1:00 AM\\\",\\n            \\\"Sat:  7:00 AM - 1:00 AM\\\",\\n            \\\"Sun:  7:00 AM - 12:00 AM\\\"}\""], ["avg_rating", 4.0]]
+  [1m[36mBusiness Create (0.3ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Let's Meat BBQ"], ["address", "307 5th Ave"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10016"], ["category", "Korean"], ["phone_number", "212-889-0089"], ["price_range", 75.0], ["created_at", "2023-06-06 02:53:55.359088"], ["updated_at", "2023-06-06 02:53:55.359088"], ["neighborhood", "Koreatown"], ["lat", 40.74685373508556], ["long", -73.98556946035512], ["hours", "\"{\\\"Mon:  12:00 PM - 11:00 PM\\\",\\n            \\\"Tue:  12:00 PM - 11:00 PM\\\",\\n            \\\"Wed:  12:00 PM - 11:00 PM\\\",\\n            \\\"Thu:  12:00 PM - 1:00 AM\\\",\\n            \\\"Fri:  12:00 PM - 1:00 AM\\\",\\n            \\\"Sat:  12:00 PM - 1:00 AM\\\",\\n            \\\"Sun:  12:00 PM - 11:00 PM\\\"}\""], ["avg_rating", 4.3]]
+  [1m[36mBusiness Create (0.3ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Joe Coffee Company"], ["address", "9 E 13th St"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10003"], ["category", "Coffee"], ["phone_number", "212-924-3300"], ["price_range", 25.0], ["created_at", "2023-06-06 02:53:55.360332"], ["updated_at", "2023-06-06 02:53:55.360332"], ["neighborhood", "Union Square"], ["lat", 40.74685373508556], ["long", -73.98556946035512], ["hours", "\"{\\\"Mon:  7:00 AM - 6:30 PM\\\",\\n            \\\"Tue:  7:00 AM - 6:30 PM\\\",\\n            \\\"Wed:  7:00 AM - 6:30 PM\\\",\\n            \\\"Thu:  7:00 AM - 6:30 PM\\\",\\n            \\\"Fri:  7:00 AM - 6:30 PM\\\",\\n            \\\"Sat:  9:00 AM - 5:00 PM\\\",\\n            \\\"Sun:  9:00 AM - 5:00 PM\\\"}\""], ["avg_rating", 4.3]]
+  [1m[36mBusiness Create (0.3ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Blue Bottle Coffee"], ["address", " 101 University Pl"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10003"], ["category", "Coffee"], ["phone_number", "510-653-3394"], ["price_range", 50.0], ["created_at", "2023-06-06 02:53:55.361492"], ["updated_at", "2023-06-06 02:53:55.361492"], ["neighborhood", "Union Square"], ["lat", 40.73417815176639], ["long", -73.99261471880794], ["hours", "\"{\\n            \\\"Mon:  7:00 AM - 6:30 PM\\\",\\n            \\\"Tue:  7:00 AM - 6:30 PM\\\",\\n            \\\"Wed:  7:00 AM - 6:30 PM\\\",\\n            \\\"Thu:  7:00 AM - 6:30 PM\\\",\\n            \\\"Fri:  7:00 AM - 6:30 PM\\\",\\n            \\\"Sat:  9:00 AM - 5:00 PM\\\",\\n            \\\"Sun:  9:00 AM - 5:00 PM\\\"\\n        }\""], ["avg_rating", 4.4]]
+  [1m[36mBusiness Create (0.3ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Jongro BBQ"], ["address", "22 W 32nd St"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10001"], ["category", "Korean"], ["phone_number", "212-473-2233"], ["price_range", 50.0], ["created_at", "2023-06-06 02:53:55.362655"], ["updated_at", "2023-06-06 02:53:55.362655"], ["neighborhood", "Koreatown"], ["lat", 40.747716073138314], ["long", -73.98693770444751], ["hours", "\"{\\\"Mon:  11:30AM - 12:00 AM\\\",\\n            \\\"Tue:  11:30AM - 12:00 AM\\\",\\n            \\\"Wed:  11:30AM - 12:00 AM\\\",\\n            \\\"Thu:  11:30AM - 12:00 AM\\\",\\n            \\\"Fri:  11:30AM - 1:00 AM\\\",\\n            \\\"Sat:  11:30AM - 1:00 AM\\\",\\n            \\\"Sun:  11:30AM - 12:00 AM\\\"}\""], ["avg_rating", 4.5]]
+  [1m[36mBusiness Create (0.3ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Gopchang Story BBQ"], ["address", "312 5th Ave"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10001"], ["category", "Korean"], ["phone_number", "646-371-9469"], ["price_range", 50.0], ["created_at", "2023-06-06 02:53:55.363794"], ["updated_at", "2023-06-06 02:53:55.363794"], ["neighborhood", "Koreatown"], ["lat", 40.747355929732024], ["long", -73.98597216224515], ["hours", "\"{\\\"Mon:  4:00 PM - 1:00 AM\\\",\\n            \\\"Tue:  4:00 PM - 1:00 AM\\\",\\n            \\\"Wed:  4:00 PM - 1:00 AM\\\",\\n            \\\"Thu:  4:00 PM - 1:00 AM\\\",\\n            \\\"Fri:  12:00 PM - 3:00 AM\\\",\\n            \\\"Sat:  12:00 PM - 3:00 AM\\\",\\n            \\\"Sun:  12:00 PM - 1:00 AM\\\"}\""], ["avg_rating", 4.2]]
+  [1m[36mBusiness Create (0.3ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Turntable Chicken Jazz"], ["address", "20 W 33rd St"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10001"], ["category", "Korean"], ["phone_number", "212-714-9700"], ["price_range", 50.0], ["created_at", "2023-06-06 02:53:55.364937"], ["updated_at", "2023-06-06 02:53:55.364937"], ["neighborhood", "Koreatown"], ["lat", 40.74817654923235], ["long", -73.98642506946062], ["hours", "\"{\\\"Mon:  12:00 PM - 12:00 AM\\\",\\n            \\\"Tue:  12:00 PM - 12:00 AM\\\",\\n            \\\"Wed:  12:00 PM - 12:00 AM\\\",\\n            \\\"Thu:  12:00 PM - 12:00 AM\\\",\\n            \\\"Fri:  12:00 PM - 12:00 AM\\\",\\n            \\\"Sat:  12:00 PM - 12:00 AM\\\",\\n            \\\"Sun:  12:00 PM - 10:00 PM\\\"}\""], ["avg_rating", 4.3]]
+  [1m[36mBusiness Create (0.3ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Boka"], ["address", "9 St Marks Pl"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10003"], ["category", "Korean"], ["phone_number", "646-678-5796"], ["price_range", 50.0], ["created_at", "2023-06-06 02:53:55.366063"], ["updated_at", "2023-06-06 02:53:55.366063"], ["neighborhood", "East Village"], ["lat", 40.73006230011236], ["long", -73.98916249448607], ["hours", "\"{\\\"Mon:  12:00 PM - 11:00 PM\\\",\\n            \\\"Tue:  12:00 PM - 11:00 PM\\\",\\n            \\\"Wed:  12:00 PM - 11:00 PM\\\",\\n            \\\"Thu:  12:00 PM - 11:00 PM\\\",\\n            \\\"Fri:  12:00 PM - 12:00 AM\\\",\\n            \\\"Sat:  12:00 PM - 12:00 AM\\\",\\n            \\\"Sun:  12:00 PM - 11:00 PM\\\"}\""], ["avg_rating", 4.3]]
+  [1m[36mBusiness Create (1.1ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Gregorys Coffee"], ["address", "649 Broadway"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10003"], ["category", "Coffee"], ["phone_number", "877-210-0105"], ["price_range", 50.0], ["created_at", "2023-06-06 02:53:55.367171"], ["updated_at", "2023-06-06 02:53:55.367171"], ["neighborhood", "NOHO"], ["lat", 40.727261514542754], ["long", -73.99566375230366], ["hours", "\"{\\\"Mon:  7:00 AM - 6:00 PM\\\",\\n            \\\"Tue:  7:00 AM - 6:00 PM\\\",\\n            \\\"Wed:  7:00 AM - 6:00 PM\\\",\\n            \\\"Thu:  7:00 AM - 6:00 PM\\\",\\n            \\\"Fri:  7:00 AM - 6:00 PM\\\",\\n            \\\"Sat:  8:00 AM - 5:00 PM\\\",\\n            \\\"Sun:  8:00 AM - 5:00 PM\\\"}\""], ["avg_rating", 4.1]]
+  [1m[36mBusiness Create (0.3ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Starbucks"], ["address", "510 6th Ave"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10011"], ["category", "Coffee"], ["phone_number", "212-242-5981"], ["price_range", 50.0], ["created_at", "2023-06-06 02:53:55.369119"], ["updated_at", "2023-06-06 02:53:55.369119"], ["neighborhood", "Union Square"], ["lat", 40.727261514542754], ["long", -73.99566375230366], ["hours", "\"{\\\"Mon:  6:00 AM - 7:00 PM\\\",\\n            \\\"Tue:  6:00 AM - 7:00 PM\\\",\\n            \\\"Wed:  6:00 AM - 7:00 PM\\\",\\n            \\\"Thu:  6:00 AM - 7:00 PM\\\",\\n            \\\"Fri:  6:00 AM - 7:30 PM\\\",\\n            \\\"Sat:  7:00 AM - 7:00 PM\\\",\\n            \\\"Sun:  7:00 AM - 7:00 PM\\\"}\""], ["avg_rating", 3.8]]
+  [1m[36mBusiness Create (0.3ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Saltwater Coffee"], ["address", "126 Waverly Pl"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10011"], ["category", "Coffee"], ["phone_number", "917-881-2245"], ["price_range", 25.0], ["created_at", "2023-06-06 02:53:55.370322"], ["updated_at", "2023-06-06 02:53:55.370322"], ["neighborhood", "West Village"], ["lat", 40.727261514542754], ["long", -73.99566375230366], ["hours", "\"{\\\"Mon:  7:00 AM - 5:00 PM\\\",\\n            \\\"Wed:  7:00 AM - 5:00 PM\\\",\\n            \\\"Thu:  7:00 AM - 5:00 PM\\\",\\n            \\\"Fri:  7:00 AM - 5:00 PM\\\",\\n            \\\"Sat:  8:00 AM - 6:00 PM\\\",\\n            \\\"Sun:  8:00 AM - 6:00 PM\\\"}\""], ["avg_rating", 4.4]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/businesses/api/session" for 127.0.0.1 at 2023-06-05 22:54:04 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/businesses/api/session"):
+  
+Started GET "/businesses/api/session" for 127.0.0.1 at 2023-06-05 22:54:11 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/businesses/api/session"):
+  
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-05 22:54:11 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (2.0ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 14.0ms | Allocations: 2734)
+Completed 200 OK in 22ms (Views: 13.4ms | ActiveRecord: 2.0ms | Allocations: 3189)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-05 22:54:12 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.5ms | Allocations: 330)
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 0.4ms | Allocations: 1293)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-05 22:54:12 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.2ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 330)
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 1293)
+
+
+Started GET "/businesses/api/session" for 127.0.0.1 at 2023-06-05 23:07:28 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/businesses/api/session"):
+  
+Started GET "/api/session" for 127.0.0.1 at 2023-06-05 23:07:33 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 85ms (Views: 0.3ms | ActiveRecord: 45.0ms | Allocations: 3861)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-05 23:07:33 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.7ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 9.6ms | Allocations: 2789)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.7ms | Allocations: 3250)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-05 23:07:34 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 330)
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 1286)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-05 23:07:34 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 330)
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.5ms | Allocations: 1284)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-05 23:10:14 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (9.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 26.9ms | Allocations: 2734)
+Completed 200 OK in 35ms (Views: 20.2ms | ActiveRecord: 9.4ms | Allocations: 3192)
+
+
+Started GET "/api/businesses/7" for 127.0.0.1 at 2023-06-05 23:10:14 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"7"}
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.4ms | Allocations: 330)
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 0.4ms | Allocations: 1293)
+
+
+Started GET "/api/businesses/7" for 127.0.0.1 at 2023-06-05 23:10:14 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"7"}
+  [1m[36mBusiness Load (0.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 330)
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 1293)
+
+
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE DATABASE "peepoHungry_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE "peepoHungry_test" ENCODING = 'unicode'[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (2.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (17.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (11.4ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (2.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (2.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_variant_records" CASCADE[0m
+  [1m[35m (36.9ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL)[0m
+  [1m[35m (14.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (9.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "businesses" CASCADE[0m
+  [1m[35m (85.0ms)[0m  [1m[35mCREATE TABLE "businesses" ("id" bigserial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "zipcode" character varying NOT NULL, "category" character varying NOT NULL, "phone_number" character varying NOT NULL, "price_range" float NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "neighborhood" character varying NOT NULL, "lat" float NOT NULL, "long" float NOT NULL, "hours" json NOT NULL, "avg_rating" float NOT NULL)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (12.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "fname" character varying NOT NULL, "lname" character varying NOT NULL, "email" character varying NOT NULL, "zipcode" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (3.3ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "active_storage_variant_records" ADD CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35mSQL (17.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (11.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (13.4ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (2.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (3.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_variant_records" CASCADE[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (2.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "businesses" CASCADE[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "businesses" ("id" bigserial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "zipcode" character varying NOT NULL, "category" character varying NOT NULL, "phone_number" character varying NOT NULL, "price_range" float NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "neighborhood" character varying NOT NULL, "lat" float NOT NULL, "long" float NOT NULL, "hours" json NOT NULL, "avg_rating" float NOT NULL)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "fname" character varying NOT NULL, "lname" character varying NOT NULL, "email" character varying NOT NULL, "zipcode" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (2.5ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "active_storage_variant_records" ADD CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (1.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "development"], ["updated_at", "2023-06-06 03:25:42.334851"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2023-06-06 03:25:42.344260"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "peepo"], ["lname", "Hungry"], ["email", "peepo@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-06 03:25:42.823853"], ["updated_at", "2023-06-06 03:25:42.823853"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mBusiness Create (1.2ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Krusty Krab"], ["address", "42 Wallaby Way"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10011"], ["category", "Burger"], ["phone_number", "678-999-8212"], ["price_range", 100.0], ["created_at", "2023-06-06 03:25:42.838486"], ["updated_at", "2023-06-06 03:25:42.838486"], ["neighborhood", "Union Square"], ["lat", 40.73629958855562], ["long", -73.99379521689175], ["hours", "\"{\\\"Mon::  9:00 AM - 6:00 PM\\\",\\n            \\\"Tue::  9:00 AM - 6:00 PM\\\",\\n            \\\"Wed::  9:00 AM - 6:00 PM\\\",\\n            \\\"Thu::  9:00 AM - 6:00 PM\\\",\\n            \\\"Fri::  9:00 AM - 6:00 AM\\\",\\n            \\\"Sat::  CLOSED\\\",\\n            \\\"Sun::  CLOSED\\\"}\""], ["avg_rating", 4.3]]
+  [1m[36mBusiness Create (0.5ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Wendy's"], ["address", "20 E 14th St"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10003"], ["category", "Burger"], ["phone_number", "212-243-0438"], ["price_range", 25.0], ["created_at", "2023-06-06 03:25:42.841031"], ["updated_at", "2023-06-06 03:25:42.841031"], ["neighborhood", "Union Square"], ["lat", 40.735490756799535], ["long", -73.9926613133639], ["hours", "\"{\\\"Mon::  7:00 AM - 12:00 AM\\\",\\n            \\\"Tue::  7:00 AM - 12:00 AM\\\",\\n            \\\"Wed::  7:00 AM - 12:00 AM\\\",\\n            \\\"Thu::  7:00 AM - 1:00 AM\\\",\\n            \\\"Fri::  7:00 AM - 1:00 AM\\\",\\n            \\\"Sat::  7:00 AM - 1:00 AM\\\",\\n            \\\"Sun::  7:00 AM - 12:00 AM\\\"}\""], ["avg_rating", 4.0]]
+  [1m[36mBusiness Create (0.2ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Let's Meat BBQ"], ["address", "307 5th Ave"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10016"], ["category", "Korean"], ["phone_number", "212-889-0089"], ["price_range", 75.0], ["created_at", "2023-06-06 03:25:42.842703"], ["updated_at", "2023-06-06 03:25:42.842703"], ["neighborhood", "Koreatown"], ["lat", 40.74685373508556], ["long", -73.98556946035512], ["hours", "\"{\\\"Mon::  12:00 PM - 11:00 PM\\\",\\n            \\\"Tue::  12:00 PM - 11:00 PM\\\",\\n            \\\"Wed::  12:00 PM - 11:00 PM\\\",\\n            \\\"Thu::  12:00 PM - 1:00 AM\\\",\\n            \\\"Fri::  12:00 PM - 1:00 AM\\\",\\n            \\\"Sat::  12:00 PM - 1:00 AM\\\",\\n            \\\"Sun::  12:00 PM - 11:00 PM\\\"}\""], ["avg_rating", 4.3]]
+  [1m[36mBusiness Create (0.2ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Joe Coffee Company"], ["address", "9 E 13th St"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10003"], ["category", "Coffee"], ["phone_number", "212-924-3300"], ["price_range", 25.0], ["created_at", "2023-06-06 03:25:42.843942"], ["updated_at", "2023-06-06 03:25:42.843942"], ["neighborhood", "Union Square"], ["lat", 40.74685373508556], ["long", -73.98556946035512], ["hours", "\"{\\\"Mon::  7:00 AM - 6:30 PM\\\",\\n            \\\"Tue::  7:00 AM - 6:30 PM\\\",\\n            \\\"Wed::  7:00 AM - 6:30 PM\\\",\\n            \\\"Thu::  7:00 AM - 6:30 PM\\\",\\n            \\\"Fri::  7:00 AM - 6:30 PM\\\",\\n            \\\"Sat::  9:00 AM - 5:00 PM\\\",\\n            \\\"Sun::  9:00 AM - 5:00 PM\\\"}\""], ["avg_rating", 4.3]]
+  [1m[36mBusiness Create (0.2ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Blue Bottle Coffee"], ["address", " 101 University Pl"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10003"], ["category", "Coffee"], ["phone_number", "510-653-3394"], ["price_range", 50.0], ["created_at", "2023-06-06 03:25:42.845239"], ["updated_at", "2023-06-06 03:25:42.845239"], ["neighborhood", "Union Square"], ["lat", 40.73417815176639], ["long", -73.99261471880794], ["hours", "\"{\\\"Mon::  7:00 AM - 6:30 PM\\\",\\n            \\\"Tue::  7:00 AM - 6:30 PM\\\",\\n            \\\"Wed::  7:00 AM - 6:30 PM\\\",\\n            \\\"Thu::  7:00 AM - 6:30 PM\\\",\\n            \\\"Fri::  7:00 AM - 6:30 PM\\\",\\n            \\\"Sat::  9:00 AM - 5:00 PM\\\",\\n            \\\"Sun::  9:00 AM - 5:00 PM\\\"}\""], ["avg_rating", 4.4]]
+  [1m[36mBusiness Create (0.2ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Jongro BBQ"], ["address", "22 W 32nd St"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10001"], ["category", "Korean"], ["phone_number", "212-473-2233"], ["price_range", 50.0], ["created_at", "2023-06-06 03:25:42.846417"], ["updated_at", "2023-06-06 03:25:42.846417"], ["neighborhood", "Koreatown"], ["lat", 40.747716073138314], ["long", -73.98693770444751], ["hours", "\"{\\\"Mon::  11:30AM - 12:00 AM\\\",\\n            \\\"Tue::  11:30AM - 12:00 AM\\\",\\n            \\\"Wed::  11:30AM - 12:00 AM\\\",\\n            \\\"Thu::  11:30AM - 12:00 AM\\\",\\n            \\\"Fri::  11:30AM - 1:00 AM\\\",\\n            \\\"Sat::  11:30AM - 1:00 AM\\\",\\n            \\\"Sun::  11:30AM - 12:00 AM\\\"}\""], ["avg_rating", 4.5]]
+  [1m[36mBusiness Create (0.2ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Gopchang Story BBQ"], ["address", "312 5th Ave"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10001"], ["category", "Korean"], ["phone_number", "646-371-9469"], ["price_range", 50.0], ["created_at", "2023-06-06 03:25:42.847534"], ["updated_at", "2023-06-06 03:25:42.847534"], ["neighborhood", "Koreatown"], ["lat", 40.747355929732024], ["long", -73.98597216224515], ["hours", "\"{\\\"Mon:  4:00 PM - 1:00 AM\\\",\\n            \\\"Tue::  4:00 PM - 1:00 AM\\\",\\n            \\\"Wed::  4:00 PM - 1:00 AM\\\",\\n            \\\"Thu::  4:00 PM - 1:00 AM\\\",\\n            \\\"Fri::  12:00 PM - 3:00 AM\\\",\\n            \\\"Sat::  12:00 PM - 3:00 AM\\\",\\n            \\\"Sun::  12:00 PM - 1:00 AM\\\"}\""], ["avg_rating", 4.2]]
+  [1m[36mBusiness Create (0.2ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Turntable Chicken Jazz"], ["address", "20 W 33rd St"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10001"], ["category", "Korean"], ["phone_number", "212-714-9700"], ["price_range", 50.0], ["created_at", "2023-06-06 03:25:42.848605"], ["updated_at", "2023-06-06 03:25:42.848605"], ["neighborhood", "Koreatown"], ["lat", 40.74817654923235], ["long", -73.98642506946062], ["hours", "\"{\\\"Mon:  12:00 PM - 12:00 AM\\\",\\n            \\\"Tue::  12:00 PM - 12:00 AM\\\",\\n            \\\"Wed::  12:00 PM - 12:00 AM\\\",\\n            \\\"Thu::  12:00 PM - 12:00 AM\\\",\\n            \\\"Fri::  12:00 PM - 12:00 AM\\\",\\n            \\\"Sat::  12:00 PM - 12:00 AM\\\",\\n            \\\"Sun::  12:00 PM - 10:00 PM\\\"}\""], ["avg_rating", 4.3]]
+  [1m[36mBusiness Create (0.3ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Boka"], ["address", "9 St Marks Pl"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10003"], ["category", "Korean"], ["phone_number", "646-678-5796"], ["price_range", 50.0], ["created_at", "2023-06-06 03:25:42.849705"], ["updated_at", "2023-06-06 03:25:42.849705"], ["neighborhood", "East Village"], ["lat", 40.73006230011236], ["long", -73.98916249448607], ["hours", "\"{\\\"Mon::  12:00 PM - 11:00 PM\\\",\\n            \\\"Tue::  12:00 PM - 11:00 PM\\\",\\n            \\\"Wed::  12:00 PM - 11:00 PM\\\",\\n            \\\"Thu::  12:00 PM - 11:00 PM\\\",\\n            \\\"Fri::  12:00 PM - 12:00 AM\\\",\\n            \\\"Sat::  12:00 PM - 12:00 AM\\\",\\n            \\\"Sun::  12:00 PM - 11:00 PM\\\"}\""], ["avg_rating", 4.3]]
+  [1m[36mBusiness Create (0.3ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Gregorys Coffee"], ["address", "649 Broadway"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10003"], ["category", "Coffee"], ["phone_number", "877-210-0105"], ["price_range", 50.0], ["created_at", "2023-06-06 03:25:42.850844"], ["updated_at", "2023-06-06 03:25:42.850844"], ["neighborhood", "NOHO"], ["lat", 40.727261514542754], ["long", -73.99566375230366], ["hours", "\"{\\\"Mon::  7:00 AM - 6:00 PM\\\",\\n            \\\"Tue::  7:00 AM - 6:00 PM\\\",\\n            \\\"Wed::  7:00 AM - 6:00 PM\\\",\\n            \\\"Thu::  7:00 AM - 6:00 PM\\\",\\n            \\\"Fri::  7:00 AM - 6:00 PM\\\",\\n            \\\"Sat::  8:00 AM - 5:00 PM\\\",\\n            \\\"Sun::  8:00 AM - 5:00 PM\\\"}\""], ["avg_rating", 4.1]]
+  [1m[36mBusiness Create (0.3ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Starbucks"], ["address", "510 6th Ave"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10011"], ["category", "Coffee"], ["phone_number", "212-242-5981"], ["price_range", 50.0], ["created_at", "2023-06-06 03:25:42.851995"], ["updated_at", "2023-06-06 03:25:42.851995"], ["neighborhood", "Union Square"], ["lat", 40.727261514542754], ["long", -73.99566375230366], ["hours", "\"{\\\"Mon::  6:00 AM - 7:00 PM\\\",\\n            \\\"Tue::  6:00 AM - 7:00 PM\\\",\\n            \\\"Wed::  6:00 AM - 7:00 PM\\\",\\n            \\\"Thu::  6:00 AM - 7:00 PM\\\",\\n            \\\"Fri::  6:00 AM - 7:30 PM\\\",\\n            \\\"Sat::  7:00 AM - 7:00 PM\\\",\\n            \\\"Sun::  7:00 AM - 7:00 PM\\\"}\""], ["avg_rating", 3.8]]
+  [1m[36mBusiness Create (0.3ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Saltwater Coffee"], ["address", "126 Waverly Pl"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10011"], ["category", "Coffee"], ["phone_number", "917-881-2245"], ["price_range", 25.0], ["created_at", "2023-06-06 03:25:42.853136"], ["updated_at", "2023-06-06 03:25:42.853136"], ["neighborhood", "West Village"], ["lat", 40.727261514542754], ["long", -73.99566375230366], ["hours", "\"{\\\"Mon::  7:00 AM - 5:00 PM\\\",\\n            \\\"Wed::  7:00 AM - 5:00 PM\\\",\\n            \\\"Thu::  7:00 AM - 5:00 PM\\\",\\n            \\\"Fri::  7:00 AM - 5:00 PM\\\",\\n            \\\"Sat::  8:00 AM - 6:00 PM\\\",\\n            \\\"Sun::  8:00 AM - 6:00 PM\\\"}\""], ["avg_rating", 4.4]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-05 23:26:02 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (7.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 62.4ms | Allocations: 5590)
+Completed 200 OK in 87ms (Views: 69.3ms | ActiveRecord: 23.1ms | Allocations: 6050)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-05 23:26:03 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.7ms | Allocations: 330)
+Completed 200 OK in 7ms (Views: 2.0ms | ActiveRecord: 0.4ms | Allocations: 1324)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-05 23:26:03 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.2ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 330)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.2ms | Allocations: 1296)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-05 23:31:02 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (1.9ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 17.3ms | Allocations: 2734)
+Completed 200 OK in 23ms (Views: 17.8ms | ActiveRecord: 1.9ms | Allocations: 3210)
+
+
+Started GET "/api/businesses/4" for 127.0.0.1 at 2023-06-05 23:31:03 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 1.2ms | Allocations: 330)
+Completed 200 OK in 7ms (Views: 2.5ms | ActiveRecord: 0.4ms | Allocations: 1278)
+
+
+Started GET "/api/businesses/4" for 127.0.0.1 at 2023-06-05 23:31:03 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.3ms | Allocations: 330)
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.3ms | Allocations: 1278)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-05 23:31:14 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  Rendered api/businesses/index.json.jbuilder (Duration: 6.0ms | Allocations: 2734)
+Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 0.3ms | Allocations: 3198)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-05 23:31:14 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.5ms | Allocations: 330)
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.3ms | Allocations: 1299)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-05 23:31:14 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (0.2ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 0.4ms | Allocations: 330)
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 1299)
+
+
+Started GET "/api/businesses/1" for 127.0.0.1 at 2023-06-05 23:43:05 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mBusiness Load (6.8ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:10:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  Rendered api/businesses/show.json.jbuilder (Duration: 2.4ms | Allocations: 330)
+Completed 200 OK in 129ms (Views: 3.9ms | ActiveRecord: 42.9ms | Allocations: 4178)
+
+

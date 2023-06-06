@@ -1,10 +1,27 @@
 import "./Hours.css"
 
-const Hours = () => {
+const Hours = ({business}) => {
+
+    const times = business.hours;
+    const removeLeft = times.replace('{', '');
+    const removeRight = removeLeft.replace('}', '');
+    const bizHours = removeRight.replace(/"/g, '');
+
 
     return (
         <div>
-            <h1>hours</h1>
+            {bizHours.split(',').map((details, i) => {
+                let parts = details.split('::');
+                let day = parts[0]
+                let hrs = parts[1]
+
+                return (
+                    <div id="day-time">
+                        <div id="day" key={`${i-day}`}>{day}</div>
+                        <div id="hrs" key={i}>{hrs}</div>
+                    </div>
+                )
+            })}
         </div>
     )
 }
