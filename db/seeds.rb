@@ -336,8 +336,11 @@ coffee_photos = []
         filename = "coffee#{i+1}.jpg"
         puts 'before coffee'
         coffee_photos << { io: URI.open(url), filename: filename }
+        puts coffee_photos
         puts 'after coffee'
     end
+
+    puts coffee_photos
 
     puts 'coffe pics connecting'
 
