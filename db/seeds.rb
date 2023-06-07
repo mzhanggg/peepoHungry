@@ -57,9 +57,9 @@ coffees = []
             "Sun::  CLOSED"}'
     )
     burgers << b1
-    puts 'attempting to seed first'
+    puts 'attempting to seed first burger'
     b1.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/burger/burger1.jpg"), filename: "burger1.jpg")
-    puts 'seeded first woohoooo'
+    puts 'seeded first burger woohoooo'
 
 
     b2 = Business.create!(
@@ -108,7 +108,9 @@ coffees = []
             "Sun::  12:00 PM - 11:00 PM"}'
     )
     koreans << k1
+    puts 'attempting to seed first korean'
     k1.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/korean/k1.jpg"), filename: "k1.jpg")
+    puts 'seeded first korean woohoooo'
 
     c1 = Business.create!(
         name: 'Joe Coffee Company', 
@@ -132,7 +134,9 @@ coffees = []
             "Sun::  9:00 AM - 5:00 PM"}'
     )
     coffees << c1
+    puts 'attempting to seed first coffee'
     c1.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/coffee/coffee1.jpg"), filename: "coffee1.jpg")
+    puts 'seeded first coffee woohoooo'
 
     c2 = Business.create!(
         name: 'Blue Bottle Coffee', 
@@ -255,7 +259,7 @@ coffees = []
     )
     koreans << k5
     k5.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/korean/k5.jpg"), filename: "k5.jpg")
-
+    puts 'seeded 5th korean woohoooo'
 
     c3 = Business.create!(
         name: 'Gregorys Coffee', 
@@ -280,6 +284,7 @@ coffees = []
     )
     coffees << c3
     c3.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/coffee/coffee3.jpg"), filename: "coffee3.jpg")
+    puts 'seeded 3rd coffee woohoooo'
 
     c4 = Business.create!(
         name: 'Starbucks', 
@@ -303,7 +308,8 @@ coffees = []
             "Sun::  7:00 AM - 7:00 PM"}'
     )
     coffees << c4
-    c4.photo.attach(io: URI.open("https://peepohungry-seeds.s4.amazonaws.com/coffee/coffee4.jpg"), filename: "coffee4.jpg")
+    c4.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/coffee/coffee4.jpg"), filename: "coffee4.jpg")
+    puts 'seeded 4th coffee woohoooo'
 
     c5 = Business.create!(
         name: 'Saltwater Coffee', 
@@ -326,7 +332,8 @@ coffees = []
             "Sun::  8:00 AM - 6:00 PM"}'
     )
     coffees << c5
-    c5.photo.attach(io: URI.open("https://peepohungry-seeds.s5.amazonaws.com/coffee/coffee5.jpg"), filename: "coffee5.jpg")
+    c5.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/coffee/coffee5.jpg"), filename: "coffee5.jpg")
+    puts 'seeded 5th coffee woohoooo'
 
     puts "Done!"
 
