@@ -35530,3 +35530,109 @@ Completed 200 OK in 27ms (Views: 23.2ms | Allocations: 632)
   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
 [36m  S3 Storage (775.6ms) [0m[32mUploaded file to key: e1arro6wrz1870dc5udkgkmcf9wd (checksum: RMoeKbO4rHNlWULdVXD5ew==)[0m
 [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 9991b261-ab1a-4eae-a092-ad25048f054b) to Async(default) with arguments: #<GlobalID:0x000000010b5ef590 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/62>>
+Started GET "/api/session" for 127.0.0.1 at 2023-06-07 11:55:46 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 123ms (Views: 4.2ms | ActiveRecord: 23.4ms | Allocations: 4143)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-06-07 11:55:54 -0400
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (1.2ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:1
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 52], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+[36m  S3 Storage (19.0ms) [0m[34mGenerated URL for file at key: 6h6dcgykwocavriyx93472n48901 (https://peepohungry-dev.s3.amazonaws.com/6h6dcgykwocavriyx93472n48901?response-content-disposition=inline%3B%20filename%3D%22burger2.jpg%22%3B%20filename%2A%3DUTF-8%27%27burger2.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZVZQI766ZN6NI3XG%2F20230607%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230607T155555Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=9d83576e34c3b0fa13ff54270db1a7bd1cd663b31748f76bc9269dedc01821b0)[0m
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 57], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+[36m  S3 Storage (4.8ms) [0m[34mGenerated URL for file at key: 2fsja15chthfs9au5dm9l2ps05m2 (https://peepohungry-dev.s3.amazonaws.com/2fsja15chthfs9au5dm9l2ps05m2?response-content-disposition=inline%3B%20filename%3D%22k3.jpg%22%3B%20filename%2A%3DUTF-8%27%27k3.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZVZQI766ZN6NI3XG%2F20230607%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230607T155555Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=0dbc461f1e7fdbca6fb8461b7767c4a5cf0c3c681d07e80aa4f5a5fc838426f5)[0m
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 58], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+[36m  S3 Storage (7.4ms) [0m[34mGenerated URL for file at key: sgksirbwkpzducogzag53pb6dg2v (https://peepohungry-dev.s3.amazonaws.com/sgksirbwkpzducogzag53pb6dg2v?response-content-disposition=inline%3B%20filename%3D%22k4.jpg%22%3B%20filename%2A%3DUTF-8%27%27k4.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZVZQI766ZN6NI3XG%2F20230607%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230607T155555Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=429d4a02634b689fbf57367d16c25624e7d659f60663dff640014ae5a1346d56)[0m
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 59], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+[36m  S3 Storage (7.5ms) [0m[34mGenerated URL for file at key: xkpg6vz2zpck66g8y2sod2tnaar3 (https://peepohungry-dev.s3.amazonaws.com/xkpg6vz2zpck66g8y2sod2tnaar3?response-content-disposition=inline%3B%20filename%3D%22k5.jpg%22%3B%20filename%2A%3DUTF-8%27%27k5.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZVZQI766ZN6NI3XG%2F20230607%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230607T155555Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=92aa512f36533afc78f912d5f5786fac78c4c298cb3fedb4874ac1119ce02700)[0m
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 60], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+[36m  S3 Storage (4.0ms) [0m[34mGenerated URL for file at key: eat1zhj8pm7udv2sv746f4bwujro (https://peepohungry-dev.s3.amazonaws.com/eat1zhj8pm7udv2sv746f4bwujro?response-content-disposition=inline%3B%20filename%3D%22coffee3.jpg%22%3B%20filename%2A%3DUTF-8%27%27coffee3.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZVZQI766ZN6NI3XG%2F20230607%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230607T155555Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=ae18d32d883d6dd11e17a9a8498118867265f634037e9a1971d6ccd531781c85)[0m
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 61], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+[36m  S3 Storage (2.0ms) [0m[34mGenerated URL for file at key: ol26t2ztanj3pp4o3nr8xr4xod8z (https://peepohungry-dev.s3.amazonaws.com/ol26t2ztanj3pp4o3nr8xr4xod8z?response-content-disposition=inline%3B%20filename%3D%22coffee4.jpg%22%3B%20filename%2A%3DUTF-8%27%27coffee4.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZVZQI766ZN6NI3XG%2F20230607%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230607T155555Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=223385e0eded1cd49a1dca0a1b94fd715a2a6d1ffe125ff96625eb6afc362539)[0m
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 12], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 62], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+[36m  S3 Storage (3.3ms) [0m[34mGenerated URL for file at key: e1arro6wrz1870dc5udkgkmcf9wd (https://peepohungry-dev.s3.amazonaws.com/e1arro6wrz1870dc5udkgkmcf9wd?response-content-disposition=inline%3B%20filename%3D%22coffee5.jpg%22%3B%20filename%2A%3DUTF-8%27%27coffee5.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZVZQI766ZN6NI3XG%2F20230607%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230607T155555Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=fb9f1e7cda3deea74d9ecff70a69b39085186f4fc4e865644950dae46828d697)[0m
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+[36m  S3 Storage (5.4ms) [0m[34mGenerated URL for file at key: kks2bt1omrv7llnp29ytvix0k9ya (https://peepohungry-dev.s3.amazonaws.com/kks2bt1omrv7llnp29ytvix0k9ya?response-content-disposition=inline%3B%20filename%3D%22k1.jpg%22%3B%20filename%2A%3DUTF-8%27%27k1.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZVZQI766ZN6NI3XG%2F20230607%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230607T155555Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=5329f96e493453c01d1242524d18782af5d169083e138a06059bcaa865602b9b)[0m
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+  [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 54], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+[36m  S3 Storage (9.0ms) [0m[34mGenerated URL for file at key: pidihy6xv4d3x7me3zmdy5rblf3r (https://peepohungry-dev.s3.amazonaws.com/pidihy6xv4d3x7me3zmdy5rblf3r?response-content-disposition=inline%3B%20filename%3D%22coffee1.jpg%22%3B%20filename%2A%3DUTF-8%27%27coffee1.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZVZQI766ZN6NI3XG%2F20230607%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230607T155555Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=76fe030edccc6c011eb87cb1d7994769a20978b611638873744adcf2024dc416)[0m
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+[36m  S3 Storage (6.2ms) [0m[34mGenerated URL for file at key: n1jyh0p0ahekg9nz33x69gvn5dav (https://peepohungry-dev.s3.amazonaws.com/n1jyh0p0ahekg9nz33x69gvn5dav?response-content-disposition=inline%3B%20filename%3D%22coffee2.jpg%22%3B%20filename%2A%3DUTF-8%27%27coffee2.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZVZQI766ZN6NI3XG%2F20230607%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230607T155555Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=7a756cf3a5409a98bb4c5c6ea1e9d2f6d3ad307d011bd383c2632e575901fc06)[0m
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+[36m  S3 Storage (3.9ms) [0m[34mGenerated URL for file at key: 5t5a9rzt9h03mcfeq1857ts6b9up (https://peepohungry-dev.s3.amazonaws.com/5t5a9rzt9h03mcfeq1857ts6b9up?response-content-disposition=inline%3B%20filename%3D%22k2.jpg%22%3B%20filename%2A%3DUTF-8%27%27k2.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZVZQI766ZN6NI3XG%2F20230607%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230607T155555Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=3101c16c0c4361d77a2308ebc7118c85e212cd7ccb8739f26a36a840ff1b2907)[0m
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 51], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/index.json.jbuilder:5
+[36m  S3 Storage (3.8ms) [0m[34mGenerated URL for file at key: aiidzqyvlpqv761cryo8qm8ji7hf (https://peepohungry-dev.s3.amazonaws.com/aiidzqyvlpqv761cryo8qm8ji7hf?response-content-disposition=inline%3B%20filename%3D%22burger1.jpg%22%3B%20filename%2A%3DUTF-8%27%27burger1.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZVZQI766ZN6NI3XG%2F20230607%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230607T155555Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=557d4a99e9430aa2152e3fb9470773a72efe123e78df1fe3eda04dea7755e3f0)[0m
+  Rendered api/businesses/index.json.jbuilder (Duration: 290.1ms | Allocations: 36746)
+Completed 200 OK in 294ms (Views: 279.2ms | ActiveRecord: 12.6ms | Allocations: 37212)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-07 11:56:02 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (0.4ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/show.json.jbuilder:3
+[36m  S3 Storage (3.2ms) [0m[34mGenerated URL for file at key: kks2bt1omrv7llnp29ytvix0k9ya (https://peepohungry-dev.s3.amazonaws.com/kks2bt1omrv7llnp29ytvix0k9ya?response-content-disposition=inline%3B%20filename%3D%22k1.jpg%22%3B%20filename%2A%3DUTF-8%27%27k1.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZVZQI766ZN6NI3XG%2F20230607%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230607T155602Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=e25291d646e101b8dd5b1f558136767e00cbcd23dd92d6651ddeaf2a67db1322)[0m
+  Rendered api/businesses/show.json.jbuilder (Duration: 23.1ms | Allocations: 3117)
+Completed 200 OK in 36ms (Views: 24.5ms | ActiveRecord: 1.1ms | Allocations: 4093)
+
+
+Started GET "/api/businesses/3" for 127.0.0.1 at 2023-06-07 11:56:02 -0400
+Processing by Api::BusinessesController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mBusiness Load (0.5ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses" WHERE "businesses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/businesses_controller.rb:9:in `show'
+  Rendering api/businesses/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/views/api/businesses/show.json.jbuilder:3
+[36m  S3 Storage (7.0ms) [0m[34mGenerated URL for file at key: kks2bt1omrv7llnp29ytvix0k9ya (https://peepohungry-dev.s3.amazonaws.com/kks2bt1omrv7llnp29ytvix0k9ya?response-content-disposition=inline%3B%20filename%3D%22k1.jpg%22%3B%20filename%2A%3DUTF-8%27%27k1.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZVZQI766ZN6NI3XG%2F20230607%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230607T155602Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=e25291d646e101b8dd5b1f558136767e00cbcd23dd92d6651ddeaf2a67db1322)[0m
+  Rendered api/businesses/show.json.jbuilder (Duration: 18.0ms | Allocations: 3113)
+Completed 200 OK in 27ms (Views: 21.1ms | ActiveRecord: 1.6ms | Allocations: 4077)
+
+
