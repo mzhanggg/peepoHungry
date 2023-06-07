@@ -337,6 +337,20 @@ coffees = []
 
     puts "Done!"
 
+    Review.create!(
+        body: 'i am peepo',
+        rating: 5,
+        business_id: 1,
+        user_id: 1
+    )
+
+    Review.create!(
+        body: 'i am not peepo',
+        rating: 5,
+        business_id: 2,
+        user_id: 1
+    )
+
 # end
 
 # puts 'AWS TAKE THE WHEEL'

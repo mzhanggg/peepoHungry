@@ -9,6 +9,8 @@ import { createUser, loginUser, logoutUser } from './store/usersReducer';
 import {csrfFetch} from './store/csrf';
 import './index.css';
 import * as sessionActions from './store/session';
+import * as reviewActions from './store/reviewReducer';
+
 
 const store = configureStore();
 
@@ -19,6 +21,7 @@ if (process.env.NODE_ENV !== 'production') {
   window.logoutUser = logoutUser
   window.csrfFetch = csrfFetch
   window.sessionActions = sessionActions
+  window.reviewActions = reviewActions
 }
 
 const initializeApp = () => {
