@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       resources :reviews, only: [:index]
     end
 
-    # resources :reviews, only: [:index]
+    resources :reviews, only: [:create, :delete, :edit] 
   end
   
   get '*path', to: "static_pages#frontend_index"

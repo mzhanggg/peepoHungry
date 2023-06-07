@@ -12,7 +12,7 @@ burgers = []
 koreans = []
 coffees = []
 
-
+# ApplicationRecord.transaction do
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
     User.destroy_all
@@ -314,6 +314,7 @@ coffees = []
 
     puts "Done!"
 
+# end
 
 puts 'AWS TAKE THE WHEEL'
 
@@ -333,7 +334,9 @@ coffee_photos = []
     5.times do |i|
         url = "https://peepohungry-seeds.s3.amazonaws.com/coffee/coffee#{i + 1}.jpg"
         filename = "coffee#{i+1}.jpg"
+        puts 'before'
         coffee_photos << { io: URI.open(url), filename: filename }
+        puts 'before'
     end
 
     coffees = Business.where("category LIKE ?", "%Coffee%")
