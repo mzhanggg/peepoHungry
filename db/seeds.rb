@@ -8,6 +8,10 @@
 
 require "open-uri"
 
+burgers = []
+koreans = []
+coffees = []
+
 ApplicationRecord.transaction do 
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
@@ -31,7 +35,7 @@ ApplicationRecord.transaction do
     
     puts "Creating businesses..."
 
-    Business.create!(
+    b1 = Business.create!(
         name: 'Krusty Krab', 
         address: '42 Wallaby Way', 
         neighborhood: 'Union Square',
@@ -52,8 +56,9 @@ ApplicationRecord.transaction do
             "Sat::  CLOSED",
             "Sun::  CLOSED"}'
     )
+    burgers << b1
 
-    Business.create!(
+    b2 = Business.create!(
         name: 'Wendy\'s', 
         address: '20 E 14th St', 
         neighborhood: 'Union Square',
@@ -74,8 +79,10 @@ ApplicationRecord.transaction do
             "Sat::  7:00 AM - 1:00 AM",
             "Sun::  7:00 AM - 12:00 AM"}'
     )
+    burgers << b2
 
-    Business.create!(
+
+    k1 = Business.create!(
         name: 'Let\'s Meat BBQ', 
         address: '307 5th Ave', 
         neighborhood: 'Koreatown',
@@ -96,8 +103,9 @@ ApplicationRecord.transaction do
             "Sat::  12:00 PM - 1:00 AM",
             "Sun::  12:00 PM - 11:00 PM"}'
     )
+    koreans << k1
 
-    Business.create!(
+    c1 = Business.create!(
         name: 'Joe Coffee Company', 
         address: '9 E 13th St', 
         neighborhood: 'Union Square',
@@ -118,8 +126,9 @@ ApplicationRecord.transaction do
             "Sat::  9:00 AM - 5:00 PM",
             "Sun::  9:00 AM - 5:00 PM"}'
     )
+    coffees << c1
 
-    Business.create!(
+    c2 = Business.create!(
         name: 'Blue Bottle Coffee', 
         address: ' 101 University Pl', 
         neighborhood: 'Union Square',
@@ -140,8 +149,9 @@ ApplicationRecord.transaction do
             "Sat::  9:00 AM - 5:00 PM",
             "Sun::  9:00 AM - 5:00 PM"}'
     )
+    coffees << c2
 
-    Business.create!(
+    k2 = Business.create!(
         name: 'Jongro BBQ', 
         address: '22 W 32nd St', 
         neighborhood: 'Koreatown',
@@ -162,8 +172,9 @@ ApplicationRecord.transaction do
             "Sat::  11:30AM - 1:00 AM",
             "Sun::  11:30AM - 12:00 AM"}'
     )
+    koreans << k2
 
-    Business.create!(
+    k3 = Business.create!(
         name: 'Gopchang Story BBQ', 
         address: '312 5th Ave', 
         neighborhood: 'Koreatown',
@@ -184,8 +195,9 @@ ApplicationRecord.transaction do
             "Sat::  12:00 PM - 3:00 AM",
             "Sun::  12:00 PM - 1:00 AM"}'
     )
+    koreans << k3
 
-    Business.create!(
+    k4 = Business.create!(
         name: 'Turntable Chicken Jazz', 
         address: '20 W 33rd St', 
         neighborhood: 'Koreatown',
@@ -206,8 +218,9 @@ ApplicationRecord.transaction do
             "Sat::  12:00 PM - 12:00 AM",
             "Sun::  12:00 PM - 10:00 PM"}'
     )
+    koreans << k4
 
-    Business.create!(
+    k5 = Business.create!(
         name: 'Boka', 
         address: '9 St Marks Pl', 
         neighborhood: 'East Village',
@@ -228,8 +241,9 @@ ApplicationRecord.transaction do
             "Sat::  12:00 PM - 12:00 AM",
             "Sun::  12:00 PM - 11:00 PM"}'
     )
+    koreans << k5
 
-    Business.create!(
+    c3 = Business.create!(
         name: 'Gregorys Coffee', 
         address: '649 Broadway', 
         neighborhood: 'NOHO',
@@ -249,9 +263,10 @@ ApplicationRecord.transaction do
             "Fri::  7:00 AM - 6:00 PM",
             "Sat::  8:00 AM - 5:00 PM",
             "Sun::  8:00 AM - 5:00 PM"}'
-        )
+    )
+    coffees << c3
 
-    Business.create!(
+    c4 = Business.create!(
         name: 'Starbucks', 
         address: '510 6th Ave', 
         neighborhood: 'Union Square',
@@ -272,8 +287,9 @@ ApplicationRecord.transaction do
             "Sat::  7:00 AM - 7:00 PM",
             "Sun::  7:00 AM - 7:00 PM"}'
     )
+    coffees << c4
 
-    Business.create!(
+    c5 = Business.create!(
         name: 'Saltwater Coffee', 
         address: '126 Waverly Pl', 
         neighborhood: 'West Village',
@@ -293,46 +309,60 @@ ApplicationRecord.transaction do
             "Sat::  8:00 AM - 6:00 PM",
             "Sun::  8:00 AM - 6:00 PM"}'
     )
+    coffees << c5
+
 
     puts "Done!"
 end
 
 puts 'AWS TAKE THE WHEEL'
 
-coffee_photos = []
-    5.times do |i|
-        url = "https://peepohungry-seeds.s3.amazonaws.com/coffee/coffee#{i + 1}.jpg"
-        filename = "coffee#{i+1}.jpg"
-        coffee_photos << { io: URI.open(url), filename: filename }
-    end
+burgers.each_with_index do |burger, i|
+    burger.photo.attach({io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/burger/burger#{i + 1}.jpg"), filename: "burger#{i+1}.jpg"})
+end
 
-    coffees = Business.where("category LIKE ?", "%Coffee%")
-    coffees.each_with_index do |coffee, i|
-        coffee.photo.attach(coffee_photos[i])
-    end
+koreans.each_with_index do |korea, i|
+    korea.photo.attach({io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/korean/k#{i + 1}.jpg"), filename: "k#{i+1}.jpg"})
+end
 
-korean_photos = []
-    5.times do |i|
-        url = "https://peepohungry-seeds.s3.amazonaws.com/korean/k#{i + 1}.jpg"
-        filename = "k#{i+1}.jpg"
-        korean_photos << { io: URI.open(url), filename: filename }
-    end
+coffees.each_with_index do |coffee, i|
+    coffee.photo.attach({io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/coffee/coffee#{i + 1}.jpg"), filename: "coffee#{i+1}.jpg"})
+end
 
-    koreans = Business.where("category LIKE ?", "%Korean%")
-    koreans.each_with_index do |k, i|
-        k.photo.attach(korean_photos[i])
-    end
+# coffee_photos = []
+#     5.times do |i|
+#         url = "https://peepohungry-seeds.s3.amazonaws.com/coffee/coffee#{i + 1}.jpg"
+#         filename = "coffee#{i+1}.jpg"
+#         coffee_photos << { io: URI.open(url), filename: filename }
+#     end
 
-burger_photos = []
-    2.times do |i|
-        url = "https://peepohungry-seeds.s3.amazonaws.com/burger/burger#{i + 1}.jpg"
-        filename = "burger#{i+1}.jpg"
-        burger_photos << { io: URI.open(url), filename: filename }
-    end
+#     coffees = Business.where("category LIKE ?", "%Coffee%")
+#     coffees.each_with_index do |coffee, i|
+#         coffee.photo.attach(coffee_photos[i])
+#     end
 
-    burgers = Business.where("category LIKE ?", "%Burger%")
-    burgers.each_with_index do |burger, i|
-        burger.photo.attach(burger_photos[i])
-    end
+# korean_photos = []
+#     5.times do |i|
+#         url = "https://peepohungry-seeds.s3.amazonaws.com/korean/k#{i + 1}.jpg"
+#         filename = "k#{i+1}.jpg"
+#         korean_photos << { io: URI.open(url), filename: filename }
+#     end
+
+#     koreans = Business.where("category LIKE ?", "%Korean%")
+#     koreans.each_with_index do |k, i|
+#         k.photo.attach(korean_photos[i])
+#     end
+
+# burger_photos = []
+#     2.times do |i|
+#         url = "https://peepohungry-seeds.s3.amazonaws.com/burger/burger#{i + 1}.jpg"
+#         filename = "burger#{i+1}.jpg"
+#         burger_photos << { io: URI.open(url), filename: filename }
+#     end
+
+#     burgers = Business.where("category LIKE ?", "%Burger%")
+#     burgers.each_with_index do |burger, i|
+#         burger.photo.attach(burger_photos[i])
+#     end
 
 puts 'AWS TOOK THE WHEEL'
