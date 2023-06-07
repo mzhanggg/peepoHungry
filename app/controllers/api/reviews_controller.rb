@@ -2,7 +2,7 @@ class Api::ReviewsController < ApplicationController
     before_action :require_logged_in, only: [:create, :update, :destroy]
 
     def create
-        @review = User.new(review_params)
+        @review = Review.new(review_params)
         @review.user_id = current_user.id 
         @review.business_id = params[:business_id]
 

@@ -31847,3 +31847,18 @@ Processing by Api::BusinessesController#show as JSON
 Completed 200 OK in 16ms (Views: 9.0ms | ActiveRecord: 2.8ms | Allocations: 4020)
 
 
+Started GET "/api/session" for 127.0.0.1 at 2023-06-07 09:17:53 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (5.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 19ms (Views: 0.2ms | ActiveRecord: 11.4ms | Allocations: 4839)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2023-06-07 09:29:56 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `current_user'
+Completed 200 OK in 90ms (Views: 0.5ms | ActiveRecord: 35.1ms | Allocations: 4792)
+
+

@@ -12,7 +12,7 @@ burgers = []
 koreans = []
 coffees = []
 
-ApplicationRecord.transaction do 
+
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
     User.destroy_all
@@ -313,7 +313,7 @@ ApplicationRecord.transaction do
 
 
     puts "Done!"
-end
+
 
 puts 'AWS TAKE THE WHEEL'
 
