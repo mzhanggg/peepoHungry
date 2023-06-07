@@ -21,7 +21,7 @@ const BusinessShow = () => {
     }, [businessId])
 
     useEffect(() => {
-        dispatch(fetchReviews(businessId));
+        dispatch(fetchReviews(1));
     }, [businessId])
 
     if (!businessId) {
