@@ -334,15 +334,20 @@ coffee_photos = []
     5.times do |i|
         url = "https://peepohungry-seeds.s3.amazonaws.com/coffee/coffee#{i + 1}.jpg"
         filename = "coffee#{i+1}.jpg"
-        puts 'before'
+        puts 'before coffee'
         coffee_photos << { io: URI.open(url), filename: filename }
-        puts 'before'
+        puts 'after coffee'
     end
+
+    puts 'coffe pics connecting'
 
     coffees = Business.where("category LIKE ?", "%Coffee%")
     coffees.each_with_index do |coffee, i|
         coffee.photo.attach(coffee_photos[i])
     end
+
+    puts 'coffe pics connected'
+
 
 korean_photos = []
     5.times do |i|
