@@ -8,15 +8,20 @@ import Hours from "./Hours";
 import ReviewIndex from "../Review/ReviewIndex";
 import ReviewForm from "../Review/ReviewForm";
 import "./BusinessShow.css"
-
+import {fetchReviews} from "../../store/reviewReducer";
 
 const BusinessShow = () => {
     const dispatch = useDispatch();
     const {businessId} = useParams();
     const business = useSelector(getBusiness(businessId));
     const nav = useNavigate();
+    
     useEffect(() => {
         dispatch(fetchBusiness(businessId));
+    }, [businessId])
+
+    useEffect(() => {
+        dispatch(fetchReviews(businessId));
     }, [businessId])
 
     if (!businessId) {

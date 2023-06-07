@@ -36326,3 +36326,4 @@ Processing by Api::SessionsController#show as JSON
 Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 837)
 
 
+  [1m[36mReview Load (3.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m

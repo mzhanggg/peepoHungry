@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createReview, getReview, fetchReview } from "../../store/reviewReducer";
+import { createReview, getReview } from "../../store/reviewReducer";
 import { useParams } from "react-router-dom";
 import { getBusiness } from "../../store/businessReducer";
 import { useNavigate } from "react-router-dom";
 import './ReviewForm.css';
 // import { fetchReview } from "../../store/reviewReducer";
 import { fetchBusiness } from "../../store/businessReducer";
+import { fetchReviews } from "../../store/reviewReducer";
 
 const ReviewForm = () => {
     const nav = useNavigate();
@@ -29,6 +30,10 @@ const ReviewForm = () => {
 
     useEffect(() => {
         dispatch(fetchBusiness(businessId))
+    }, [businessId])
+
+    useEffect(() => {
+        dispatch(fetchReviews(businessId))
     }, [businessId])
 
     return (

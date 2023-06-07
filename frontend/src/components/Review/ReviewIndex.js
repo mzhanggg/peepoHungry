@@ -12,8 +12,8 @@ const ReviewIndex = () => {
 
     return (
         <>
-            <h1>my reviews</h1>
             {console.log(reviews)}
+            <h1>my reviews</h1>
         </>
     )
 }

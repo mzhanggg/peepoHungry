@@ -35,8 +35,8 @@ export const getReview = (reviewId) => (state) => {
 
 export const getReviews = (state) => state.reviews ? Object.values(state.reviews) : []
 
-export const fetchReviews = () => async dispatch => {
-    const res = await csrfFetch('/api/reviews');
+export const fetchReviews = (businessId) => async dispatch => {
+    const res = await csrfFetch(`/api/businesses/${businessId}/reviews`);
     const data = await res.json();
     dispatch(receiveReviews(data));
 }
@@ -48,7 +48,7 @@ export const fetchReview = (reviewId) => async dispatch => {
 }
 
 export const createReview = (review, businessId) => async dispatch => {
-    const res = await csrfFetch('/api/reviews', {
+    const res = await csrfFetch('/api/reviews/', {
         method: "POST",
         body: JSON.stringify(review)
     })
