@@ -347,7 +347,7 @@ coffee_photos = []
     coffees = Business.where("category LIKE ?", "%Coffee%")
     coffees.each_with_index do |coffee, i|
         puts 'connecting...'
-        coffee.photo.attach(coffee_photos[i])
+        coffee.photo.attach([coffee_photos[i]])
         puts 'connected'
     end
 
