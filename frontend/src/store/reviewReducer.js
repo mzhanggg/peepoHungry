@@ -25,6 +25,16 @@ export const removeReview = reviewId => {
     }
 }
 
+export const getReview = (reviewId) => (state) => {
+    if (state.reviews) {
+        return state.reviews[reviewId]
+    } else {
+        return null
+    }
+}
+
+export const getReviews = (state) => state.reviews ? Object.values(state.reviews) : []
+
 export const fetchReviews = () => async dispatch => {
     const res = await csrfFetch('/api/reviews');
     const data = await res.json();
@@ -37,14 +47,13 @@ export const fetchReview = (reviewId) => async dispatch => {
     dispatch(receiveReview(data));
 }
 
-export const createReview = (review, businessId, history) => async dispatch => {
+export const createReview = (review, businessId) => async dispatch => {
     const res = await csrfFetch('/api/reviews', {
         method: "POST",
         body: JSON.stringify(review)
     })
     const data = await res.json();
     dispatch(receiveReview(data));
-    history.push(`/businesses/${businessId}`);
 }
 
 export const updateReview = (review, reviewId) => async dispatch => {

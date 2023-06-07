@@ -12,6 +12,7 @@ import Footer from "./components/Footer/Footer";
 import Categories from "./components/Categories/Categories";
 import RecentActivities from "./components/RecentActivity/RecentActivity";
 import BizIndexFilter from "./components/Business/BizIndexFilter";
+import ReviewForm from "./components/Review/ReviewForm";
 
 function App() {
   const location = useLocation()
@@ -47,6 +48,9 @@ function App() {
         <Route exact path="/businesses/:businessId" element={<BusinessShow />}></Route>
         <Route exact path="/businesses" element={<BizIndex />}></Route>
         <Route exact path="/category/:categoryName" element={<BizIndexFilter />}></Route>
+        <Route exact path="/businesses" element={<BizIndex />}></Route>
+        <Route exact path="/businesses/:businessId/write-a-review" element={<ReviewForm />}></Route>
+
       </Routes>
       
       {recentActivity()}

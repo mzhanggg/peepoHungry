@@ -5,6 +5,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import BusinessIndexHeader from "./BusinessIndexHeader";
 import Map from "../Map/Map";
 import Hours from "./Hours";
+import ReviewIndex from "../Review/ReviewIndex";
+import ReviewForm from "../Review/ReviewForm";
 import "./BusinessShow.css"
 
 
@@ -19,6 +21,11 @@ const BusinessShow = () => {
 
     if (!businessId) {
         return nav("/");
+    }
+
+    const handleClick = e => {
+        e.preventDefault();
+        nav(`/businesses/${businessId}/write-a-review`)
     }
 
     return (
@@ -45,8 +52,14 @@ const BusinessShow = () => {
             </div>
 
             <div id="reviews">
-                <h1>reviews component</h1>
+               <ReviewIndex />
             </div>
+
+            <div id="review">
+                {/* <ReviewForm /> */}
+            </div>
+
+            <button type="submit" onClick={handleClick}>Write a Review</button>
         </>
     )
 }

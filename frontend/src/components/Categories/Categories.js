@@ -3,7 +3,6 @@ import soupImage from './Category-Images/soup.png';
 import coffee from './Category-Images/coffee.png';
 import burger from './Category-Images/hamburger.png';
 import pepe from './Category-Images/pepe.jpg';
-import dish from './Category-Images/dish.png';
 
 import './Categories.css'
 
