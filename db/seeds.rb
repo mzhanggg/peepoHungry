@@ -57,6 +57,10 @@ coffees = []
             "Sun::  CLOSED"}'
     )
     burgers << b1
+    puts 'attempting to seed first'
+    b1.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/burger/burger1.jpg"), filename: "burger1.jpg")
+    puts 'seeded first woohoooo'
+
 
     b2 = Business.create!(
         name: 'Wendy\'s', 
@@ -80,7 +84,7 @@ coffees = []
             "Sun::  7:00 AM - 12:00 AM"}'
     )
     burgers << b2
-
+    b2.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/burger/burger2.jpg"), filename: "burger2.jpg")
 
     k1 = Business.create!(
         name: 'Let\'s Meat BBQ', 
@@ -104,6 +108,7 @@ coffees = []
             "Sun::  12:00 PM - 11:00 PM"}'
     )
     koreans << k1
+    k1.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/korean/k1.jpg"), filename: "k1.jpg")
 
     c1 = Business.create!(
         name: 'Joe Coffee Company', 
@@ -127,6 +132,7 @@ coffees = []
             "Sun::  9:00 AM - 5:00 PM"}'
     )
     coffees << c1
+    c1.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/coffee/coffee1.jpg"), filename: "coffee1.jpg")
 
     c2 = Business.create!(
         name: 'Blue Bottle Coffee', 
@@ -150,6 +156,8 @@ coffees = []
             "Sun::  9:00 AM - 5:00 PM"}'
     )
     coffees << c2
+    c2.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/coffee/coffee2.jpg"), filename: "coffee2.jpg")
+
 
     k2 = Business.create!(
         name: 'Jongro BBQ', 
@@ -173,6 +181,8 @@ coffees = []
             "Sun::  11:30AM - 12:00 AM"}'
     )
     koreans << k2
+    k2.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/korean/k2.jpg"), filename: "k2.jpg")
+
 
     k3 = Business.create!(
         name: 'Gopchang Story BBQ', 
@@ -196,6 +206,7 @@ coffees = []
             "Sun::  12:00 PM - 1:00 AM"}'
     )
     koreans << k3
+    k3.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/korean/k3.jpg"), filename: "k3.jpg")
 
     k4 = Business.create!(
         name: 'Turntable Chicken Jazz', 
@@ -219,6 +230,7 @@ coffees = []
             "Sun::  12:00 PM - 10:00 PM"}'
     )
     koreans << k4
+    k4.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/korean/k4.jpg"), filename: "k4.jpg")
 
     k5 = Business.create!(
         name: 'Boka', 
@@ -242,6 +254,8 @@ coffees = []
             "Sun::  12:00 PM - 11:00 PM"}'
     )
     koreans << k5
+    k5.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/korean/k5.jpg"), filename: "k5.jpg")
+
 
     c3 = Business.create!(
         name: 'Gregorys Coffee', 
@@ -265,6 +279,7 @@ coffees = []
             "Sun::  8:00 AM - 5:00 PM"}'
     )
     coffees << c3
+    c3.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/coffee/coffee3.jpg"), filename: "coffee3.jpg")
 
     c4 = Business.create!(
         name: 'Starbucks', 
@@ -288,6 +303,7 @@ coffees = []
             "Sun::  7:00 AM - 7:00 PM"}'
     )
     coffees << c4
+    c4.photo.attach(io: URI.open("https://peepohungry-seeds.s4.amazonaws.com/coffee/coffee4.jpg"), filename: "coffee4.jpg")
 
     c5 = Business.create!(
         name: 'Saltwater Coffee', 
@@ -310,13 +326,13 @@ coffees = []
             "Sun::  8:00 AM - 6:00 PM"}'
     )
     coffees << c5
-
+    c5.photo.attach(io: URI.open("https://peepohungry-seeds.s5.amazonaws.com/coffee/coffee5.jpg"), filename: "coffee5.jpg")
 
     puts "Done!"
 
 # end
 
-puts 'AWS TAKE THE WHEEL'
+# puts 'AWS TAKE THE WHEEL'
 
 # burgers.each_with_index do |burger, i|
 #     burger.photo.attach({io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/burger/burger#{i + 1}.jpg"), filename: "burger#{i+1}.jpg"})
@@ -330,52 +346,52 @@ puts 'AWS TAKE THE WHEEL'
 #     coffee.photo.attach({io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/coffee/coffee#{i + 1}.jpg"), filename: "coffee#{i+1}.jpg"})
 # end
 
-coffee_photos = []
-    5.times do |i|
-        url = "https://peepohungry-seeds.s3.amazonaws.com/coffee/coffee#{i + 1}.jpg"
-        filename = "coffee#{i+1}.jpg"
-        puts 'before coffee'
-        coffee_photos << { io: URI.open(url), filename: filename }
-        puts coffee_photos
-        puts 'after coffee'
-    end
+#  -------------
 
-    puts coffee_photos
+# coffee_photos = []
+#     5.times do |i|
+#         url = "https://peepohungry-seeds.s3.amazonaws.com/coffee/coffee#{i + 1}.jpg"
+#         filename = "coffee#{i+1}.jpg"
+#         coffee_photos << { io: URI.open(url), filename: filename }
 
-    puts 'coffe pics connecting'
+#     end
 
-    coffees = Business.where("category LIKE ?", "%Coffee%")
-    coffees.each_with_index do |coffee, i|
-        puts 'connecting...'
-        coffee.photo.attach([coffee_photos[i]])
-        puts 'connected'
-    end
+#     puts coffee_photos
 
-    puts 'coffe pics connected'
+#     puts 'coffe pics trying to connect...'
+
+#     coffees = Business.where("category LIKE ?", "%Coffee%")
+#     coffees.each_with_index do |coffee, i|
+#         puts 'connecting...'
+#         coffee.photo.attach(coffee_photos[i])
+#         puts 'connected'
+#     end
+
+#     puts 'coffe pics connected'
 
 
-korean_photos = []
-    5.times do |i|
-        url = "https://peepohungry-seeds.s3.amazonaws.com/korean/k#{i + 1}.jpg"
-        filename = "k#{i+1}.jpg"
-        korean_photos << { io: URI.open(url), filename: filename }
-    end
+# korean_photos = []
+#     5.times do |i|
+#         url = "https://peepohungry-seeds.s3.amazonaws.com/korean/k#{i + 1}.jpg"
+#         filename = "k#{i+1}.jpg"
+#         korean_photos << { io: URI.open(url), filename: filename }
+#     end
 
-    koreans = Business.where("category LIKE ?", "%Korean%")
-    koreans.each_with_index do |k, i|
-        k.photo.attach(korean_photos[i])
-    end
+#     koreans = Business.where("category LIKE ?", "%Korean%")
+#     koreans.each_with_index do |k, i|
+#         k.photo.attach(korean_photos[i])
+#     end
 
-burger_photos = []
-    2.times do |i|
-        url = "https://peepohungry-seeds.s3.amazonaws.com/burger/burger#{i + 1}.jpg"
-        filename = "burger#{i+1}.jpg"
-        burger_photos << { io: URI.open(url), filename: filename }
-    end
+# burger_photos = []
+#     2.times do |i|
+#         url = "https://peepohungry-seeds.s3.amazonaws.com/burger/burger#{i + 1}.jpg"
+#         filename = "burger#{i+1}.jpg"
+#         burger_photos << { io: URI.open(url), filename: filename }
+#     end
 
-    burgers = Business.where("category LIKE ?", "%Burger%")
-    burgers.each_with_index do |burger, i|
-        burger.photo.attach(burger_photos[i])
-    end
+#     burgers = Business.where("category LIKE ?", "%Burger%")
+#     burgers.each_with_index do |burger, i|
+#         burger.photo.attach(burger_photos[i])
+#     end
 
-puts 'AWS TOOK THE WHEEL'
+# puts 'AWS TOOK THE WHEEL'
