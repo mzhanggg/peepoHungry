@@ -35,6 +35,10 @@ export const getReview = (reviewId) => (state) => {
 
 export const getReviews = (state) => state.reviews ? Object.values(state.reviews) : []
 
+export const getReviewsByBizId = businessId => state => {
+    return Object.values(state.reviews).filter(review => review.businessId === businessId)
+}
+
 export const fetchReviews = (businessId) => async dispatch => {
     const res = await csrfFetch(`/api/businesses/${businessId}/reviews`);
     const data = await res.json();

@@ -6,8 +6,8 @@ import BusinessIndexHeader from "./BusinessIndexHeader";
 import MapWrapper from "../Map/Map";
 import Hours from "./Hours";
 import ReviewIndex from "../Review/ReviewIndex";
-import "./BusinessShow.css"
 import {fetchReviews, getReviews} from "../../store/reviewReducer";
+import "./BusinessShow.css"
 
 
 const BusinessShow = () => {
@@ -15,20 +15,11 @@ const BusinessShow = () => {
     const {businessId} = useParams();
     const business = useSelector(getBusiness(businessId));
     const nav = useNavigate();
-
-    // Object.values(store.getState().reviews).filter(review => review.businessId === 1) works in browser console T-T
-
-    useEffect(() => {
-        dispatch(fetchReviews(businessId))
-    }, [])
     
     useEffect(() => {
         dispatch(fetchBusiness(businessId));
     }, [businessId])
 
-    useEffect(() => {
-        dispatch(fetchReviews(businessId));
-    }, [businessId])
 
     const reviews = useSelector(getReviews)
     
@@ -41,13 +32,9 @@ const BusinessShow = () => {
         e.preventDefault();
         nav(`/businesses/${businessId}/write-a-review`)
     }
-    
 
     return (
         <>
-            {/* {console.log(businessId)}
-            {console.log(reviews)}
-            {console.log(filteredRevs)} */}
             <BusinessIndexHeader />
             <div id="location-hours-container">
                 <p>Location & Hours</p>

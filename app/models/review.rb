@@ -15,4 +15,8 @@ class Review < ApplicationRecord
     validates :body, length: { minimum: 10 }
     validates :rating, presence: true, inclusion: { in: (1..5) }
 
+    belongs_to :user, 
+        class_name: :User,
+        foreign_key: :user_id
+
 end

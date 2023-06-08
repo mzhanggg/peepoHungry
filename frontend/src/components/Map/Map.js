@@ -21,7 +21,7 @@ const MapWrapper = () => {
           </Wrapper>
         </div>
       );
-    };
+};
     
 
 
@@ -37,7 +37,7 @@ const Map = ({center, zoom}) => {
 
         const marker = new window.google.maps.Marker({position: center, map: map})
         
-        markerRef.current = marker
+        // markerRef.current = marker
 
     }, [center, zoom])
 
