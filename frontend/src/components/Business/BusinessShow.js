@@ -6,36 +6,48 @@ import BusinessIndexHeader from "./BusinessIndexHeader";
 import MapWrapper from "../Map/Map";
 import Hours from "./Hours";
 import ReviewIndex from "../Review/ReviewIndex";
-import {fetchReviews, getReviews} from "../../store/reviewReducer";
 import "./BusinessShow.css"
-
 
 const BusinessShow = () => {
     const dispatch = useDispatch();
     const {businessId} = useParams();
     const business = useSelector(getBusiness(businessId));
     const nav = useNavigate();
+    const sessionUser = useSelector(state => state.session.user);
+
+    const reviews = useSelector(state => {
+        return Object.values(state.reviews).filter(review => review.businessId === Number(businessId))
+    })
     
-    useEffect(() => {
-        dispatch(fetchBusiness(businessId));
-    }, [businessId])
-
-
-    const reviews = useSelector(getReviews)
-    
-    if (!businessId || !reviews) {
-        return nav("/");
-    }
-    const filteredRevs = reviews.filter(review => review.businessId === businessId)
-
-    const handleClick = e => {
+    const handleNew = e => {
         e.preventDefault();
         nav(`/businesses/${businessId}/write-a-review`)
     }
 
+    const handleUpdate = e => {
+        e.preventDefault();
+        nav(`/businesses/${businessId}/${userReviewId}/edit`)
+    }
+    
+    const userReview = reviews.find(review => review.userId === sessionUser.id);
+    const userReviewId = userReview ? userReview.id : null;
+
+    const reviewButton = userReview ? ( <button type="submit" onClick={handleUpdate}>Update Your Review</button>) : (<button type="submit" onClick={handleNew}>Write a Review</button>);
+
+    useEffect(() => {
+        dispatch(fetchBusiness(businessId));
+    }, [businessId])
+    
+    if (!businessId) {
+        return <h1>Loading...</h1>;
+    }
+   
     return (
         <>
             <BusinessIndexHeader />
+            
+            {reviewButton}
+            
             <div id="location-hours-container">
                 <p>Location & Hours</p>
 
@@ -60,7 +72,6 @@ const BusinessShow = () => {
                <ReviewIndex />
             </div>
 
-            <button type="submit" onClick={handleClick}>Write a Review</button>
         </>
     )
 }

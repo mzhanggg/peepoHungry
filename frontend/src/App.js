@@ -13,7 +13,7 @@ import Categories from "./components/Categories/Categories";
 import RecentActivities from "./components/RecentActivity/RecentActivity";
 import BizIndexFilter from "./components/Business/BizIndexFilter";
 import ReviewForm from "./components/Review/ReviewForm";
-
+import ReviewEditForm from "./components/Review/ReviewEditForm";
 function App() {
   const location = useLocation()
   const path = location.pathname;
@@ -50,7 +50,7 @@ function App() {
         <Route exact path="/category/:categoryName" element={<BizIndexFilter />}></Route>
         <Route exact path="/businesses" element={<BizIndex />}></Route>
         <Route exact path="/businesses/:businessId/write-a-review" element={<ReviewForm />}></Route>
-
+        <Route exact path="/businesses/:businessId/:reviewId/edit" element={<ReviewEditForm />}></Route>
       </Routes>
       
       {recentActivity()}

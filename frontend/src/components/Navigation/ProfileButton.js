@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import "./ProfileButton.css"
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const sessionUser = useSelector(state => state.session.user);
   
   const openMenu = () => {
     if (showMenu) return;
@@ -36,10 +37,11 @@ function ProfileButton({ user }) {
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
-          <li>About Me</li>
+          <li>{sessionUser.fname}</li>
+          {/* <li>About Me</li>
           <li>My Collection</li>
           <li>Find Friends</li>
-          <li>Account</li>
+          <li>Account</li> */}
           <li>
             <button id="nav-btn"onClick={logout}>Log Out</button>
           </li>

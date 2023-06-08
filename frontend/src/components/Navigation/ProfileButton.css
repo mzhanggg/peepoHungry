@@ -10,7 +10,8 @@
 .profile-dropdown {
     position: absolute;
     z-index: 1;
-    margin-top: 265px;
+    /* margin-top: 265px; */
+    margin-top: 165px;
     right: 30px;
     background-color: #f9f9f9;
     border: 1px solid grey;

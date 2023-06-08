@@ -1,3 +1,5 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteReview } from '../../store/reviewReducer';
 import './ReviewIndexItem.css'
 
 const ReviewIndexItem = ({rev}) => {
@@ -6,6 +8,21 @@ const ReviewIndexItem = ({rev}) => {
     const [year, month, day] = datePart.split("-");
     const formattedDate = `${parseInt(month, 10)}/${parseInt(day, 10)}/${year}`;
     const lastNameInitial = rev.userLname[0]
+    const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.user);
+
+    const handleClick = e => {
+        e.preventDefault();
+        const reviewId = e.target.id;
+        dispatch(deleteReview(reviewId))
+    }
+
+    const deleteButton = () => {
+        if (rev.userId === sessionUser.id) {
+            return (<button id={rev.id} onClick={handleClick}>Delete Review</button>)
+        }
+    }
+
     const zeroStar = ( 
         <>
             <i class="fa-regular fa-star"></i>
@@ -99,6 +116,8 @@ const ReviewIndexItem = ({rev}) => {
                 <div id="review-body">
                     <h1>{rev.body}</h1>
                 </div>
+
+                {deleteButton()}
             </div>
             
         </>

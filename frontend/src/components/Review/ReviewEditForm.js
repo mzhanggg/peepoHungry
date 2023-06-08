@@ -1,29 +1,31 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createReview } from "../../store/reviewReducer";
+import { updateReview } from "../../store/reviewReducer";
 import { useParams, useNavigate } from "react-router-dom";
-import { getBusiness } from "../../store/businessReducer";
-import './ReviewForm.css';
-import { fetchBusiness } from "../../store/businessReducer";
-import { fetchReviews } from "../../store/reviewReducer";
+import { getReview, fetchReviews } from "../../store/reviewReducer";
+import { getBusiness, fetchBusiness } from "../../store/businessReducer";
 
-const ReviewForm = () => {
-    const nav = useNavigate();
+const ReviewEditForm = () => {
     const dispatch = useDispatch();
+    const nav = useNavigate();
+    const {reviewId} = useParams();
     const {businessId} = useParams();
-    const business = useSelector(getBusiness(businessId));
-    const [body, setBody] = useState('');
-    const [rating, setRating] = useState('');
+    const review = useSelector(getReview(reviewId))
+
+    const [body, setBody] = useState(review.body);
+    const [rating, setRating] = useState(review.rating);
 
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch(createReview({rating, body, business_id: businessId}));
+        const reviewObj = {
+            body,
+            rating,
+            business_id: businessId
+        }
+
+        dispatch(updateReview(reviewObj, reviewId));
         nav(`/businesses/${businessId}`);
     }
-
-    const reviews = useSelector(state => {
-        return Object.values(state.reviews).filter(review => review.businessId === businessId)
-    })
 
     useEffect(() => {
         dispatch(fetchBusiness(businessId))
@@ -35,7 +37,6 @@ const ReviewForm = () => {
 
     return (
         <div id="review-form-container">
-            <h1>{business.name}</h1>
 
             <form id="review-form">
                 <h1>form</h1>
@@ -58,10 +59,10 @@ const ReviewForm = () => {
                     </input>
                 </label>
 
-                <button id="review-btn" type="submit" onClick={handleSubmit}>Post Review</button>
+                <button id="review-btn" type="submit" onClick={handleSubmit}>Update Review</button>
             </form>
         </div>
     )
 }
 
-export default ReviewForm;
+export default ReviewEditForm;
