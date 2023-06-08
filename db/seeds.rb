@@ -201,7 +201,7 @@ coffees = []
         avg_rating: 4.2,
         lat: 40.747355929732024, 
         long: -73.98597216224515,
-        hours: '{"Mon:  4:00 PM - 1:00 AM",
+        hours: '{"Mon:: 4:00 PM - 1:00 AM",
             "Tue::  4:00 PM - 1:00 AM",
             "Wed::  4:00 PM - 1:00 AM",
             "Thu::  4:00 PM - 1:00 AM",
