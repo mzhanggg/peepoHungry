@@ -32,43 +32,54 @@ const BusinessShow = () => {
     const userReview = reviews.find(review => review.userId === sessionUser.id);
     const userReviewId = userReview ? userReview.id : null;
 
-    const reviewButton = userReview ? ( <button type="submit" onClick={handleUpdate}>Update Your Review</button>) : (<button type="submit" onClick={handleNew}>Write a Review</button>);
+    const reviewButton = userReview ? 
+        ( <button type="submit" id="rev-sub-btn" onClick={handleUpdate}><i id="rev-sub-star" className="far fa-star"></i>Update Your Review</button>) 
+        : 
+        (<button type="submit" id="rev-sub-btn" onClick={handleNew}><i id="rev-sub-star" className="far fa-star"></i>Write a Review</button>);
 
     useEffect(() => {
         dispatch(fetchBusiness(businessId));
     }, [businessId])
     
-    if (!businessId) {
-        return <h1>Loading...</h1>;
+    if (!businessId || !userReview) {
+        nav('/')
     }
    
     return (
         <>
             <BusinessIndexHeader />
             
-            {reviewButton}
-            
-            <div id="location-hours-container">
-                <p>Location & Hours</p>
-
-                <div id="location-hours">
-                    <div id="map-container">
-                        <MapWrapper></MapWrapper>
-                    </div>
-
-                    <div id="hours-container">
-                        <Hours business={business}/>
-                    </div>
-                </div>
+            <div id="rev-sub">
+                {reviewButton}
             </div>
 
-            <div id="sticky-side-nav">
-                <div>
-                    <h1>sticky side nav</h1>
+            <div id="biz-info-container">
+                <div id="location-hours-container">
+                    <p id="location-hours-title">Location & Hours</p>
+
+                    <div id="location-hours">
+                        <div id="map-container">
+                            <MapWrapper></MapWrapper>
+                        </div>
+
+                        <div id="hours-container">
+                            <Hours business={business}/>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sticky-side-nav">
+                    <div id="sticky-div">
+                        <div id="sticky-content">
+                            <p>{business.phoneNumber}</p>
+                            <p>{business.address}, {business.city}, {business.state}, {business.zipcode}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div id="reviews">
+                <h1 id="reviews-title">Recommended Reviews</h1>
                <ReviewIndex />
             </div>
 

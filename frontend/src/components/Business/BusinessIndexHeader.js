@@ -32,7 +32,7 @@ const BusinessIndexHeader = () => {
 
                     <div id="stats">
                         <BusinessStars />
-                        <p># reviews</p>
+                        {/* <p># reviews</p> */}
                     </div>
 
                     <div id="details">

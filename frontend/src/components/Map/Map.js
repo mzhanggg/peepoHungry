@@ -42,7 +42,7 @@ const Map = ({center, zoom}) => {
     }, [center, zoom])
 
     return (
-        <div style={{ width: '300px', height: '300px' }} ref={mapRef}></div>
+        <div style={{ width: '300px', height: '200px' }} ref={mapRef}></div>
     );
     
 };

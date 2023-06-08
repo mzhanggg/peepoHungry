@@ -53,7 +53,7 @@ function App() {
         <Route exact path="/businesses/:businessId/:reviewId/edit" element={<ReviewEditForm />}></Route>
       </Routes>
       
-      {recentActivity()}
+      {/* {recentActivity()} */}
       {categories() }
       <Footer />
     </>

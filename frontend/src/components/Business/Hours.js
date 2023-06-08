@@ -5,7 +5,7 @@ const Hours = ({business}) => {
     const nav = useNavigate();
 
     if (!business) {
-        return nav("/");
+        return <div>...Loading</div>
     }
 
     const times = business.hours;

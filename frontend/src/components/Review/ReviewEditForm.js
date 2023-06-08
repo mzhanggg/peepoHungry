@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateReview } from "../../store/reviewReducer";
 import { useParams, useNavigate } from "react-router-dom";
 import { getReview, fetchReviews } from "../../store/reviewReducer";
-import { getBusiness, fetchBusiness } from "../../store/businessReducer";
+import { fetchBusiness } from "../../store/businessReducer";
 
 const ReviewEditForm = () => {
     const dispatch = useDispatch();

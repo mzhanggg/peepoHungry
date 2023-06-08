@@ -113,7 +113,7 @@ const BusinessIndexItem = ({biz}) => {
 
                     <div id="stats">
                         <li>{stars()}</li>
-                        <li># reviews</li>
+                        {/* <li># reviews</li> */}
                     </div>
 
                     <div id="details">

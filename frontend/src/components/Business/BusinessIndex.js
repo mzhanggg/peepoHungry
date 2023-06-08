@@ -11,6 +11,10 @@ const BizIndex = () => {
         dispatch(fetchBusinesses());
     }, [])
 
+    if (!businesses) {
+        return <div>loading...</div>
+    }
+    
     const bizItems = businesses.map(biz => <BusinessIndexItem biz={biz} key={biz.id}/>)
 
     return (

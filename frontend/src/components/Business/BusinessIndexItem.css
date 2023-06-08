@@ -45,7 +45,8 @@
 
 #profile-img {
     margin-right: 10px;
-    max-height: 220px;
+    height: 220px;
+    width: 329px;
 }
 
 #review {

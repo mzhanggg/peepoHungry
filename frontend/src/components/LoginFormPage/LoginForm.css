@@ -49,9 +49,6 @@ form {
     padding: 10px;
     border: 1px red solid;
     width: 100%;
-}
-
-#form-btn {
     cursor: pointer;
 }
 
