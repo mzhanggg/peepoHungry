@@ -1,0 +1,24 @@
+#review-card {
+    /* padding-bottom: 10px; */
+    border: 2px red solid;
+    margin-bottom: 20px;
+}
+
+#review-card *{
+    margin-bottom: 10px;
+}
+
+#review-rating-date {
+    display:flex
+}
+
+#review-stars{
+    margin-right: 10px;
+}
+
+#reviewer-name {
+    font-weight: bold;
+}
+#review-body {
+    font-size: 14px;
+}

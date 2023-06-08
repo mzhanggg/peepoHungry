@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchReviews } from "../../store/reviewReducer";
 import ReviewIndexItem from './ReviewIndexItem';
+import './ReviewIndex.css'
 
 const ReviewIndex = () => {
     const dispatch = useDispatch();
@@ -16,13 +17,13 @@ const ReviewIndex = () => {
         dispatch(fetchReviews(businessId))
     }, [businessId])
 
-    // const reviewItems = reviews.map(rev => )
+    const reviewItems = reviews.map(rev => <ReviewIndexItem rev={rev} key={rev.id}/>)
 
     return (
         <>
-            {console.log(businessId)}
-            {console.log(reviews)}
-            <h1>my reviews</h1>
+            <ul id="review-container">
+                {reviewItems}
+            </ul>
         </>
     )
 }

@@ -37,7 +37,7 @@ const ReviewForm = () => {
     }, [businessId])
 
     return (
-        <div id="review-container">
+        <div id="review-form-container">
             <h1>{business.name}</h1>
 
             <form id="review-form">
