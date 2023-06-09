@@ -6,6 +6,7 @@ import { getBusiness } from "../../store/businessReducer";
 import './ReviewForm.css';
 import { fetchBusiness } from "../../store/businessReducer";
 import { fetchReviews } from "../../store/reviewReducer";
+import RatingStars from "./Star";
 
 const ReviewForm = () => {
     const nav = useNavigate();
@@ -32,6 +33,10 @@ const ReviewForm = () => {
     useEffect(() => {
         dispatch(fetchReviews(businessId))
     }, [businessId])
+
+    const handleClick = (val) => {
+        setRating(val)
+    }
 
     return (
         <div id="review-form-container">

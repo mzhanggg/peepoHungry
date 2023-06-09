@@ -14,6 +14,7 @@ import RecentActivities from "./components/RecentActivity/RecentActivity";
 import BizIndexFilter from "./components/Business/BizIndexFilter";
 import ReviewForm from "./components/Review/ReviewForm";
 import ReviewEditForm from "./components/Review/ReviewEditForm";
+
 function App() {
   const location = useLocation()
   const path = location.pathname;
