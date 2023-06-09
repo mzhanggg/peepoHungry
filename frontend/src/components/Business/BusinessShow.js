@@ -13,8 +13,11 @@ const BusinessShow = () => {
     const {businessId} = useParams();
     const business = useSelector(getBusiness(businessId));
     const nav = useNavigate();
-    const sessionUser = useSelector(state => state.session.user);
+    let sessionUser = useSelector(state => state.session.user);
 
+    if (!sessionUser) {
+        sessionUser = {};
+    }
     const reviews = useSelector(state => {
         return Object.values(state.reviews).filter(review => review.businessId === Number(businessId))
     })
@@ -29,8 +32,8 @@ const BusinessShow = () => {
         nav(`/businesses/${businessId}/${userReviewId}/edit`)
     }
     
-    const userReview = reviews.find(review => review.userId === sessionUser.id);
-    const userReviewId = userReview ? userReview.id : null;
+    const userReview = reviews.find(review => review.userId === sessionUser.id); // t or f
+    const userReviewId = userReview ? userReview.id : null; // review id
 
     const reviewButton = userReview ? 
         ( <button type="submit" id="rev-sub-btn" onClick={handleUpdate}><i id="rev-sub-star" className="far fa-star"></i>Update Your Review</button>) 
@@ -42,7 +45,7 @@ const BusinessShow = () => {
     }, [businessId])
     
     if (!businessId || !userReview) {
-        nav('/')
+        <h1>loading...</h1>
     }
    
     return (
@@ -72,6 +75,7 @@ const BusinessShow = () => {
                     <div id="sticky-div">
                         <div id="sticky-content">
                             <p>{business.phoneNumber}</p>
+                            <hr></hr>
                             <p>{business.address}, {business.city}, {business.state}, {business.zipcode}</p>
                         </div>
                     </div>

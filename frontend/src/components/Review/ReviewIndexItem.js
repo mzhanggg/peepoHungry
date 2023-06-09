@@ -19,7 +19,7 @@ const ReviewIndexItem = ({rev}) => {
 
     const deleteButton = () => {
         if (rev.userId === sessionUser.id) {
-            return (<button id={rev.id} onClick={handleClick}>Delete Review</button>)
+            return (<button className="del-btn" id={rev.id} onClick={handleClick}>Delete Review</button>)
         }
     }
 
@@ -115,9 +115,9 @@ const ReviewIndexItem = ({rev}) => {
 
                 <div id="review-body">
                     <h1>{rev.body}</h1>
+                    {deleteButton()}
                 </div>
 
-                {deleteButton()}
             </div>
             
         </>
