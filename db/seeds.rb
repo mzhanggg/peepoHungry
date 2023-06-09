@@ -15,13 +15,16 @@ coffees = []
 # ApplicationRecord.transaction do
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
+    Review.destroy_all
     User.destroy_all
     Business.destroy_all
   
     puts "Resetting primary keys..."
     # For easy testing, so that after seeding, the first `User` has `id` of 1
-    ApplicationRecord.connection.reset_pk_sequence!('users')
+    ApplicationRecord.connection.reset_pk_sequence!('reviews')
     ApplicationRecord.connection.reset_pk_sequence!('businesses')
+    ApplicationRecord.connection.reset_pk_sequence!('users')
+
   
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:
@@ -30,6 +33,78 @@ coffees = []
         lname: 'Hungry',
         zipcode: '9000',
         email: 'peepo@hungry.io', 
+        password: 'password'
+    )
+
+    User.create!(
+        fname: 'Michele',
+        lname: 'Not-amaZhang',
+        zipcode: '9000',
+        email: 'michele@hungry.io', 
+        password: 'password'
+    )
+
+    User.create!(
+        fname: 'Mo',
+        lname: 'Hammad',
+        zipcode: '9000',
+        email: 'mo@hungry.io', 
+        password: 'password'
+    )
+
+    User.create!(
+        fname: 'Jeremy',
+        lname: 'Sleeping',
+        zipcode: '9000',
+        email: 'sleeping@hungry.io', 
+        password: 'password'
+    )
+
+    User.create!(
+        fname: 'Mer',
+        lname: 'Ve',
+        zipcode: '9000',
+        email: 'merve@hungry.io', 
+        password: 'password'
+    )
+
+    User.create!(
+        fname: 'Oh',
+        lname: 'Sam',
+        zipcode: '9000',
+        email: 'sam@hungry.io', 
+        password: 'password'
+    )
+
+    User.create!(
+        fname: 'Jack',
+        lname: 'Daniels',
+        zipcode: '9000',
+        email: 'jack@hungry.io', 
+        password: 'password'
+    )
+
+    User.create!(
+        fname: 'Samuel',
+        lname: 'Adams',
+        zipcode: '9000',
+        email: 'samuel@hungry.io', 
+        password: 'password'
+    )
+
+    User.create!(
+        fname: 'Johnny',
+        lname: 'Walker',
+        zipcode: '9000',
+        email: 'johnny@hungry.io', 
+        password: 'password'
+    )
+
+    User.create!(
+        fname: 'Captain',
+        lname: 'Walker',
+        zipcode: '9000',
+        email: 'walker@hungry.io', 
         password: 'password'
     )
     
@@ -335,22 +410,91 @@ coffees = []
     c5.photo.attach(io: URI.open("https://peepohungry-seeds.s3.amazonaws.com/coffee/coffee5.jpg"), filename: "coffee5.jpg")
     puts 'seeded 5th coffee woohoooo'
 
-    puts "Done!"
-
     Review.create!(
-        body: 'i am peepo',
+        body: 'Amazing food and excellent service! The ambiance is perfect for a romantic dinner or a night out with friends. Highly recommend this place for its delectable dishes and friendly staff.',
         rating: 5,
         business_id: 1,
         user_id: 1
     )
 
     Review.create!(
-        body: 'i am not peepo',
-        rating: 5,
-        business_id: 2,
-        user_id: 1
+        body: 'I had an incredible dining experience here. The menu offers a wide variety of delicious dishes, and each one I tried was a culinary delight. The staff was knowledgeable and attentive, making the evening even more enjoyable. Highly recommend!',
+        rating: 3,
+        business_id: 1,
+        user_id: 2
     )
 
+    Review.create!(
+        body: 'The vibes were immaculate! But food was jsut alright',
+        rating: 2,
+        business_id: 2,
+        user_id: 3
+    )
+
+    Review.create!(
+        body: 'Worst experience I have ever had. Would not go again!',
+        rating: 1,
+        business_id: 2,
+        user_id: 4
+    )
+
+    Review.create!(
+        body: 'Wow fantastic baby',
+        rating: 5,
+        business_id: 3,
+        user_id: 5
+    )
+
+    Review.create!(
+        body: 'The vibes were immaculate!',
+        rating: 5,
+        business_id: 3,
+        user_id: 6
+    )
+
+    Review.create!(
+        body: 'Amazing food and excellent service! The ambiance is perfect for a romantic dinner or a night out with friends. Highly recommend this place for its delectable dishes and friendly staff.',
+        rating: 5,
+        business_id: 4,
+        user_id: 7
+    )
+
+    Review.create!(
+        body: 'I had an incredible dining experience here. The menu offers a wide variety of delicious dishes, and each one I tried was a culinary delight. The staff was knowledgeable and attentive, making the evening even more enjoyable. Highly recommend!',
+        rating: 3,
+        business_id: 5,
+        user_id: 8
+    )
+
+    Review.create!(
+        body: 'The vibes were immaculate! But food was jsut alright',
+        rating: 2,
+        business_id: 6,
+        user_id: 9
+    )
+
+    Review.create!(
+        body: 'Worst experience I have ever had. Would not go again!',
+        rating: 1,
+        business_id: 7,
+        user_id: 10
+    )
+
+    Review.create!(
+        body: 'I had an incredible dining experience here. The menu offers a wide variety of delicious dishes, and each one I tried was a culinary delight. The staff was knowledgeable and attentive, making the evening even more enjoyable. Highly recommend!',
+        rating: 5,
+        business_id: 8,
+        user_id: 3
+    )
+
+    Review.create!(
+        body: 'The vibes were immaculate!',
+        rating: 5,
+        business_id: 9,
+        user_id: 7
+    )
+
+    puts "Done!"
 # end
 
 # puts 'AWS TAKE THE WHEEL'

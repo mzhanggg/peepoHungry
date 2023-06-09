@@ -36339,3 +36339,634 @@ Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 837)
   [1m[36mReview Load (66.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" ORDER BY "reviews"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mUser Load (7.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
   [1m[36mUser Load (4.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE DATABASE "peepoHungry_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE "peepoHungry_test" ENCODING = 'unicode'[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (2.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35mSQL (2.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (18.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (91.8ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (10.6ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (19.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (8.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_variant_records" CASCADE[0m
+  [1m[35m (83.1ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (5.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "businesses" CASCADE[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "businesses" ("id" bigserial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "zipcode" character varying NOT NULL, "category" character varying NOT NULL, "phone_number" character varying NOT NULL, "price_range" float NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "neighborhood" character varying NOT NULL, "lat" float NOT NULL, "long" float NOT NULL, "hours" json NOT NULL, "avg_rating" float NOT NULL)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "reviews" CASCADE[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "body" text NOT NULL, "rating" integer NOT NULL, "business_id" bigint NOT NULL, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_business_id" ON "reviews" ("business_id")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[35m (5.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "fname" character varying NOT NULL, "lname" character varying NOT NULL, "email" character varying NOT NULL, "zipcode" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (8.7ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (19.2ms)[0m  [1m[35mALTER TABLE "active_storage_variant_records" ADD CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (6.9ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_a30b46fa3b"
+FOREIGN KEY ("business_id")
+  REFERENCES "businesses" ("id")
+[0m
+  [1m[35m (32.6ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (192.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35mSQL (7.9ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (76.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (29.3ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (3.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (3.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_variant_records" CASCADE[0m
+  [1m[35m (15.0ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (2.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "businesses" CASCADE[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "businesses" ("id" bigserial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "zipcode" character varying NOT NULL, "category" character varying NOT NULL, "phone_number" character varying NOT NULL, "price_range" float NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "neighborhood" character varying NOT NULL, "lat" float NOT NULL, "long" float NOT NULL, "hours" json NOT NULL, "avg_rating" float NOT NULL)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "reviews" CASCADE[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "body" text NOT NULL, "rating" integer NOT NULL, "business_id" bigint NOT NULL, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_business_id" ON "reviews" ("business_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[35m (2.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "fname" character varying NOT NULL, "lname" character varying NOT NULL, "email" character varying NOT NULL, "zipcode" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (13.7ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "active_storage_variant_records" ADD CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_a30b46fa3b"
+FOREIGN KEY ("business_id")
+  REFERENCES "businesses" ("id")
+[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (2.7ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "development"], ["updated_at", "2023-06-09 03:12:56.375886"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2023-06-09 03:12:56.382716"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mReview Load (0.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mBusiness Load (0.6ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (2.4ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "peepo"], ["lname", "Hungry"], ["email", "peepo@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-09 03:12:56.908298"], ["updated_at", "2023-06-09 03:12:56.908298"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "michele@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "Michele"], ["lname", "Not-amaZhang"], ["email", "michele@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-09 03:12:57.318960"], ["updated_at", "2023-06-09 03:12:57.318960"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "mo@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "Mo"], ["lname", "Hammad"], ["email", "mo@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-09 03:12:57.723959"], ["updated_at", "2023-06-09 03:12:57.723959"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sleeping@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "Jeremy"], ["lname", "Sleeping"], ["email", "sleeping@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-09 03:12:58.127768"], ["updated_at", "2023-06-09 03:12:58.127768"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "merve@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "Mer"], ["lname", "Ve"], ["email", "merve@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-09 03:12:58.534362"], ["updated_at", "2023-06-09 03:12:58.534362"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sam@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "Oh"], ["lname", "Sam"], ["email", "sam@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-09 03:12:58.937950"], ["updated_at", "2023-06-09 03:12:58.937950"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jack@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "Jack"], ["lname", "Daniels"], ["email", "jack@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-09 03:12:59.340911"], ["updated_at", "2023-06-09 03:12:59.340911"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "samuel@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "Samuel"], ["lname", "Adams"], ["email", "samuel@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-09 03:12:59.743925"], ["updated_at", "2023-06-09 03:12:59.743925"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "johnny@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (9.1ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "Johnny"], ["lname", "Walker"], ["email", "johnny@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-09 03:13:00.145991"], ["updated_at", "2023-06-09 03:13:00.145991"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "johnny@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE DATABASE "peepoHungry_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE DATABASE "peepoHungry_test" ENCODING = 'unicode'[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (5.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (2.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (10.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_variant_records" CASCADE[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (2.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "businesses" CASCADE[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "businesses" ("id" bigserial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "zipcode" character varying NOT NULL, "category" character varying NOT NULL, "phone_number" character varying NOT NULL, "price_range" float NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "neighborhood" character varying NOT NULL, "lat" float NOT NULL, "long" float NOT NULL, "hours" json NOT NULL, "avg_rating" float NOT NULL)[0m
+  [1m[35m (4.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "reviews" CASCADE[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "body" text NOT NULL, "rating" integer NOT NULL, "business_id" bigint NOT NULL, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_business_id" ON "reviews" ("business_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[35m (2.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "fname" character varying NOT NULL, "lname" character varying NOT NULL, "email" character varying NOT NULL, "zipcode" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "active_storage_variant_records" ADD CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_a30b46fa3b"
+FOREIGN KEY ("business_id")
+  REFERENCES "businesses" ("id")
+[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (4.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (2.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (12.8ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (4.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_variant_records" CASCADE[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL)[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (4.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "businesses" CASCADE[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "businesses" ("id" bigserial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "zipcode" character varying NOT NULL, "category" character varying NOT NULL, "phone_number" character varying NOT NULL, "price_range" float NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "neighborhood" character varying NOT NULL, "lat" float NOT NULL, "long" float NOT NULL, "hours" json NOT NULL, "avg_rating" float NOT NULL)[0m
+  [1m[35m (4.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "reviews" CASCADE[0m
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "body" text NOT NULL, "rating" integer NOT NULL, "business_id" bigint NOT NULL, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_business_id" ON "reviews" ("business_id")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[35m (2.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "fname" character varying NOT NULL, "lname" character varying NOT NULL, "email" character varying NOT NULL, "zipcode" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (2.8ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "active_storage_variant_records" ADD CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (3.0ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_a30b46fa3b"
+FOREIGN KEY ("business_id")
+  REFERENCES "businesses" ("id")
+[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.5ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "development"], ["updated_at", "2023-06-09 03:13:31.615883"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2023-06-09 03:13:31.622237"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mBusiness Load (0.7ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peepo@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.7ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "peepo"], ["lname", "Hungry"], ["email", "peepo@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-09 03:13:32.268804"], ["updated_at", "2023-06-09 03:13:32.268804"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "michele@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "Michele"], ["lname", "Not-amaZhang"], ["email", "michele@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-09 03:13:32.871856"], ["updated_at", "2023-06-09 03:13:32.871856"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "mo@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "Mo"], ["lname", "Hammad"], ["email", "mo@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-09 03:13:33.309060"], ["updated_at", "2023-06-09 03:13:33.309060"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sleeping@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "Jeremy"], ["lname", "Sleeping"], ["email", "sleeping@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-09 03:13:33.711236"], ["updated_at", "2023-06-09 03:13:33.711236"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "merve@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "Mer"], ["lname", "Ve"], ["email", "merve@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-09 03:13:34.114001"], ["updated_at", "2023-06-09 03:13:34.114001"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sam@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "Oh"], ["lname", "Sam"], ["email", "sam@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-09 03:13:34.565203"], ["updated_at", "2023-06-09 03:13:34.565203"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jack@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "Jack"], ["lname", "Daniels"], ["email", "jack@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-09 03:13:34.971255"], ["updated_at", "2023-06-09 03:13:34.971255"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "samuel@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "Samuel"], ["lname", "Adams"], ["email", "samuel@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-09 03:13:35.404967"], ["updated_at", "2023-06-09 03:13:35.404967"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "johnny@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (8.4ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "Johnny"], ["lname", "Walker"], ["email", "johnny@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-09 03:13:35.844109"], ["updated_at", "2023-06-09 03:13:35.844109"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54:in `generate_unique_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "walker@hungry.io"], ["LIMIT", 1]]
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "zipcode", "created_at", "updated_at", "password_digest", "session_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["fname", "Captain"], ["lname", "Walker"], ["email", "walker@hungry.io"], ["zipcode", "9000"], ["created_at", "2023-06-09 03:13:36.255189"], ["updated_at", "2023-06-09 03:13:36.255189"], ["password_digest", "[FILTERED]"], ["session_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBusiness Create (1.6ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Krusty Krab"], ["address", "42 Wallaby Way"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10011"], ["category", "Burger"], ["phone_number", "678-999-8212"], ["price_range", 100.0], ["created_at", "2023-06-09 03:13:36.266974"], ["updated_at", "2023-06-09 03:13:36.266974"], ["neighborhood", "Union Square"], ["lat", 40.73629958855562], ["long", -73.99379521689175], ["hours", "\"{\\\"Mon::  9:00 AM - 6:00 PM\\\",\\n            \\\"Tue::  9:00 AM - 6:00 PM\\\",\\n            \\\"Wed::  9:00 AM - 6:00 PM\\\",\\n            \\\"Thu::  9:00 AM - 6:00 PM\\\",\\n            \\\"Fri::  9:00 AM - 6:00 AM\\\",\\n            \\\"Sat::  CLOSED\\\",\\n            \\\"Sun::  CLOSED\\\"}\""], ["avg_rating", 4.3]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (1.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (4.9ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "nacnu1zsq33h15hcrqn757fu98ev"], ["filename", "burger1.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "amazon_dev"], ["byte_size", 1740636], ["checksum", "LhtR2EeAmvlxcNMHIuLrZA=="], ["created_at", "2023-06-09 03:13:38.041123"]]
+  [1m[36mActiveStorage::Attachment Create (0.9ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Business"], ["record_id", 1], ["blob_id", 1], ["created_at", "2023-06-09 03:13:38.047715"]]
+  [1m[36mBusiness Update (0.5ms)[0m  [1m[33mUPDATE "businesses" SET "updated_at" = $1 WHERE "businesses"."id" = $2[0m  [["updated_at", "2023-06-09 03:13:38.049719"], ["id", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+[36m  S3 Storage (2816.5ms) [0m[32mUploaded file to key: nacnu1zsq33h15hcrqn757fu98ev (checksum: LhtR2EeAmvlxcNMHIuLrZA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 1c6487be-bc1b-4214-ba13-7ec021f227e7) to Async(default) with arguments: #<GlobalID:0x000000010d287f90 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/1>>
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBusiness Create (0.6ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Wendy's"], ["address", "20 E 14th St"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10003"], ["category", "Burger"], ["phone_number", "212-243-0438"], ["price_range", 25.0], ["created_at", "2023-06-09 03:13:40.874154"], ["updated_at", "2023-06-09 03:13:40.874154"], ["neighborhood", "Union Square"], ["lat", 40.735490756799535], ["long", -73.9926613133639], ["hours", "\"{\\\"Mon::  7:00 AM - 12:00 AM\\\",\\n            \\\"Tue::  7:00 AM - 12:00 AM\\\",\\n            \\\"Wed::  7:00 AM - 12:00 AM\\\",\\n            \\\"Thu::  7:00 AM - 1:00 AM\\\",\\n            \\\"Fri::  7:00 AM - 1:00 AM\\\",\\n            \\\"Sat::  7:00 AM - 1:00 AM\\\",\\n            \\\"Sun::  7:00 AM - 12:00 AM\\\"}\""], ["avg_rating", 4.0]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1c6487be-bc1b-4214-ba13-7ec021f227e7]   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1c6487be-bc1b-4214-ba13-7ec021f227e7] Performing ActiveStorage::AnalyzeJob (Job ID: 1c6487be-bc1b-4214-ba13-7ec021f227e7) from Async(default) enqueued at 2023-06-09T03:13:40Z with arguments: #<GlobalID:0x000000010d49f030 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1c6487be-bc1b-4214-ba13-7ec021f227e7] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1c6487be-bc1b-4214-ba13-7ec021f227e7]   [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1c6487be-bc1b-4214-ba13-7ec021f227e7]   [1m[36mActiveStorage::Blob Update (0.8ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1c6487be-bc1b-4214-ba13-7ec021f227e7]   [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1c6487be-bc1b-4214-ba13-7ec021f227e7] Performed ActiveStorage::AnalyzeJob (Job ID: 1c6487be-bc1b-4214-ba13-7ec021f227e7) from Async(default) in 318.7ms
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "gffxklqol14r3z6uhztyp3lgvcpm"], ["filename", "burger2.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "amazon_dev"], ["byte_size", 1152194], ["checksum", "rq9CGN3g8XiFv/m4BzEO+w=="], ["created_at", "2023-06-09 03:13:42.654635"]]
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Business"], ["record_id", 2], ["blob_id", 2], ["created_at", "2023-06-09 03:13:42.656230"]]
+  [1m[36mBusiness Update (0.2ms)[0m  [1m[33mUPDATE "businesses" SET "updated_at" = $1 WHERE "businesses"."id" = $2[0m  [["updated_at", "2023-06-09 03:13:42.657343"], ["id", 2]]
+  [1m[36mTRANSACTION (21.4ms)[0m  [1m[35mCOMMIT[0m
+[36m  S3 Storage (1154.3ms) [0m[32mUploaded file to key: gffxklqol14r3z6uhztyp3lgvcpm (checksum: rq9CGN3g8XiFv/m4BzEO+w==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 6ccf545e-89f4-499a-9c91-d120779b36ae) to Async(default) with arguments: #<GlobalID:0x0000000118385ea0 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/2>>
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBusiness Create (0.5ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Let's Meat BBQ"], ["address", "307 5th Ave"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10016"], ["category", "Korean"], ["phone_number", "212-889-0089"], ["price_range", 75.0], ["created_at", "2023-06-09 03:13:43.838641"], ["updated_at", "2023-06-09 03:13:43.838641"], ["neighborhood", "Koreatown"], ["lat", 40.74685373508556], ["long", -73.98556946035512], ["hours", "\"{\\\"Mon::  12:00 PM - 11:00 PM\\\",\\n            \\\"Tue::  12:00 PM - 11:00 PM\\\",\\n            \\\"Wed::  12:00 PM - 11:00 PM\\\",\\n            \\\"Thu::  12:00 PM - 1:00 AM\\\",\\n            \\\"Fri::  12:00 PM - 1:00 AM\\\",\\n            \\\"Sat::  12:00 PM - 1:00 AM\\\",\\n            \\\"Sun::  12:00 PM - 11:00 PM\\\"}\""], ["avg_rating", 4.3]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6ccf545e-89f4-499a-9c91-d120779b36ae]   [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6ccf545e-89f4-499a-9c91-d120779b36ae] Performing ActiveStorage::AnalyzeJob (Job ID: 6ccf545e-89f4-499a-9c91-d120779b36ae) from Async(default) enqueued at 2023-06-09T03:13:43Z with arguments: #<GlobalID:0x00000001183d4e88 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6ccf545e-89f4-499a-9c91-d120779b36ae] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6ccf545e-89f4-499a-9c91-d120779b36ae]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6ccf545e-89f4-499a-9c91-d120779b36ae]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6ccf545e-89f4-499a-9c91-d120779b36ae]   [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6ccf545e-89f4-499a-9c91-d120779b36ae] Performed ActiveStorage::AnalyzeJob (Job ID: 6ccf545e-89f4-499a-9c91-d120779b36ae) from Async(default) in 6.54ms
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "rghfr1h5iww8ei983ipjbvv5fg52"], ["filename", "k1.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "amazon_dev"], ["byte_size", 1782087], ["checksum", "mBSLgPpWdDpTlbBOhvesQA=="], ["created_at", "2023-06-09 03:13:45.361664"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Business"], ["record_id", 3], ["blob_id", 3], ["created_at", "2023-06-09 03:13:45.364192"]]
+  [1m[36mBusiness Update (0.3ms)[0m  [1m[33mUPDATE "businesses" SET "updated_at" = $1 WHERE "businesses"."id" = $2[0m  [["updated_at", "2023-06-09 03:13:45.365976"], ["id", 3]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+[36m  S3 Storage (1496.8ms) [0m[32mUploaded file to key: rghfr1h5iww8ei983ipjbvv5fg52 (checksum: mBSLgPpWdDpTlbBOhvesQA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 15fc89bd-af5d-40dd-9617-340fdee93de2) to Async(default) with arguments: #<GlobalID:0x000000011852c920 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/3>>
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBusiness Create (0.8ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Joe Coffee Company"], ["address", "9 E 13th St"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10003"], ["category", "Coffee"], ["phone_number", "212-924-3300"], ["price_range", 25.0], ["created_at", "2023-06-09 03:13:46.868434"], ["updated_at", "2023-06-09 03:13:46.868434"], ["neighborhood", "Union Square"], ["lat", 40.74685373508556], ["long", -73.98556946035512], ["hours", "\"{\\\"Mon::  7:00 AM - 6:30 PM\\\",\\n            \\\"Tue::  7:00 AM - 6:30 PM\\\",\\n            \\\"Wed::  7:00 AM - 6:30 PM\\\",\\n            \\\"Thu::  7:00 AM - 6:30 PM\\\",\\n            \\\"Fri::  7:00 AM - 6:30 PM\\\",\\n            \\\"Sat::  9:00 AM - 5:00 PM\\\",\\n            \\\"Sun::  9:00 AM - 5:00 PM\\\"}\""], ["avg_rating", 4.3]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [15fc89bd-af5d-40dd-9617-340fdee93de2]   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [15fc89bd-af5d-40dd-9617-340fdee93de2] Performing ActiveStorage::AnalyzeJob (Job ID: 15fc89bd-af5d-40dd-9617-340fdee93de2) from Async(default) enqueued at 2023-06-09T03:13:46Z with arguments: #<GlobalID:0x00000001185878e8 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/3>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [15fc89bd-af5d-40dd-9617-340fdee93de2] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [15fc89bd-af5d-40dd-9617-340fdee93de2]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [15fc89bd-af5d-40dd-9617-340fdee93de2]   [1m[36mActiveStorage::Blob Update (0.6ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 3]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [15fc89bd-af5d-40dd-9617-340fdee93de2]   [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [15fc89bd-af5d-40dd-9617-340fdee93de2] Performed ActiveStorage::AnalyzeJob (Job ID: 15fc89bd-af5d-40dd-9617-340fdee93de2) from Async(default) in 7.57ms
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "r4j8ckuyx0vw4ni9f3y9vzawj683"], ["filename", "coffee1.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "amazon_dev"], ["byte_size", 1539344], ["checksum", "HiQC8Smcms0paGcKaxVSdQ=="], ["created_at", "2023-06-09 03:13:48.222292"]]
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Business"], ["record_id", 4], ["blob_id", 4], ["created_at", "2023-06-09 03:13:48.224980"]]
+  [1m[36mBusiness Update (0.3ms)[0m  [1m[33mUPDATE "businesses" SET "updated_at" = $1 WHERE "businesses"."id" = $2[0m  [["updated_at", "2023-06-09 03:13:48.226902"], ["id", 4]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+[36m  S3 Storage (1342.8ms) [0m[32mUploaded file to key: r4j8ckuyx0vw4ni9f3y9vzawj683 (checksum: HiQC8Smcms0paGcKaxVSdQ==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 317abdfe-a6ea-4e28-ad82-75ce6aeaee5b) to Async(default) with arguments: #<GlobalID:0x00000001186d5a10 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/4>>
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBusiness Create (0.6ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Blue Bottle Coffee"], ["address", " 101 University Pl"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10003"], ["category", "Coffee"], ["phone_number", "510-653-3394"], ["price_range", 50.0], ["created_at", "2023-06-09 03:13:49.577231"], ["updated_at", "2023-06-09 03:13:49.577231"], ["neighborhood", "Union Square"], ["lat", 40.73417815176639], ["long", -73.99261471880794], ["hours", "\"{\\\"Mon::  7:00 AM - 6:30 PM\\\",\\n            \\\"Tue::  7:00 AM - 6:30 PM\\\",\\n            \\\"Wed::  7:00 AM - 6:30 PM\\\",\\n            \\\"Thu::  7:00 AM - 6:30 PM\\\",\\n            \\\"Fri::  7:00 AM - 6:30 PM\\\",\\n            \\\"Sat::  9:00 AM - 5:00 PM\\\",\\n            \\\"Sun::  9:00 AM - 5:00 PM\\\"}\""], ["avg_rating", 4.4]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [317abdfe-a6ea-4e28-ad82-75ce6aeaee5b]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [317abdfe-a6ea-4e28-ad82-75ce6aeaee5b] Performing ActiveStorage::AnalyzeJob (Job ID: 317abdfe-a6ea-4e28-ad82-75ce6aeaee5b) from Async(default) enqueued at 2023-06-09T03:13:49Z with arguments: #<GlobalID:0x0000000118724a48 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/4>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [317abdfe-a6ea-4e28-ad82-75ce6aeaee5b] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [317abdfe-a6ea-4e28-ad82-75ce6aeaee5b]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [317abdfe-a6ea-4e28-ad82-75ce6aeaee5b]   [1m[36mActiveStorage::Blob Update (0.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 4]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [317abdfe-a6ea-4e28-ad82-75ce6aeaee5b]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [317abdfe-a6ea-4e28-ad82-75ce6aeaee5b] Performed ActiveStorage::AnalyzeJob (Job ID: 317abdfe-a6ea-4e28-ad82-75ce6aeaee5b) from Async(default) in 5.65ms
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "xoswwhp8sk41sfpra6ur5ez0xs7h"], ["filename", "coffee2.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "amazon_dev"], ["byte_size", 1045742], ["checksum", "2cSK4s1/q86li6/PrVJkOQ=="], ["created_at", "2023-06-09 03:13:50.863360"]]
+  [1m[36mActiveStorage::Attachment Create (0.9ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Business"], ["record_id", 5], ["blob_id", 5], ["created_at", "2023-06-09 03:13:50.865740"]]
+  [1m[36mBusiness Update (0.4ms)[0m  [1m[33mUPDATE "businesses" SET "updated_at" = $1 WHERE "businesses"."id" = $2[0m  [["updated_at", "2023-06-09 03:13:50.868182"], ["id", 5]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+[36m  S3 Storage (1214.8ms) [0m[32mUploaded file to key: xoswwhp8sk41sfpra6ur5ez0xs7h (checksum: 2cSK4s1/q86li6/PrVJkOQ==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 9622ca4d-0652-4339-9c99-5eee21641e79) to Async(default) with arguments: #<GlobalID:0x0000000118a6f018 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/5>>
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBusiness Create (0.6ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Jongro BBQ"], ["address", "22 W 32nd St"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10001"], ["category", "Korean"], ["phone_number", "212-473-2233"], ["price_range", 50.0], ["created_at", "2023-06-09 03:13:52.088956"], ["updated_at", "2023-06-09 03:13:52.088956"], ["neighborhood", "Koreatown"], ["lat", 40.747716073138314], ["long", -73.98693770444751], ["hours", "\"{\\\"Mon::  11:30AM - 12:00 AM\\\",\\n            \\\"Tue::  11:30AM - 12:00 AM\\\",\\n            \\\"Wed::  11:30AM - 12:00 AM\\\",\\n            \\\"Thu::  11:30AM - 12:00 AM\\\",\\n            \\\"Fri::  11:30AM - 1:00 AM\\\",\\n            \\\"Sat::  11:30AM - 1:00 AM\\\",\\n            \\\"Sun::  11:30AM - 12:00 AM\\\"}\""], ["avg_rating", 4.5]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9622ca4d-0652-4339-9c99-5eee21641e79]   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9622ca4d-0652-4339-9c99-5eee21641e79] Performing ActiveStorage::AnalyzeJob (Job ID: 9622ca4d-0652-4339-9c99-5eee21641e79) from Async(default) enqueued at 2023-06-09T03:13:52Z with arguments: #<GlobalID:0x0000000118abe0a0 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/5>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9622ca4d-0652-4339-9c99-5eee21641e79] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9622ca4d-0652-4339-9c99-5eee21641e79]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9622ca4d-0652-4339-9c99-5eee21641e79]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 5]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9622ca4d-0652-4339-9c99-5eee21641e79]   [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9622ca4d-0652-4339-9c99-5eee21641e79] Performed ActiveStorage::AnalyzeJob (Job ID: 9622ca4d-0652-4339-9c99-5eee21641e79) from Async(default) in 5.75ms
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "m1cyut86uzkljtk63vd8cpqy2jyw"], ["filename", "k2.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "amazon_dev"], ["byte_size", 6653405], ["checksum", "P5FNCPyTrHSQKUd+PgC17g=="], ["created_at", "2023-06-09 03:13:57.015762"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Business"], ["record_id", 6], ["blob_id", 6], ["created_at", "2023-06-09 03:13:57.018163"]]
+  [1m[36mBusiness Update (1.0ms)[0m  [1m[33mUPDATE "businesses" SET "updated_at" = $1 WHERE "businesses"."id" = $2[0m  [["updated_at", "2023-06-09 03:13:57.019468"], ["id", 6]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+[36m  S3 Storage (7724.5ms) [0m[32mUploaded file to key: m1cyut86uzkljtk63vd8cpqy2jyw (checksum: P5FNCPyTrHSQKUd+PgC17g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 266adc0f-73c2-4c95-89bb-5dcf516f32c0) to Async(default) with arguments: #<GlobalID:0x00000001183650d8 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/6>>
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBusiness Create (0.5ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Gopchang Story BBQ"], ["address", "312 5th Ave"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10001"], ["category", "Korean"], ["phone_number", "646-371-9469"], ["price_range", 50.0], ["created_at", "2023-06-09 03:14:04.749850"], ["updated_at", "2023-06-09 03:14:04.749850"], ["neighborhood", "Koreatown"], ["lat", 40.747355929732024], ["long", -73.98597216224515], ["hours", "\"{\\\"Mon:: 4:00 PM - 1:00 AM\\\",\\n            \\\"Tue::  4:00 PM - 1:00 AM\\\",\\n            \\\"Wed::  4:00 PM - 1:00 AM\\\",\\n            \\\"Thu::  4:00 PM - 1:00 AM\\\",\\n            \\\"Fri::  12:00 PM - 3:00 AM\\\",\\n            \\\"Sat::  12:00 PM - 3:00 AM\\\",\\n            \\\"Sun::  12:00 PM - 1:00 AM\\\"}\""], ["avg_rating", 4.2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [266adc0f-73c2-4c95-89bb-5dcf516f32c0]   [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [266adc0f-73c2-4c95-89bb-5dcf516f32c0] Performing ActiveStorage::AnalyzeJob (Job ID: 266adc0f-73c2-4c95-89bb-5dcf516f32c0) from Async(default) enqueued at 2023-06-09T03:14:04Z with arguments: #<GlobalID:0x00000001183860f8 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/6>>
+  [1m[36mTRANSACTION (26.7ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [266adc0f-73c2-4c95-89bb-5dcf516f32c0] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [266adc0f-73c2-4c95-89bb-5dcf516f32c0]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [266adc0f-73c2-4c95-89bb-5dcf516f32c0]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 6]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [266adc0f-73c2-4c95-89bb-5dcf516f32c0]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [266adc0f-73c2-4c95-89bb-5dcf516f32c0] Performed ActiveStorage::AnalyzeJob (Job ID: 266adc0f-73c2-4c95-89bb-5dcf516f32c0) from Async(default) in 65.14ms
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.8ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "omag2ubp82u87k8511hvrzzjz0jw"], ["filename", "k3.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "amazon_dev"], ["byte_size", 7661061], ["checksum", "61FhWWeSh/6+hijC9Ixl9g=="], ["created_at", "2023-06-09 03:14:11.004738"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Business"], ["record_id", 7], ["blob_id", 7], ["created_at", "2023-06-09 03:14:11.007503"]]
+  [1m[36mBusiness Update (0.4ms)[0m  [1m[33mUPDATE "businesses" SET "updated_at" = $1 WHERE "businesses"."id" = $2[0m  [["updated_at", "2023-06-09 03:14:11.008851"], ["id", 7]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+[36m  S3 Storage (7025.7ms) [0m[32mUploaded file to key: omag2ubp82u87k8511hvrzzjz0jw (checksum: 61FhWWeSh/6+hijC9Ixl9g==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: cbe6419a-90b9-4ebb-8e2e-dd3157016541) to Async(default) with arguments: #<GlobalID:0x00000001186bf800 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/7>>
+  [1m[36mTRANSACTION (15.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBusiness Create (0.8ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Turntable Chicken Jazz"], ["address", "20 W 33rd St"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10001"], ["category", "Korean"], ["phone_number", "212-714-9700"], ["price_range", 50.0], ["created_at", "2023-06-09 03:14:18.048275"], ["updated_at", "2023-06-09 03:14:18.048275"], ["neighborhood", "Koreatown"], ["lat", 40.74817654923235], ["long", -73.98642506946062], ["hours", "\"{\\\"Mon::  12:00 PM - 12:00 AM\\\",\\n            \\\"Tue::  12:00 PM - 12:00 AM\\\",\\n            \\\"Wed::  12:00 PM - 12:00 AM\\\",\\n            \\\"Thu::  12:00 PM - 12:00 AM\\\",\\n            \\\"Fri::  12:00 PM - 12:00 AM\\\",\\n            \\\"Sat::  12:00 PM - 12:00 AM\\\",\\n            \\\"Sun::  12:00 PM - 10:00 PM\\\"}\""], ["avg_rating", 4.3]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cbe6419a-90b9-4ebb-8e2e-dd3157016541]   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cbe6419a-90b9-4ebb-8e2e-dd3157016541] Performing ActiveStorage::AnalyzeJob (Job ID: cbe6419a-90b9-4ebb-8e2e-dd3157016541) from Async(default) enqueued at 2023-06-09T03:14:18Z with arguments: #<GlobalID:0x00000001186d6780 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/7>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cbe6419a-90b9-4ebb-8e2e-dd3157016541] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cbe6419a-90b9-4ebb-8e2e-dd3157016541]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cbe6419a-90b9-4ebb-8e2e-dd3157016541]   [1m[36mActiveStorage::Blob Update (4.6ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 7]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cbe6419a-90b9-4ebb-8e2e-dd3157016541]   [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cbe6419a-90b9-4ebb-8e2e-dd3157016541] Performed ActiveStorage::AnalyzeJob (Job ID: cbe6419a-90b9-4ebb-8e2e-dd3157016541) from Async(default) in 12.43ms
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "r9g93lm6i3fh9dugpy6xtqmkfmyy"], ["filename", "k4.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "amazon_dev"], ["byte_size", 4009001], ["checksum", "gkmXmRLNZmeU3maNjPQD7Q=="], ["created_at", "2023-06-09 03:14:21.576012"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Business"], ["record_id", 8], ["blob_id", 8], ["created_at", "2023-06-09 03:14:21.578464"]]
+  [1m[36mBusiness Update (0.5ms)[0m  [1m[33mUPDATE "businesses" SET "updated_at" = $1 WHERE "businesses"."id" = $2[0m  [["updated_at", "2023-06-09 03:14:21.579853"], ["id", 8]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+[36m  S3 Storage (2998.6ms) [0m[32mUploaded file to key: r9g93lm6i3fh9dugpy6xtqmkfmyy (checksum: gkmXmRLNZmeU3maNjPQD7Q==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: f1e82afb-6963-4a9b-a0b3-55c7a8d74a93) to Async(default) with arguments: #<GlobalID:0x0000000118aceec8 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/8>>
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBusiness Create (2.1ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Boka"], ["address", "9 St Marks Pl"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10003"], ["category", "Korean"], ["phone_number", "646-678-5796"], ["price_range", 50.0], ["created_at", "2023-06-09 03:14:24.586684"], ["updated_at", "2023-06-09 03:14:24.586684"], ["neighborhood", "East Village"], ["lat", 40.73006230011236], ["long", -73.98916249448607], ["hours", "\"{\\\"Mon::  12:00 PM - 11:00 PM\\\",\\n            \\\"Tue::  12:00 PM - 11:00 PM\\\",\\n            \\\"Wed::  12:00 PM - 11:00 PM\\\",\\n            \\\"Thu::  12:00 PM - 11:00 PM\\\",\\n            \\\"Fri::  12:00 PM - 12:00 AM\\\",\\n            \\\"Sat::  12:00 PM - 12:00 AM\\\",\\n            \\\"Sun::  12:00 PM - 11:00 PM\\\"}\""], ["avg_rating", 4.3]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f1e82afb-6963-4a9b-a0b3-55c7a8d74a93]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f1e82afb-6963-4a9b-a0b3-55c7a8d74a93] Performing ActiveStorage::AnalyzeJob (Job ID: f1e82afb-6963-4a9b-a0b3-55c7a8d74a93) from Async(default) enqueued at 2023-06-09T03:14:24Z with arguments: #<GlobalID:0x0000000118c576c8 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/8>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f1e82afb-6963-4a9b-a0b3-55c7a8d74a93] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f1e82afb-6963-4a9b-a0b3-55c7a8d74a93]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f1e82afb-6963-4a9b-a0b3-55c7a8d74a93]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 8]]
+  [1m[36mTRANSACTION (17.3ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f1e82afb-6963-4a9b-a0b3-55c7a8d74a93]   [1m[36mTRANSACTION (39.7ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f1e82afb-6963-4a9b-a0b3-55c7a8d74a93] Performed ActiveStorage::AnalyzeJob (Job ID: f1e82afb-6963-4a9b-a0b3-55c7a8d74a93) from Async(default) in 49.67ms
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "jfxvc9hsbcurxehe71v47j658cec"], ["filename", "k5.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "amazon_dev"], ["byte_size", 2316138], ["checksum", "ScCWaM6qcayZNKUcoMc/IQ=="], ["created_at", "2023-06-09 03:14:26.477744"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Business"], ["record_id", 9], ["blob_id", 9], ["created_at", "2023-06-09 03:14:26.484034"]]
+  [1m[36mBusiness Update (0.3ms)[0m  [1m[33mUPDATE "businesses" SET "updated_at" = $1 WHERE "businesses"."id" = $2[0m  [["updated_at", "2023-06-09 03:14:26.485965"], ["id", 9]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+[36m  S3 Storage (1727.2ms) [0m[32mUploaded file to key: jfxvc9hsbcurxehe71v47j658cec (checksum: ScCWaM6qcayZNKUcoMc/IQ==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 84e97815-bd8d-43cd-8fd1-052fd569ee53) to Async(default) with arguments: #<GlobalID:0x0000000118cb5048 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/9>>
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBusiness Create (0.5ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Gregorys Coffee"], ["address", "649 Broadway"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10003"], ["category", "Coffee"], ["phone_number", "877-210-0105"], ["price_range", 50.0], ["created_at", "2023-06-09 03:14:28.228358"], ["updated_at", "2023-06-09 03:14:28.228358"], ["neighborhood", "NOHO"], ["lat", 40.727261514542754], ["long", -73.99566375230366], ["hours", "\"{\\\"Mon::  7:00 AM - 6:00 PM\\\",\\n            \\\"Tue::  7:00 AM - 6:00 PM\\\",\\n            \\\"Wed::  7:00 AM - 6:00 PM\\\",\\n            \\\"Thu::  7:00 AM - 6:00 PM\\\",\\n            \\\"Fri::  7:00 AM - 6:00 PM\\\",\\n            \\\"Sat::  8:00 AM - 5:00 PM\\\",\\n            \\\"Sun::  8:00 AM - 5:00 PM\\\"}\""], ["avg_rating", 4.1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [84e97815-bd8d-43cd-8fd1-052fd569ee53]   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [84e97815-bd8d-43cd-8fd1-052fd569ee53] Performing ActiveStorage::AnalyzeJob (Job ID: 84e97815-bd8d-43cd-8fd1-052fd569ee53) from Async(default) enqueued at 2023-06-09T03:14:28Z with arguments: #<GlobalID:0x00000001082a7098 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/9>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [84e97815-bd8d-43cd-8fd1-052fd569ee53] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [84e97815-bd8d-43cd-8fd1-052fd569ee53]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [84e97815-bd8d-43cd-8fd1-052fd569ee53]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 9]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [84e97815-bd8d-43cd-8fd1-052fd569ee53]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [84e97815-bd8d-43cd-8fd1-052fd569ee53] Performed ActiveStorage::AnalyzeJob (Job ID: 84e97815-bd8d-43cd-8fd1-052fd569ee53) from Async(default) in 7.93ms
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (1.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "ku58gxh1opdkzxbis2c4k9iu9ngu"], ["filename", "coffee3.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "amazon_dev"], ["byte_size", 2746449], ["checksum", "+eG2wL3SgcWirPKdwvpEcg=="], ["created_at", "2023-06-09 03:14:31.192309"]]
+  [1m[36mActiveStorage::Attachment Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Business"], ["record_id", 10], ["blob_id", 10], ["created_at", "2023-06-09 03:14:31.195597"]]
+  [1m[36mBusiness Update (0.5ms)[0m  [1m[33mUPDATE "businesses" SET "updated_at" = $1 WHERE "businesses"."id" = $2[0m  [["updated_at", "2023-06-09 03:14:31.198368"], ["id", 10]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+[36m  S3 Storage (2092.7ms) [0m[32mUploaded file to key: ku58gxh1opdkzxbis2c4k9iu9ngu (checksum: +eG2wL3SgcWirPKdwvpEcg==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: b118d54b-ae7a-433d-b0c8-17a8babaee09) to Async(default) with arguments: #<GlobalID:0x00000001183c5e10 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/10>>
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBusiness Create (0.5ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Starbucks"], ["address", "510 6th Ave"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10011"], ["category", "Coffee"], ["phone_number", "212-242-5981"], ["price_range", 50.0], ["created_at", "2023-06-09 03:14:33.300158"], ["updated_at", "2023-06-09 03:14:33.300158"], ["neighborhood", "Union Square"], ["lat", 40.727261514542754], ["long", -73.99566375230366], ["hours", "\"{\\\"Mon::  6:00 AM - 7:00 PM\\\",\\n            \\\"Tue::  6:00 AM - 7:00 PM\\\",\\n            \\\"Wed::  6:00 AM - 7:00 PM\\\",\\n            \\\"Thu::  6:00 AM - 7:00 PM\\\",\\n            \\\"Fri::  6:00 AM - 7:30 PM\\\",\\n            \\\"Sat::  7:00 AM - 7:00 PM\\\",\\n            \\\"Sun::  7:00 AM - 7:00 PM\\\"}\""], ["avg_rating", 3.8]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b118d54b-ae7a-433d-b0c8-17a8babaee09]   [1m[36mActiveStorage::Blob Load (2.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b118d54b-ae7a-433d-b0c8-17a8babaee09] Performing ActiveStorage::AnalyzeJob (Job ID: b118d54b-ae7a-433d-b0c8-17a8babaee09) from Async(default) enqueued at 2023-06-09T03:14:33Z with arguments: #<GlobalID:0x00000001183cc198 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/10>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b118d54b-ae7a-433d-b0c8-17a8babaee09] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b118d54b-ae7a-433d-b0c8-17a8babaee09]   [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b118d54b-ae7a-433d-b0c8-17a8babaee09]   [1m[36mActiveStorage::Blob Update (5.0ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 10]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b118d54b-ae7a-433d-b0c8-17a8babaee09]   [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b118d54b-ae7a-433d-b0c8-17a8babaee09] Performed ActiveStorage::AnalyzeJob (Job ID: b118d54b-ae7a-433d-b0c8-17a8babaee09) from Async(default) in 34.21ms
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "ga2e2gq70glyks4u1p501m7c8y32"], ["filename", "coffee4.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "amazon_dev"], ["byte_size", 2635842], ["checksum", "a6WDKd9lGxOvRwuQU0vAiA=="], ["created_at", "2023-06-09 03:14:35.720128"]]
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Business"], ["record_id", 11], ["blob_id", 11], ["created_at", "2023-06-09 03:14:35.724298"]]
+  [1m[36mBusiness Update (0.7ms)[0m  [1m[33mUPDATE "businesses" SET "updated_at" = $1 WHERE "businesses"."id" = $2[0m  [["updated_at", "2023-06-09 03:14:35.726738"], ["id", 11]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+[36m  S3 Storage (2183.6ms) [0m[32mUploaded file to key: ga2e2gq70glyks4u1p501m7c8y32 (checksum: a6WDKd9lGxOvRwuQU0vAiA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 731cb3b1-3944-4f8f-86a8-4e6bb599afce) to Async(default) with arguments: #<GlobalID:0x000000011859c298 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/11>>
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [731cb3b1-3944-4f8f-86a8-4e6bb599afce]   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [731cb3b1-3944-4f8f-86a8-4e6bb599afce] Performing ActiveStorage::AnalyzeJob (Job ID: 731cb3b1-3944-4f8f-86a8-4e6bb599afce) from Async(default) enqueued at 2023-06-09T03:14:37Z with arguments: #<GlobalID:0x00000001185c4ef0 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/11>>
+  [1m[36mBusiness Create (23.5ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "address", "city", "state", "zipcode", "category", "phone_number", "price_range", "created_at", "updated_at", "neighborhood", "lat", "long", "hours", "avg_rating") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Saltwater Coffee"], ["address", "126 Waverly Pl"], ["city", "NYC"], ["state", "NY"], ["zipcode", "10011"], ["category", "Coffee"], ["phone_number", "917-881-2245"], ["price_range", 25.0], ["created_at", "2023-06-09 03:14:37.923337"], ["updated_at", "2023-06-09 03:14:37.923337"], ["neighborhood", "West Village"], ["lat", 40.727261514542754], ["long", -73.99566375230366], ["hours", "\"{\\\"Mon::  7:00 AM - 5:00 PM\\\",\\n            \\\"Wed::  7:00 AM - 5:00 PM\\\",\\n            \\\"Thu::  7:00 AM - 5:00 PM\\\",\\n            \\\"Fri::  7:00 AM - 5:00 PM\\\",\\n            \\\"Sat::  8:00 AM - 6:00 PM\\\",\\n            \\\"Sun::  8:00 AM - 6:00 PM\\\"}\""], ["avg_rating", 4.4]]
+  [1m[36mTRANSACTION (11.2ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [731cb3b1-3944-4f8f-86a8-4e6bb599afce] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [731cb3b1-3944-4f8f-86a8-4e6bb599afce]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [731cb3b1-3944-4f8f-86a8-4e6bb599afce]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 11]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [731cb3b1-3944-4f8f-86a8-4e6bb599afce]   [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [731cb3b1-3944-4f8f-86a8-4e6bb599afce] Performed ActiveStorage::AnalyzeJob (Job ID: 731cb3b1-3944-4f8f-86a8-4e6bb599afce) from Async(default) in 106.63ms
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 12], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 12], ["record_type", "Business"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (1.1ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "nmg53qnvgdedo7ax6936vyimy24x"], ["filename", "coffee5.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "amazon_dev"], ["byte_size", 6862090], ["checksum", "RMoeKbO4rHNlWULdVXD5ew=="], ["created_at", "2023-06-09 03:14:44.729091"]]
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Business"], ["record_id", 12], ["blob_id", 12], ["created_at", "2023-06-09 03:14:44.738115"]]
+  [1m[36mBusiness Update (0.2ms)[0m  [1m[33mUPDATE "businesses" SET "updated_at" = $1 WHERE "businesses"."id" = $2[0m  [["updated_at", "2023-06-09 03:14:44.739874"], ["id", 12]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+[36m  S3 Storage (14818.9ms) [0m[32mUploaded file to key: nmg53qnvgdedo7ax6936vyimy24x (checksum: RMoeKbO4rHNlWULdVXD5ew==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 400cc802-a073-496d-9aee-f4e2b3a45af0) to Async(default) with arguments: #<GlobalID:0x0000000118a37870 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/12>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [400cc802-a073-496d-9aee-f4e2b3a45af0]   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [400cc802-a073-496d-9aee-f4e2b3a45af0] Performing ActiveStorage::AnalyzeJob (Job ID: 400cc802-a073-496d-9aee-f4e2b3a45af0) from Async(default) enqueued at 2023-06-09T03:14:59Z with arguments: #<GlobalID:0x0000000118a765c0 @uri=#<URI::GID gid://peepo-hungry/ActiveStorage::Blob/12>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [400cc802-a073-496d-9aee-f4e2b3a45af0] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [400cc802-a073-496d-9aee-f4e2b3a45af0]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [400cc802-a073-496d-9aee-f4e2b3a45af0]   [1m[36mActiveStorage::Blob Update (0.5ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 12]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [400cc802-a073-496d-9aee-f4e2b3a45af0]   [1m[36mTRANSACTION (4.2ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [400cc802-a073-496d-9aee-f4e2b3a45af0] Performed ActiveStorage::AnalyzeJob (Job ID: 400cc802-a073-496d-9aee-f4e2b3a45af0) from Async(default) in 17.04ms
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReview Create (4.3ms)[0m  [1m[32mINSERT INTO "reviews" ("body", "rating", "business_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["body", "Amazing food and excellent service! The ambiance is perfect for a romantic dinner or a night out with friends. Highly recommend this place for its delectable dishes and friendly staff."], ["rating", 5], ["business_id", 1], ["user_id", 1], ["created_at", "2023-06-09 03:14:59.613439"], ["updated_at", "2023-06-09 03:14:59.613439"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mReview Create (0.5ms)[0m  [1m[32mINSERT INTO "reviews" ("body", "rating", "business_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["body", "I had an incredible dining experience here. The menu offers a wide variety of delicious dishes, and each one I tried was a culinary delight. The staff was knowledgeable and attentive, making the evening even more enjoyable. Highly recommend!"], ["rating", 3], ["business_id", 1], ["user_id", 2], ["created_at", "2023-06-09 03:14:59.622582"], ["updated_at", "2023-06-09 03:14:59.622582"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mReview Create (0.7ms)[0m  [1m[32mINSERT INTO "reviews" ("body", "rating", "business_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["body", "The vibes were immaculate! But food was jsut alright"], ["rating", 2], ["business_id", 2], ["user_id", 3], ["created_at", "2023-06-09 03:14:59.628147"], ["updated_at", "2023-06-09 03:14:59.628147"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mReview Create (0.5ms)[0m  [1m[32mINSERT INTO "reviews" ("body", "rating", "business_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["body", "Worst experience I have ever had. Would not go again!"], ["rating", 1], ["business_id", 2], ["user_id", 4], ["created_at", "2023-06-09 03:14:59.635880"], ["updated_at", "2023-06-09 03:14:59.635880"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mReview Create (0.7ms)[0m  [1m[32mINSERT INTO "reviews" ("body", "rating", "business_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["body", "Wow fantastic baby"], ["rating", 5], ["business_id", 3], ["user_id", 5], ["created_at", "2023-06-09 03:14:59.640172"], ["updated_at", "2023-06-09 03:14:59.640172"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mReview Create (0.7ms)[0m  [1m[32mINSERT INTO "reviews" ("body", "rating", "business_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["body", "The vibes were immaculate!"], ["rating", 5], ["business_id", 3], ["user_id", 6], ["created_at", "2023-06-09 03:14:59.644211"], ["updated_at", "2023-06-09 03:14:59.644211"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("body", "rating", "business_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["body", "Amazing food and excellent service! The ambiance is perfect for a romantic dinner or a night out with friends. Highly recommend this place for its delectable dishes and friendly staff."], ["rating", 5], ["business_id", 4], ["user_id", 7], ["created_at", "2023-06-09 03:14:59.648320"], ["updated_at", "2023-06-09 03:14:59.648320"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("body", "rating", "business_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["body", "I had an incredible dining experience here. The menu offers a wide variety of delicious dishes, and each one I tried was a culinary delight. The staff was knowledgeable and attentive, making the evening even more enjoyable. Highly recommend!"], ["rating", 3], ["business_id", 5], ["user_id", 8], ["created_at", "2023-06-09 03:14:59.652194"], ["updated_at", "2023-06-09 03:14:59.652194"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("body", "rating", "business_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["body", "The vibes were immaculate! But food was jsut alright"], ["rating", 2], ["business_id", 6], ["user_id", 9], ["created_at", "2023-06-09 03:14:59.655273"], ["updated_at", "2023-06-09 03:14:59.655273"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("body", "rating", "business_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["body", "Worst experience I have ever had. Would not go again!"], ["rating", 1], ["business_id", 7], ["user_id", 10], ["created_at", "2023-06-09 03:14:59.658392"], ["updated_at", "2023-06-09 03:14:59.658392"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("body", "rating", "business_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["body", "I had an incredible dining experience here. The menu offers a wide variety of delicious dishes, and each one I tried was a culinary delight. The staff was knowledgeable and attentive, making the evening even more enjoyable. Highly recommend!"], ["rating", 5], ["business_id", 8], ["user_id", 3], ["created_at", "2023-06-09 03:14:59.661413"], ["updated_at", "2023-06-09 03:14:59.661413"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("body", "rating", "business_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["body", "The vibes were immaculate!"], ["rating", 5], ["business_id", 9], ["user_id", 7], ["created_at", "2023-06-09 03:14:59.664892"], ["updated_at", "2023-06-09 03:14:59.664892"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
