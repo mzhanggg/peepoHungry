@@ -27,6 +27,15 @@
     font-size: 16px;
 }
 
+#per-link {
+    text-decoration: none;
+    line-height: 150%;
+    font-size: 14px;
+    color: rgba(110,112,114,1);
+    margin: 10px 0;
+    cursor: pointer;
+}
+
 #footer-col > li, #copyright {
     line-height: 150%;
     font-size: 14px;

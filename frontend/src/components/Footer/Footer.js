@@ -27,8 +27,9 @@ const Footer = () => {
                 </ul>
 
                 <ul id="footer-col">
-                    <h2 id="footer-title">Future Implementations</h2>
-                    <li>User Profiles</li>
+                    <h2 id="footer-title">About Me</h2>
+                    <li><a id="per-link" href="https://github.com/mzhanggg/peepoHungry">GitHub</a></li>
+                    <li><a id="per-link"href="https://www.linkedin.com/in/michele-zhang-380417199/">LinkedIn</a></li>
                 </ul>
 
             </div>
