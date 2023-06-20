@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import DemoLogin from '../DemoLogin';
 import Carousel from '../Homepage/Carousel';
-// import SearchBar from '../Search';
+import SearchBar from '../SearchBar';
 import './Navigation.css';
 
 
@@ -33,6 +33,7 @@ function Navigation() {
               <img id="logo" src="https://cdn.frankerfacez.com/emoticon/574321/4" alt="" />
             </NavLink>
             <NavLink id="title-text" to="/">peepoHungry</NavLink>
+            <SearchBar />
           </div>
           
           <div id="right-nav">
@@ -50,6 +51,7 @@ function Navigation() {
               <img id="logo"src="https://cdn.frankerfacez.com/emoticon/530821/4" alt="" />
             </NavLink>
             <NavLink id="title-text" to="/">peepoHungry</NavLink>
+            <SearchBar />
           </div>
 
           <div id="right-nav" style={{ display: (path === '/login' || path === '/signup') ? 'none' : 'block' }}>

@@ -22,6 +22,7 @@ function LoginFormPage() {
         return dispatch(sessionActions.login({email, password}))
             .catch((res) => {
                 let data; 
+                
                 try {
                     data = JSON.parse(res.message);
                 } catch {
@@ -29,9 +30,13 @@ function LoginFormPage() {
                 }
                 if (data?.errors) setErrors(data.errors);
                 else setErrors([res.statusText]);
+
+                // console.log(res)
             })
 
     }
+
+    // console.log(errors)
 
     return (
         <div id="signup">
@@ -39,7 +44,7 @@ function LoginFormPage() {
                 <div id="form-header">
                         <h1>Log in to peepoHungry</h1>
                         <p id="subheader">New to peepoHungry? 
-                            <Link to="/login"> Sign Up</Link>
+                            <Link to="/signup"> Sign Up</Link>
                         </p>
                         <p id="legal">By continuing, you agree to peepoHungry’s 
                             <a href="/login"> Terms of Service</a> 

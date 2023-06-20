@@ -27,6 +27,7 @@ export const login = ({ email, password }) => async dispatch => {
     method: "POST",
     body: JSON.stringify({ email, password })
   });
+  
 
   if (response.ok) {
     const data = await response.json();
@@ -34,7 +35,8 @@ export const login = ({ email, password }) => async dispatch => {
     dispatch(setCurrentUser(data.user));
   } else {
     const errorRes = await response.json();
-    throw new Error(JSON.stringify(errorRes))
+    throw new Error(JSON.stringify(errorRes));
+  
   }
 };
 

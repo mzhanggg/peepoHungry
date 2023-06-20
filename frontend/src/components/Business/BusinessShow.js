@@ -18,6 +18,7 @@ const BusinessShow = () => {
     if (!sessionUser) {
         sessionUser = {};
     }
+    
     const reviews = useSelector(state => {
         return Object.values(state.reviews).filter(review => review.businessId === Number(businessId))
     })

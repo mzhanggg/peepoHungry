@@ -17,8 +17,10 @@ const ReviewIndexItem = ({rev}) => {
         dispatch(deleteReview(reviewId))
     }
 
+    const sessionUserId = sessionUser?.id 
+
     const deleteButton = () => {
-        if (rev.userId === sessionUser.id) {
+        if (rev.userId === sessionUserId) {
             return (<button className="del-btn" id={rev.id} onClick={handleClick}>Delete Review</button>)
         }
     }
