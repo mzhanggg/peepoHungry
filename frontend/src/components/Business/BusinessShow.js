@@ -25,7 +25,12 @@ const BusinessShow = () => {
     
     const handleNew = e => {
         e.preventDefault();
-        nav(`/businesses/${businessId}/write-a-review`)
+
+        if (sessionUser && sessionUser.id) {
+            nav(`/businesses/${businessId}/write-a-review`)
+        } else {
+            nav('/login')
+        };
     }
 
     const handleUpdate = e => {
