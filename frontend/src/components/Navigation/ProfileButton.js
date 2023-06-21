@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 import "./ProfileButton.css"
 
 function ProfileButton({ user }) {
+  const nav = useNavigate();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
@@ -28,6 +30,7 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    nav('/')
   };
 
   return (
