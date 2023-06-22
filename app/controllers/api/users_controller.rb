@@ -10,6 +10,7 @@ class Api::UsersController < ApplicationController
             render :show
         else
             render json: {errors: @user.errors.full_messages}, status: 422
+            debugger
         end
     end
     
