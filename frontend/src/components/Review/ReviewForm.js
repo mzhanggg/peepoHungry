@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { createReview } from "../../store/reviewReducer";
 import { useParams, useNavigate } from "react-router-dom";
 import { getBusiness } from "../../store/businessReducer";
-import './ReviewForm.css';
 import { fetchBusiness } from "../../store/businessReducer";
 import { fetchReviews } from "../../store/reviewReducer";
 import RatingStars from "./Star";
+import './ReviewForm.css';
 
 const ReviewForm = () => {
     const nav = useNavigate();
@@ -15,12 +15,30 @@ const ReviewForm = () => {
     const business = useSelector(getBusiness(businessId));
     const [body, setBody] = useState('');
     const [rating, setRating] = useState('');
+    const [errors, setErrors] = useState([]);
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
-        dispatch(createReview({rating, body, business_id: businessId}));
-        nav(`/businesses/${businessId}`);
-    }
+        setErrors([]);
+
+        try {
+            await dispatch(createReview({rating, body, business_id: businessId}))
+
+            if (errors.length === 0) {
+            nav(`/businesses/${businessId}`)
+            }
+        } catch (res) {
+            let data; 
+            try {
+                data = JSON.parse(res.message);
+            } catch {
+                data = res.message;
+            }
+
+            if (data?.errors) setErrors(data.errors);
+            else setErrors([res.statusText]);
+        } 
+    };
 
     const reviews = useSelector(state => {
         return Object.values(state.reviews).filter(review => review.businessId === businessId)
@@ -45,6 +63,10 @@ const ReviewForm = () => {
                 <h1 id="form-biz-name">{business.name}</h1>
 
                 <div id="form-details-container">
+                    <ul>
+                        {errors ? errors.map(error => <li key={error}>{error}</li>) : null}
+                    </ul>
+
                     <label id="form-stars">
                         <input type="text" 
                             placeholder="1-5" 

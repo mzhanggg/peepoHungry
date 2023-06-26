@@ -22,21 +22,18 @@ function LoginFormPage() {
         return dispatch(sessionActions.login({email, password}))
             .catch((res) => {
                 let data; 
-                
                 try {
                     data = JSON.parse(res.message);
                 } catch {
                     data = res.message;
                 }
+
                 if (data?.errors) setErrors(data.errors);
                 else setErrors([res.statusText]);
 
-                // console.log(res)
             })
 
     }
-
-    // console.log(errors)
 
     return (
         <div id="signup">
@@ -55,7 +52,7 @@ function LoginFormPage() {
 
                 <form id="login-form" onSubmit={handleSubmit}>
                     <ul>
-                    {errors ? errors.map(error => <li key={error}>{error}</li>) : null}
+                        {errors ? errors.map(error => <li key={error}>{error}</li>) : null}
                     </ul>
                     <label>
                         <br></br>
