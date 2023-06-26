@@ -23,24 +23,21 @@ const storeCurrentUser = user => {
 }
 
 export const login = ({ email, password }) => async dispatch => {
-  debugger
+  
   const response = await csrfFetch("/api/session", {
     method: "POST",
     body: JSON.stringify({ email, password })
   });
   
-  debugger
-
   if (response.ok) {
-    debugger
+    
 
     const data = await response.json();
     storeCurrentUser(data.user);
     dispatch(setCurrentUser(data.user));
-    debugger
+    
   } else {
     const errorRes = await response.json();
-    debugger
     throw new Error(JSON.stringify(errorRes));
     
   }
