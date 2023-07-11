@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createReview } from "../../store/reviewReducer";
 import { useParams, useNavigate } from "react-router-dom";
-import { getBusiness } from "../../store/businessReducer";
-import { fetchBusiness } from "../../store/businessReducer";
+import { getBusiness, fetchBusiness } from "../../store/businessReducer";
 import { fetchReviews } from "../../store/reviewReducer";
 import RatingStars from "./Star";
 import './ReviewForm.css';
@@ -25,7 +24,7 @@ const ReviewForm = () => {
             await dispatch(createReview({rating, body, business_id: businessId}))
 
             if (errors.length === 0) {
-            nav(`/businesses/${businessId}`)
+                nav(`/businesses/${businessId}`)
             }
         } catch (res) {
             let data; 
@@ -46,9 +45,6 @@ const ReviewForm = () => {
 
     useEffect(() => {
         dispatch(fetchBusiness(businessId))
-    }, [businessId])
-
-    useEffect(() => {
         dispatch(fetchReviews(businessId))
     }, [businessId])
 

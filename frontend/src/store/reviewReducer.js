@@ -68,8 +68,15 @@ export const updateReview = (review, reviewId) => async dispatch => {
         method: "PATCH",
         body: JSON.stringify(review)
     })
-    const data = await res.json();
-    dispatch(receiveReview(data));
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(receiveReview(data));
+    } else {
+        const errorRes = await res.json();
+        throw new Error(JSON.stringify(errorRes));
+    }
+   
 }
 
 export const deleteReview = (reviewId) => async dispatch => {

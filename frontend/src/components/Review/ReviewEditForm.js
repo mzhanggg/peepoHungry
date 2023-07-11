@@ -11,28 +11,45 @@ const ReviewEditForm = () => {
     const nav = useNavigate();
     const {reviewId} = useParams();
     const {businessId} = useParams();
-    const review = useSelector(getReview(reviewId))
-    const business = useSelector(getBusiness(businessId))
+    const review = useSelector(getReview(reviewId));
+    const business = useSelector(getBusiness(businessId));
     const [body, setBody] = useState(review.body);
     const [rating, setRating] = useState(review.rating);
+    const [errors, setErrors] = useState([]);
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
+        setErrors([]);
+
         const reviewObj = {
             body,
             rating,
             business_id: businessId
         }
 
-        dispatch(updateReview(reviewObj, reviewId));
-        nav(`/businesses/${businessId}`);
+        try {
+            await dispatch(updateReview(reviewObj, reviewId));
+            if (errors.length === 0) {
+                nav(`/businesses/${businessId}`)
+            }
+        } catch (error) {
+            let data;
+            try {
+                data = JSON.parse(error.message);
+            } catch {
+              data = error.message;
+            }
+      
+            if (data?.errors) setErrors(data);
+            else setErrors([error.message]);
+         
+            console.log(errors)
+        }
+        
     }
 
     useEffect(() => {
         dispatch(fetchBusiness(businessId))
-    }, [businessId])
-
-    useEffect(() => {
         dispatch(fetchReviews(businessId))
     }, [businessId])
 
@@ -42,6 +59,10 @@ const ReviewEditForm = () => {
             <form id="review-form">
                 <h1 id="form-biz-name">{business.name}</h1>
                 <div id="form-details-container">
+                    <ul>
+                        {errors ? errors.map((error, i) => <li key={i}>{error}</li>) : null}
+                    </ul>
+
                     <label id="form-stars">
                         <input type="text" 
                             placeholder="1-5" 
