@@ -13,6 +13,7 @@ import RecentActivities from "./components/RecentActivity/RecentActivity";
 import BizIndexFilter from "./components/Business/BizIndexFilter";
 import ReviewForm from "./components/Review/ReviewForm";
 import ReviewEditForm from "./components/Review/ReviewEditForm";
+import SearchRes from "./components/SearchBar/SearchRes";
 
 function App() {
   const location = useLocation()
@@ -42,15 +43,15 @@ function App() {
       
       <Routes>
         <Route exact path="/" element={<Homepage />}></Route>
+        <Route exact path="/" element={<DemoLogin />}>Demo Login</Route>
         <Route exact path="/login" element={<LoginFormPage />}>Log In</Route>
         <Route exact path="/signup" element={<SignupFormPage />}>Sign Up</Route>
-        <Route exact path="/" element={<DemoLogin />}>Demo Login</Route>
+        <Route exact path="/businesses" element={<BizIndex />}></Route>
         <Route exact path="/businesses/:businessId" element={<BusinessShow />}></Route>
-        <Route exact path="/businesses" element={<BizIndex />}></Route>
         <Route exact path="/category/:categoryName" element={<BizIndexFilter />}></Route>
-        <Route exact path="/businesses" element={<BizIndex />}></Route>
         <Route exact path="/businesses/:businessId/write-a-review" element={<ReviewForm />}></Route>
         <Route exact path="/businesses/:businessId/:reviewId/edit" element={<ReviewEditForm />}></Route>
+        <Route exact path="/search/:query" element={<SearchRes />}></Route>
       </Routes>
       
       {/* {recentActivity()} */}
