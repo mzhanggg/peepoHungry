@@ -30,8 +30,6 @@ export const login = ({ email, password }) => async dispatch => {
   });
   
   if (response.ok) {
-    
-
     const data = await response.json();
     storeCurrentUser(data.user);
     dispatch(setCurrentUser(data.user));
@@ -39,7 +37,6 @@ export const login = ({ email, password }) => async dispatch => {
   } else {
     const errorRes = await response.json();
     throw new Error(JSON.stringify(errorRes));
-    
   }
 };
 
