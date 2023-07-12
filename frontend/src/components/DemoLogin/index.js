@@ -10,7 +10,7 @@ const DemoLogin = () => {
     }
 
     return (
-        <a id="nav-btn" onClick={handleClick}>Demo Login</a>
+        <a id="session-btn" onClick={handleClick}>Demo Login</a>
     )
 }
 

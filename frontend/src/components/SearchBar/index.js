@@ -1,8 +1,9 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import './SearchBar.css'
 
+
 const SearchBar = () => {
-    const [input, setInput] = useState('');
+    const [query, setQuery] = useState('');
 
     return (
         <div id="search-bar">
@@ -10,8 +11,8 @@ const SearchBar = () => {
                 id="search-input"
                 type="text" 
                 placeholder="burger, coffee, korean" 
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
             />
 
             <button id="search-button"><i id="search-icon" class="fa-solid fa-magnifying-glass"></i></button>
