@@ -10,4 +10,12 @@ class Api::BusinessesController < ApplicationController
         render :show
     end
 
+    def search 
+        query = params[:query].downcase
+        category = params[:category]&.downcase 
+        search = "%#{query}%"
+        @businesses = Business.where("LOWER(category) LIKE ? OR LOWER(name) LIKE ?", search, search)
+        render :search
+    end
+
 end

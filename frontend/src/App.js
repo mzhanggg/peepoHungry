@@ -1,6 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from  "./components/SignupFormPage";
 import Homepage from "./components/Homepage";

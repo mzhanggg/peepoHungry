@@ -10,7 +10,7 @@ import {csrfFetch} from './store/csrf';
 import './index.css';
 import * as sessionActions from './store/session';
 import * as reviewActions from './store/reviewReducer';
-
+import { fetchSearchBusinesses } from './store/businessReducer';
 
 const store = configureStore();
 
@@ -22,6 +22,7 @@ if (process.env.NODE_ENV !== 'production') {
   window.csrfFetch = csrfFetch
   window.sessionActions = sessionActions
   window.reviewActions = reviewActions
+  window.fetchSearchBusinesses = fetchSearchBusinesses
 }
 
 const initializeApp = () => {
