@@ -21,7 +21,7 @@ const SearchBar = () => {
     }
 
     useEffect(() => {
-        dispatch(fetchSearchBusinesses(query))
+        
     }, [query])
 
     return (
