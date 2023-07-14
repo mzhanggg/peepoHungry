@@ -10,14 +10,13 @@ const ReviewIndexItem = ({rev}) => {
     const lastNameInitial = rev.userLname[0]
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    const sessionUserId = sessionUser?.id 
 
     const handleClick = e => {
         e.preventDefault();
         const reviewId = e.target.id;
         dispatch(deleteReview(reviewId))
     }
-
-    const sessionUserId = sessionUser?.id 
 
     const deleteButton = () => {
         if (rev.userId === sessionUserId) {
