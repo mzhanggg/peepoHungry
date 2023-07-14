@@ -1,9 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from "react-router-dom";
 import './SearchBar.css'
 
-
 const SearchBar = () => {
+    const nav = useNavigate();
     const [query, setQuery] = useState('');
+
+    const handleKeyDown = e => {
+        if (e.key === 'Enter') {
+            handleClick();
+        }
+    }
+
+    const handleClick = () => {
+        (query === '') ? nav(`/businesses`) : nav(`/search/${query}`);
+        
+        setQuery('');
+    }
+
+    useEffect(() => {
+        
+    }, [query])
 
     return (
         <div id="search-bar">
@@ -13,9 +30,12 @@ const SearchBar = () => {
                 placeholder="burger, coffee, korean" 
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={handleKeyDown}
             />
 
-            <button id="search-button"><i id="search-icon" class="fa-solid fa-magnifying-glass"></i></button>
+            <button id="search-button" onClick={handleClick}>
+                <i id="search-icon" className="fa-solid fa-magnifying-glass"></i>
+            </button>
 
         </div>
     )

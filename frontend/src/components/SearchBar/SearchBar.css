@@ -4,28 +4,42 @@
     border-color: #fff;
     width: 400px;
     height: 48px;
-    
+    border: 1px solid #dcdcdc;
+    padding: 2px;
 }
 
 #search-button {
     background-color: rgba(224,7,7,1);
     border-color:  rgba(224,7,7,1);
     border-radius: 0 4px 4px 0;
-    height: 55px;
-    padding: 12px 16px;
-
+    cursor: pointer;
+    border: none;
+    padding: 12px 20px;
 }
 
 #search-icon {
     color: white;
-    background-color: rgba(224,7,7,1);
     font-size: 20px;
+    padding: 2px;
+    background-color: transparent;
+    cursor: pointer;
 }
-
-
 
 #search-bar {
     display: flex;
-    align-items: center;
-    
+}
+
+#search-bar > input[type=text] {
+    text-indent: 10px;
+    font-size: 14px;
+}
+
+#search-button:hover {
+    transition: all 0.5s ease-in-out;
+    background-color: rgb(244,13,21);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.3);
+}
+
+#search-icon:hover {
+    background-color: rgb(244,13,21);
 }
