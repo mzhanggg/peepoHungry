@@ -5,6 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getReview, fetchReviews } from "../../store/reviewReducer";
 import { fetchBusiness } from "../../store/businessReducer";
 import { getBusiness } from "../../store/businessReducer";
+import ReviewStar from "./ReviewStar";
 
 const ReviewEditForm = () => {
     const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const ReviewEditForm = () => {
     const [body, setBody] = useState(review.body);
     const [rating, setRating] = useState(review.rating);
     const [errors, setErrors] = useState([]);
+    
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -29,6 +31,7 @@ const ReviewEditForm = () => {
 
         try {
             await dispatch(updateReview(reviewObj, reviewId));
+
             if (errors.length === 0) {
                 nav(`/businesses/${businessId}`)
             }
@@ -43,7 +46,6 @@ const ReviewEditForm = () => {
             if (data?.errors) setErrors(data);
             else setErrors([error.message]);
          
-            console.log(errors)
         }
         
     }
@@ -58,27 +60,25 @@ const ReviewEditForm = () => {
 
             <form id="review-form">
                 <h1 id="form-biz-name">{business.name}</h1>
+                
+                <ul>
+                    {errors ? errors.map((error, i) => <li key={i}>{error}</li>) : null}
+                </ul>
+
                 <div id="form-details-container">
-                    <ul>
-                        {errors ? errors.map((error, i) => <li key={i}>{error}</li>) : null}
-                    </ul>
 
                     <label id="form-stars">
-                        <input type="text" 
-                            placeholder="1-5" 
-                            value={rating}
-                            onChange={(e) => setRating(e.target.value)}
-                            required>
-                        </input>
+                        <ReviewStar rating={rating} setRating={setRating} />
+                        <span> Select your rating</span>
                     </label>
 
                     <label id="form-review-body">
-                        <input type="textarea" 
+                        <textarea 
                             placeholder="Write your review here!"
                             value={body}
                             onChange={(e) => setBody(e.target.value)}
-                            required>
-                        </input>
+                        />
+
                     </label>
                 </div>
 
