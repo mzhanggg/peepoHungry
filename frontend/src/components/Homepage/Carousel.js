@@ -32,7 +32,7 @@ const Carousel = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             carouselIndex()
-        }, 3000)
+        }, 4000)
         
         return () => clearInterval(interval);
     }, [currentIndex])
