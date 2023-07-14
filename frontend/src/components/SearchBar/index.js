@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { fetchSearchBusinesses } from '../../store/businessReducer';
 import './SearchBar.css'
 
 const SearchBar = () => {
-    const dispatch = useDispatch();
     const nav = useNavigate();
     const [query, setQuery] = useState('');
 
@@ -16,7 +13,8 @@ const SearchBar = () => {
     }
 
     const handleClick = () => {
-        nav(`/search/${query}`);
+        (query === '') ? nav(`/businesses`) : nav(`/search/${query}`);
+        
         setQuery('');
     }
 

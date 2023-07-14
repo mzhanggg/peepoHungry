@@ -10,11 +10,13 @@ const SearchRes = () => {
     const dispatch = useDispatch();
     const searchedBusinesses = useSelector(state => state.businesses)
     const bizItems = Object.values(searchedBusinesses).map(biz => <BusinessIndexItem biz={biz} key={biz.id}/>)
-    
+
+
     useEffect(() => {
         dispatch(fetchSearchBusinesses(query))
     }, [query])
 
+    
     const emptySearch = () => {
         if ( Object.keys(searchedBusinesses).length === 0 ) {
             return (
