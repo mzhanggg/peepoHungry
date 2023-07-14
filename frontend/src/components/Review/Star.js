@@ -4,8 +4,8 @@ const RatingStars = ({ rating, setRating }) => {
     }
     return (
         <>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-regular fa-star"></i>
             
         </>
     )

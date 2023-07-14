@@ -18,6 +18,9 @@ const ReviewEditForm = () => {
     const [rating, setRating] = useState(review.rating);
     const [errors, setErrors] = useState([]);
     
+    const toTop = () => {
+        window.scrollTo(0, 0)
+    };
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -48,6 +51,7 @@ const ReviewEditForm = () => {
          
         }
         
+        toTop();
     }
 
     useEffect(() => {
