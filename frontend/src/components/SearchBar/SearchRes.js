@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from "react-router-dom";
 import { fetchSearchBusinesses } from '../../store/businessReducer';
 import BusinessIndexItem from '../Business/BusinessIndexItem';
+import './SearchRes.css'
 
 const SearchRes = () => {
     const { query } = useParams()
@@ -14,13 +15,12 @@ const SearchRes = () => {
         dispatch(fetchSearchBusinesses(query))
     }, [query])
 
-    console.log(query)
     const emptySearch = () => {
         if ( Object.keys(searchedBusinesses).length === 0 ) {
             return (
                 <div id="empty-search">
                     <h2>No results for { query }</h2>
-                    <ul>Suggestions for improving your results:
+                    <ul><span>Suggestions for improving your results:</span>
                         <li>Check the spelling or try alternate spellings</li>
                         <li>Try a more general search, e.g. "pizza" instead of "pepperoni"</li>
                     </ul>
