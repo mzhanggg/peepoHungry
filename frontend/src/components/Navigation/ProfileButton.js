@@ -36,7 +36,7 @@ function ProfileButton({ user }) {
   return (
     <>
       <button id="profile-icon" onClick={openMenu}>
-        <img id="profile-icon" src="https://www.lightsong.net/wp-content/uploads/2020/12/blank-profile-circle.png"></img>
+        <img id="profile-icon-img" src="https://www.lightsong.net/wp-content/uploads/2020/12/blank-profile-circle.png"></img>
       </button>
       {showMenu && (
         <ul className="profile-dropdown">

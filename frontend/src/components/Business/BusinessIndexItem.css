@@ -46,7 +46,9 @@
 #profile-img {
     margin-right: 10px;
     height: 220px;
-    width: 329px;
+    width: 305px;
+    object-fit: cover;
+    margin-right: 20px;
 }
 
 #review {

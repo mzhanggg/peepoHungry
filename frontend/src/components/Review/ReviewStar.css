@@ -1,0 +1,25 @@
+#review-star-container {
+    display: flex;
+    height: 32px;
+    width: 32px;
+}
+
+#review-star-container * {
+    margin-right: 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#review-stars {
+    background: none;
+}
+
+#on {
+    background-color: yellow;
+    color: white;
+}
+
+#off {
+    color: white;
+}

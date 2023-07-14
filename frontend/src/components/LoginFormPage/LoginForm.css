@@ -72,8 +72,12 @@ form {
     font-size: 12px;
 }
 
-label > input {
+label > input[type="text"] {
     padding: 5px 9px;
     width: 300px;
 }
 
+label > input[type="password"] {
+    padding: 5px 9px;
+    width: 300px;
+}

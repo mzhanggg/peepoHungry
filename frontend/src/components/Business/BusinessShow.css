@@ -1,11 +1,11 @@
-#location-hours-container, #reviews, #sticky-side-nav{
-    padding: 30px;
+#location-hours-container, #reviews, #sticky-side-nav, #review-container{
+    padding: 40px;
 }
 
 #location-hours-container > p {
     font-weight: bold;
     margin-bottom: 20px;
-    font-size: 20pxs;
+    font-size: 20px;
 }
 
 #location-hours {
@@ -20,7 +20,8 @@
 #biz-info-container {
     display: flex;
     overflow: hidden;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 0 40px;
 }
 
 #sticky-side-nav {
@@ -29,6 +30,7 @@
     border: 1px solid #ebebeb;
     font-weight: bold;
     letter-spacing: 1px;
+    margin: 40px;
 }
 
 #rev-sub {

@@ -1,9 +1,3 @@
-#review-form-container {
-    padding: 175px;
-    align-items: center;
-}
-
-
 #form-biz-name {
     font-size: 28px;
     font-weight: bold;
@@ -13,9 +7,13 @@
     margin-bottom: 10px;
 }
 
+#review-form {
+    padding: 175px;
+}
 
 #form-details-container {
     border: 1px solid #ebebeb;
+    border-radius: 8px;
 }
 
 #form-review-btn {
@@ -32,17 +30,46 @@
     border-bottom-right-radius: 4px;
     font-weight: bold;
     font-size: 16px;
+    margin-top: 20px;
 }
 
 #form-review-body *{
-    width: 100%;
-    height: 200px;
+    margin-top: 10px;
 }
 
 #review-form *{
+    box-sizing: border-box;
     width: 100%;
 }
 
-#review-form > input {
-    width: 100%;
+#form-review-body > textarea {
+    display: flex;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 20px;
+    height: 300px;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#form-stars {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+}
+
+#form-stars > span {
+    margin-left: 20px;
+    font-size: 14px;
+    color: rgba(45,46,47,1);
+}
+
+#review-form-errors {
+    padding: 15px 20px;
+}
+
+#review-form-errors * {
+    margin-bottom: 5px;
+    color: #d32323;
 }

@@ -1,11 +1,14 @@
 #profile-icon {
+    display: flex;
+    align-items: center;
+    justify-self: center;
     border-radius: 50%;
     height: 60px;
     width: 60px;
+    border: none;
 }
 
-#profile-icon {
-    height: 60px;
+#profile-icon-img {
     overflow: hidden;
 }
   
