@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBusinesses, fetchBusinesses } from "../../store/businessReducer";
 import BusinessIndexItem from './BusinessIndexItem';
+import MapIndex from '../Map/MapIndex';
 
 const BizIndex = () => {
     const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const BizIndex = () => {
             <ul id="biz-profile-container">
                 {bizItems}
             </ul>
+            <MapIndex />
         </>
     )
 }
