@@ -23,7 +23,7 @@ const BizIndex = () => {
             <ul id="biz-profile-container">
                 {bizItems}
             </ul>
-            <MapIndex />
+            {/* <MapIndex /> */}
         </>
     )
 }
