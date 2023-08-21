@@ -13,6 +13,10 @@ const MapIndex = () => {
     return <div>...Loading</div>;
   }
 
+  if (loadError) {
+    return <div>Error loading maps, check your API key</div>
+  }
+
   return (
     <div>
       <Map businesses={businesses} />
